@@ -6,15 +6,13 @@ use App\Models\User;
 Route::get('/',[UsuarioController::class,'site'])->name('site');
 Route::get('/signup',[UsuarioController::class,'showUsuario'])->name('formulario-usuario');
 Route::post('/signup',[UsuarioController::class,'storeUsuario'])->name('cadastrar-usuario');
-Route::get('/todosContato',[UsuarioController::class,'showGerenciador'])->name('todos-usuario');
+Route::get('/todosUsuario',[UsuarioController::class,'showGerenciador'])->name('todos-usuario');
 Route::get('/movies1',[UsuarioController::class,'showMovies'])->name('todos-usuario');
 Route::get('/games1',[UsuarioController::class,'showgames'])->name('todos-usuario');
 Route::get('/art1',[UsuarioController::class,'showart'])->name('todos-usuario');
 Route::get('/login',[UsuarioController::class,'authenticate'])->name('login-acesso');
 Route::get('/login',[UsuarioController::class,'showLogin'])->name('login');
-Route::get('/esqueci',[UsuarioController::class,'showalterar'])->name('todos-usuario');
 
-Route::get('/alterar/{id}',[UsuarioController::class,'show'])->name('alterar-usuario');
 Route::get('/abaTekken',[UsuarioController::class,'showabatekken'])->name('todos-usuario');
 Route::get('/abaBubsy',[UsuarioController::class,'showababubsy'])->name('todos-usuario');
 Route::get('/abaFifa',[UsuarioController::class,'showabafifa'])->name('todos-usuario');
@@ -36,8 +34,8 @@ Route::get('/abaTn2',[UsuarioController::class,'showabatn2'])->name('todos-usuar
 Route::get('/abaGt',[UsuarioController::class,'showabagt'])->name('todos-usuario');
 Route::get('/abaFf7',[UsuarioController::class,'showabaff7'])->name('todos-usuario');
 
+Route::get('/alterarsenha',[UsuarioController::class,'showAlterar'])->name('formulario-Alterar-senha');
 Route::put('/alterarBanco/{id}',[UsuarioController::class,'update'])->name('alterarBanco-usuario');
-
 
 
 

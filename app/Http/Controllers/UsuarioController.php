@@ -55,7 +55,7 @@ class UsuarioController extends Controller
             $id->save();
             return Redirect::route('todos-usuario');
         }
-        public function show(User $id){
+        public function showAlterar(User $id){
             return view('alterar',['user'=>$id]);
         }
         public function showgames(){

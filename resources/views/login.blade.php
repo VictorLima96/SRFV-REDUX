@@ -14,6 +14,7 @@
     <title>SRFV Games</title>
 </head>
 <body background="images/b.jpg">
+  
 
 <section class="vh-100 gradient-custom">
   <div class="container py-5 h-100">
@@ -37,7 +38,7 @@
                 <label class="form-label" for="typePasswordX">Senha</label>
               </div>
 
-              <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="/alterar">Esqueceu sua senha?</a></p>
+              <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="/alterarsenha">Esqueceu sua senha?</a></p>
 
               <button class="btn btn-outline-light btn-lg px-5" type="submit"><a class="text-white-50" href="/">Login</button>
 

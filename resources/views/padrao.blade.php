@@ -8,8 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <audio src=""></audio>
-    <link rel="shortcut icon" type="assets/images/logo.png" href="/favicon.jpg"/>
+    
+    <link rel="shortcut icon" type="assets/images/favicon.ico" href="/favicon.ico"/>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="assets/css/fontawesome.css">
@@ -19,8 +19,10 @@
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <title>SRFV Games</title>
 </head>
-<body>
-    
+<body class="text-center text-white label-center">
+  <audio controls>
+    <source src="assets/som/MC VV - BONDA GOOD 4SS JOB (Instrumental_Karaokê_Beats).mp3" type="audio/mp3">
+  </audio>
      <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
     <link rel="shortcut icon" type="imagex/png" href="assets/images/bungas.png">
@@ -35,7 +37,7 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Search End ***** -->
                     <div class="search-input">
-                      <form id="search" action="#">
+                      <form id="search" action="/" method="GET">
                         <input type="text" placeholder="Pesquise Aqui" id='searchText' name="searchKeyword" onkeypress="handle" />
                         <i class="fa fa-search"></i>
                       </form>
