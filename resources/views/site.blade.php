@@ -29,11 +29,10 @@
                 <div class="row">
                   <div class="col-lg-3 col-sm-6">
                     <div class="item">
-                      
-                      <img src="assets/arts/a.png" alt="">
+                        <img src="assets/arts/a.png" alt="">
                       <div class="hover-effect">
-
                       </div>
+                      <a href="assets/arts/a.png" download><i class="fa fa-download"></i></a>
                       <h4>Bumblebee<br><span>By FalleN</span></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> 4.1</li>
@@ -44,6 +43,7 @@
                   <div class="col-lg-3 col-sm-6">
                     <div class="item">
                       <img src="assets/arts/b.webp" alt="">
+                      <a href="assets/arts/b.webp" download><i class="fa fa-download"></i></a>
                       <h4>Bomberman<br><span>By Victor</span></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> 4.4</li>
@@ -54,6 +54,7 @@
                   <div class="col-lg-3 col-sm-6">
                     <div class="item">
                       <img src="assets/arts/e.webp" alt="">
+                      <a href="assets/arts/e.webp" download><i class="fa fa-download"></i></a>
                       <h4>Bob Esponja<br><span>By Steam-X</span></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> 4.8</li>
@@ -64,6 +65,7 @@
                   <div class="col-lg-3 col-sm-6">
                     <div class="item">
                       <img src="assets/arts/c.webp" alt="">
+                      <a href="assets/arts/c.webp" download><i class="fa fa-download"></i></a>
                       <h4>Polygoth<br><span>By Legendary</span></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> 4.9</li>
@@ -74,6 +76,7 @@
                   <div class="col-lg-3 col-sm-6">
                     <div class="item">
                       <img src="assets/arts/k.webp" alt="">
+                      <a href="assets/arts/k.webp" download><i class="fa fa-download"></i></a>
                       <h4>Knuckles<br><span>By CrashGamis</span></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> 3.9</li>
@@ -84,6 +87,7 @@
                         <div class="col-lg-3 col-sm-6">
                           <div class="item">
                             <img src="assets/arts/m.webp" alt="">
+                            <a href="assets/arts/m.webp" download><i class="fa fa-download"></i></a>
                             <h4>Luigi<br><span>By ElTopoGira</span></h4>
                             <ul>
                               <li><i class="fa fa-star"></i> 4.2</li>
@@ -94,6 +98,7 @@
                   <div class="col-lg-3 col-sm-6">
                     <div class="item">
                       <img src="assets/arts/n.webp" alt="">
+                      <a href="assets/arts/n.webp" download><i class="fa fa-download"></i></a>
                       <h4>Pizza Tower<br><span>By Max 3D</span></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> 3.1</li>
@@ -104,6 +109,7 @@
                   <div class="col-lg-3 col-sm-6">
                     <div class="item">
                       <img src="assets/arts/s.webp" alt="">
+                      <a href="assets/arts/s.webp" download><i class="fa fa-download"></i></a>
                       <h4>Shadow<br><span>By FonSekito</span></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> 4.1</li>
@@ -135,7 +141,7 @@
                   <li><h4>Lançamento</h4><span>24/08/2007</span></li>
                   <li><h4>Criado por</h4><span>Victor Lima</span></li>
                   <li><h4>Empresa</h4><span>Konami</span></li>
-                  <li><div class="main-border-button"><a href="/abaMetal">Jogue</a></div></li>
+                  <li><div class="main-border-button"><a href="/abaMetal" target="_blank">Jogue</a></div></li>
                 </ul>
               </div>
               <div class="item">
@@ -145,7 +151,7 @@
                   <li><h4>Lançamento</h4><span>12/01/2001</span></li>
                   <li><h4>Criado por</h4><span>FbKnor</span></li>
                   <li><h4>Empresa</h4><span>Naugthy Dog</span></li>
-                  <li><div class="main-border-button"><a href="/abaCrash">Jogue</a></div></li>
+                  <li><div class="main-border-button"><a href="/abaCrash" target="_blank">Jogue</a></div></li>
                 </ul>
               </div>
               <div class="item last-item">
@@ -155,7 +161,7 @@
                   <li><h4>Lançamento</h4><span>14/11/1998</span></li>
                   <li><h4>Criado por</h4><span>Nagazaki Hiroshi</span></li>
                   <li><h4>Empresa</h4><span>Capcom</span></li>
-                  <li><div class="main-border-button"><a href="/abaTekken">Jogue</a></div></li>
+                  <li><div class="main-border-button"><a href="/abaTekken" target="_blank">Jogue</a></div></li>
                 </ul>
               </div>
             </div>

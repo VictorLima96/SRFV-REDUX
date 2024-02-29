@@ -20,9 +20,7 @@
     <title>SRFV Games</title>
 </head>
 <body class="text-center text-white label-center">
-  <audio controls>
-    <source src="assets/som/MC VV - BONDA GOOD 4SS JOB (Instrumental_Karaokê_Beats).mp3" type="audio/mp3">
-  </audio>
+
      <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
     <link rel="shortcut icon" type="imagex/png" href="assets/images/bungas.png">
@@ -69,6 +67,7 @@
       @yield('content')
     </div>
 </div>
+
 </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
