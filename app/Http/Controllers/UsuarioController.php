@@ -51,13 +51,13 @@ class UsuarioController extends Controller
     public function storeUsuario(Request $request)
     {
         $usuario = $request->validate([
-            'name'     => 'string|required',
-            'password' => 'string|required',
-            'email'    => 'string|required',
+            'name'     => 'string|required|max:255',
+            'password' => 'string|required|min:6',
+            'email'    => 'string|required|email|unique:users,email',
         ]);
 
         User::create($usuario);
-        return Redirect::route('site');
+        return Redirect::route('login')->with('success', 'Conta criada com sucesso! Faça login.');
     }
 
     public function showMovies()
@@ -78,15 +78,19 @@ class UsuarioController extends Controller
 
     public function update(User $id, Request $request)
     {
-        $usuario = $request->validate([
-            'nomeUsuario'  => 'string|required',
-            'senhaUsuario' => 'string|required',
-            'emailUsuario' => 'string|required',
+        $request->validate([
+            'nomeUsuario'  => 'string|required|max:255',
+            'senhaUsuario' => 'string|nullable|min:6',
+            'emailUsuario' => 'string|required|email',
         ]);
 
-        $id->fill($usuario);
+        $id->name  = $request->nomeUsuario;
+        $id->email = $request->emailUsuario;
+        if ($request->filled('senhaUsuario')) {
+            $id->password = $request->senhaUsuario;
+        }
         $id->save();
-        return Redirect::route('todos-usuario');
+        return Redirect::route('site')->with('success', 'Dados alterados com sucesso!');
     }
 
     public function showAlterar(User $id)
@@ -131,7 +135,7 @@ class UsuarioController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('login-acesso');
+            return redirect()->intended('/');
         }
 
         return back()->withErrors([

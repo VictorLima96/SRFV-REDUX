@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row d-flex justify-content-center align-items-center">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+        <div class="card" style="border-radius: 23px;">
           <div class="card-body p-5 text-center">
             <form method="post" action="{{ route('login-acesso') }}">
               @csrf
@@ -30,7 +30,7 @@
 
                 <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="/alterarsenha">Esqueceu sua senha?</a></p>
 
-                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                <button class="btn btn-primary btn-lg px-5" type="submit">Login</button>
 
                 <div class="d-flex justify-content-center text-center mt-4 pt-1">
                   <a href="https://www.facebook.com/" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>

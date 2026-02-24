@@ -44,8 +44,19 @@
                         <li><a href="/games1">Games</a></li>
                         <li><a href="/movies1">Movies</a></li>
                         <li><a href="/art1">Art</a></li>
-                        <li><a href="/signup">Cadastrar</a></li>
-                        <li><a href="{{route('login')}}">Login <img src="{{ asset('assets/images/profile-header.jpg') }}" alt=""></a></li>
+                        @guest
+                            <li><a href="/signup">Cadastrar</a></li>
+                            <li><a href="{{route('login')}}">Login <img src="{{ asset('assets/images/profile-header.jpg') }}" alt=""></a></li>
+                        @endguest
+                        @auth
+                            <li><a href="/alterarsenha">{{ Auth::user()->name }}</a></li>
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    <button type="submit" style="background:none;border:none;color:#f12421;cursor:pointer;font-size:14px;padding:13px 10px;font-family:inherit;">Sair</button>
+                                </form>
+                            </li>
+                        @endauth
                     </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>

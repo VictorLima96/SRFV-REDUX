@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/',[UsuarioController::class,'site'])->name('site');
 Route::get('/signup',[UsuarioController::class,'showUsuario'])->name('formulario-usuario');
@@ -35,8 +36,15 @@ Route::get('/abaTn2',[UsuarioController::class,'showEmbed'])->defaults('slug','t
 Route::get('/abaGt',[UsuarioController::class,'showEmbed'])->defaults('slug','gt')->name('aba-gt');
 Route::get('/abaFf7',[UsuarioController::class,'showEmbed'])->defaults('slug','ff7')->name('aba-ff7');
 
-Route::get('/alterarsenha',[UsuarioController::class,'showAlterar'])->name('formulario-Alterar-senha');
-Route::put('/alterarBanco/{id}',[UsuarioController::class,'update'])->name('alterarBanco-usuario');
+Route::get('/alterarsenha',[UsuarioController::class,'showAlterar'])->middleware('auth')->name('formulario-Alterar-senha');
+Route::put('/alterarBanco/{id}',[UsuarioController::class,'update'])->middleware('auth')->name('alterarBanco-usuario');
+
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect('/');
+})->name('logout');
 
 
 

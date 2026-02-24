@@ -2,8 +2,8 @@
     --bs-blue: #0d6efd;
     --bs-indigo: #6610f2;
     --bs-purple: #6f42c1;
-    --bs-pink: #ee0979;
-    --bs-red: #dc3545;
+    --bs-pink: #f12421;
+    --bs-red: #f12421;
     --bs-orange: #ff6a00;
     --bs-yellow: #ffc107;
     --bs-green: #198754;
@@ -22,16 +22,16 @@
     --bs-gray-700: #495057;
     --bs-gray-800: #343a40;
     --bs-gray-900: #212529;
-    --bs-primary: #ee0979;
-    --bs-secondary: #ff6a00;
+    --bs-primary: #f12421;
+    --bs-secondary: #ec6090;
     --bs-success: #198754;
     --bs-info: #0dcaf0;
     --bs-warning: #ffc107;
     --bs-danger: #dc3545;
     --bs-light: #f8f9fa;
     --bs-dark: #212529;
-    --bs-primary-rgb: 238, 9, 121;
-    --bs-secondary-rgb: 255, 106, 0;
+    --bs-primary-rgb: 241, 36, 33;
+    --bs-secondary-rgb: 236, 96, 144;
     --bs-success-rgb: 25, 135, 84;
     --bs-info-rgb: 13, 202, 240;
     --bs-warning-rgb: 255, 193, 7;
@@ -40,29 +40,212 @@
     --bs-dark-rgb: 33, 37, 41;
     --bs-white-rgb: 255, 255, 255;
     --bs-black-rgb: 0, 0, 0;
-    --bs-body-color-rgb: 33, 37, 41;
-    --bs-body-bg-rgb: 255, 255, 255;
-    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-body-color-rgb: 255, 255, 255;
+    --bs-body-bg-rgb: 39, 41, 42;
+    --bs-font-sans-serif: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-    --bs-body-font-family: Lato, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    --bs-body-font-family: 'Poppins', sans-serif;
     --bs-body-font-size: 1rem;
     --bs-body-font-weight: 400;
     --bs-body-line-height: 1.5;
-    --bs-body-color: #212529;
-    --bs-body-bg: #fff;
+    --bs-body-color: #fff;
+    --bs-body-bg: #27292a;
     --bs-border-width: 1px;
     --bs-border-style: solid;
-    --bs-border-color: #dee2e6;
-    --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+    --bs-border-color: #444;
+    --bs-border-color-translucent: rgba(255, 255, 255, 0.1);
     --bs-border-radius: 0.375rem;
     --bs-border-radius-sm: 0.25rem;
     --bs-border-radius-lg: 0.5rem;
     --bs-border-radius-xl: 1rem;
     --bs-border-radius-2xl: 2rem;
     --bs-border-radius-pill: 50rem;
-    --bs-link-color: #ee0979;
-    --bs-link-hover-color: #be0761;
-    --bs-code-color: #ee0979;
+    --bs-link-color: #f12421;
+    --bs-link-hover-color: #ff5a58;
+    --bs-code-color: #f12421;
     --bs-highlight-bg: #fff3cd;
   }
+
+/* ===== SRFV Global Overrides ===== */
+
+/* Dark theme forms */
+.form-control {
+    background-color: #1f2122;
+    border: 1px solid #444;
+    color: #fff;
+}
+.form-control:focus {
+    background-color: #27292a;
+    border-color: #f12421;
+    color: #fff;
+    box-shadow: 0 0 0 0.2rem rgba(241, 36, 33, 0.25);
+}
+.form-control::placeholder {
+    color: #888;
+}
+.form-label {
+    color: #ccc;
+}
+
+/* Primary button override */
+.btn-primary {
+    background-color: #f12421 !important;
+    border-color: #f12421 !important;
+    color: #fff !important;
+    border-radius: 25px;
+    padding: 10px 30px;
+    font-weight: 500;
+    transition: all .3s;
+}
+.btn-primary:hover {
+    background-color: #fff !important;
+    border-color: #f12421 !important;
+    color: #f12421 !important;
+}
+
+/* Outline light button (login) */
+.btn-outline-light {
+    border-color: #f12421 !important;
+    color: #f12421 !important;
+    border-radius: 25px;
+    padding: 10px 30px;
+    font-weight: 500;
+    transition: all .3s;
+}
+.btn-outline-light:hover {
+    background-color: #f12421 !important;
+    border-color: #f12421 !important;
+    color: #fff !important;
+}
+
+/* Dark cards */
+.card {
+    background-color: #1f2122 !important;
+    border: 1px solid #444 !important;
+    color: #fff !important;
+}
+.card-body {
+    color: #fff !important;
+}
+.card .text-black,
+.card .text-dark {
+    color: #fff !important;
+}
+
+/* Alert */
+.alert-danger {
+    background-color: rgba(241, 36, 33, 0.15);
+    border-color: #f12421;
+    color: #ff8a88;
+}
+
+/* Form check */
+.form-check-input:checked {
+    background-color: #f12421;
+    border-color: #f12421;
+}
+.form-check-label {
+    color: #ccc;
+}
+.form-check-label a {
+    color: #f12421 !important;
+}
+
+/* Gradient section (login) */
+.gradient-custom {
+    background: transparent;
+}
+
+/* ===== Responsiveness ===== */
+
+/* Responsive iframes */
+.embed-responsive-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.embed-responsive-container iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    border: 2px solid #444;
+}
+
+/* Mobile fixes */
+@media (max-width: 768px) {
+    body .page-content {
+        margin-top: 90px;
+        padding: 15px;
+    }
+    .main-banner {
+        padding: 40px 20px;
+        min-height: 250px;
+    }
+    .main-banner h4 {
+        font-size: 24px;
+    }
+    .main-banner h6 {
+        font-size: 16px;
+    }
+    .most-popular,
+    .gaming-library,
+    .featured-games,
+    .live-stream,
+    .start-stream {
+        padding: 15px;
+    }
+    .heading-section h4 {
+        font-size: 20px;
+    }
+    .start-stream .item {
+        margin-bottom: 15px;
+    }
+    .embed-responsive-container iframe {
+        aspect-ratio: 16/9;
+    }
+    /* Fix gaming library table on mobile */
+    .gaming-library .item ul li {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin-bottom: 8px;
+    }
+    .gaming-library .item ul li img {
+        margin: 0 auto 10px;
+        display: block;
+    }
+    .gaming-library .item ul li:last-child {
+        text-align: center !important;
+    }
+    /* Cards stack properly */
+    .card-body {
+        padding: 20px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-banner h4 {
+        font-size: 20px;
+    }
+    .most-popular .item {
+        padding: 15px 10px;
+    }
+    footer p {
+        font-size: 13px;
+        padding: 20px 10px;
+    }
+}
+
+/* Tablet fixes */
+@media (min-width: 769px) and (max-width: 1024px) {
+    body .page-content {
+        padding: 25px;
+    }
+    .gaming-library .item ul li {
+        width: 20% !important;
+        font-size: 13px;
+    }
+}
