@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('assets/css/css.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YcnS/1GiQ6lfMZ1aJ+7YR2s/9Y3lTRBiI3K6" crossorigin="anonymous">
-    
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/bungas.png') }}"/>
+
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon-srfv.png') }}"/>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
@@ -15,6 +14,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/owl.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css"/>
+    <!-- SRFV Overrides - must be last -->
+    <link rel="stylesheet" href="{{ asset('assets/css/css.css') }}">
     <title>SRFV Games</title>
 </head>
 <body class="text-center text-white label-center d-flex flex-column min-vh-100">
