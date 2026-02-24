@@ -7,7 +7,7 @@
     <div class="main-profile">
       <div class="row">
         <div class="col-lg-4">
-          <img src="{{ asset('assets/arts/discord.jpg') }}" alt="" style="border-radius: 23px;">
+          <img src="{{ asset('assets/arts/discord.jpg') }}" alt="">
         </div>
         <div class="col-lg-4 align-self-center">
           <div class="main-info header-text">
@@ -41,7 +41,7 @@
               <div class="col-lg-3 col-sm-6">
                 <div class="item">
                   <div class="thumb">
-                    <img src="{{ asset('assets/arts/a.png') }}" alt="" style="border-radius: 23px;">
+                    <img src="{{ asset('assets/arts/a.png') }}" alt="">
                     <a href="{{ asset('assets/arts/a.png') }}" download><i class="fa fa-download"></i></a>
                   </div>
                   <div class="down-content">
@@ -53,7 +53,7 @@
               <div class="col-lg-3 col-sm-6">
                 <div class="item">
                   <div class="thumb">
-                    <img src="{{ asset('assets/arts/b.webp') }}" alt="" style="border-radius: 23px;">
+                    <img src="{{ asset('assets/arts/b.webp') }}" alt="">
                     <a href="{{ asset('assets/arts/b.webp') }}" download><i class="fa fa-download"></i></a>
                   </div>
                   <div class="down-content">
@@ -65,7 +65,7 @@
               <div class="col-lg-3 col-sm-6">
                 <div class="item">
                   <div class="thumb">
-                    <img src="{{ asset('assets/arts/k.webp') }}" alt="" style="border-radius: 23px;">
+                    <img src="{{ asset('assets/arts/k.webp') }}" alt="">
                     <a href="{{ asset('assets/arts/k.webp') }}" download><i class="fa fa-download"></i></a>
                   </div>
                   <div class="down-content">
@@ -77,7 +77,7 @@
               <div class="col-lg-3 col-sm-6">
                 <div class="item">
                   <div class="thumb">
-                    <img src="{{ asset('assets/arts/s.webp') }}" alt="" style="border-radius: 23px;">
+                    <img src="{{ asset('assets/arts/s.webp') }}" alt="">
                     <a href="{{ asset('assets/arts/s.webp') }}" download><i class="fa fa-download"></i></a>
                   </div>
                   <div class="down-content">

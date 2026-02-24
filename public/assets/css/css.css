@@ -1,165 +1,592 @@
+/* =============================================
+   SRFV GAMES - Custom Overrides
+   Must load LAST (after Bootstrap + templatemo)
+   ============================================= */
+
 :root {
-    --bs-blue: #0d6efd;
-    --bs-indigo: #6610f2;
-    --bs-purple: #6f42c1;
-    --bs-pink: #f12421;
-    --bs-red: #f12421;
-    --bs-orange: #ff6a00;
-    --bs-yellow: #ffc107;
-    --bs-green: #198754;
-    --bs-teal: #20c997;
-    --bs-cyan: #0dcaf0;
-    --bs-black: #000;
-    --bs-white: #fff;
-    --bs-gray: #6c757d;
-    --bs-gray-dark: #343a40;
-    --bs-gray-100: #f8f9fa;
-    --bs-gray-200: #e9ecef;
-    --bs-gray-300: #dee2e6;
-    --bs-gray-400: #ced4da;
-    --bs-gray-500: #adb5bd;
-    --bs-gray-600: #6c757d;
-    --bs-gray-700: #495057;
-    --bs-gray-800: #343a40;
-    --bs-gray-900: #212529;
+    --srfv-primary: #f12421;
+    --srfv-primary-hover: #ff5a58;
+    --srfv-bg-dark: #27292a;
+    --srfv-bg-darker: #1f2122;
+    --srfv-bg-darkest: #191a1b;
+    --srfv-border: #333;
+    --srfv-border-light: #444;
+    --srfv-text: #fff;
+    --srfv-text-muted: #aaa;
+    --srfv-text-dim: #888;
+    --srfv-accent: #f12421;
+
+    /* Bootstrap overrides */
     --bs-primary: #f12421;
-    --bs-secondary: #ec6090;
-    --bs-success: #198754;
-    --bs-info: #0dcaf0;
-    --bs-warning: #ffc107;
-    --bs-danger: #dc3545;
-    --bs-light: #f8f9fa;
-    --bs-dark: #212529;
+    --bs-secondary: #f12421;
     --bs-primary-rgb: 241, 36, 33;
-    --bs-secondary-rgb: 236, 96, 144;
-    --bs-success-rgb: 25, 135, 84;
-    --bs-info-rgb: 13, 202, 240;
-    --bs-warning-rgb: 255, 193, 7;
-    --bs-danger-rgb: 220, 53, 69;
-    --bs-light-rgb: 248, 249, 250;
-    --bs-dark-rgb: 33, 37, 41;
-    --bs-white-rgb: 255, 255, 255;
-    --bs-black-rgb: 0, 0, 0;
-    --bs-body-color-rgb: 255, 255, 255;
-    --bs-body-bg-rgb: 39, 41, 42;
-    --bs-font-sans-serif: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
-    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-    --bs-body-font-family: 'Poppins', sans-serif;
-    --bs-body-font-size: 1rem;
-    --bs-body-font-weight: 400;
-    --bs-body-line-height: 1.5;
     --bs-body-color: #fff;
-    --bs-body-bg: #27292a;
-    --bs-border-width: 1px;
-    --bs-border-style: solid;
-    --bs-border-color: #444;
-    --bs-border-color-translucent: rgba(255, 255, 255, 0.1);
-    --bs-border-radius: 0.375rem;
-    --bs-border-radius-sm: 0.25rem;
-    --bs-border-radius-lg: 0.5rem;
-    --bs-border-radius-xl: 1rem;
-    --bs-border-radius-2xl: 2rem;
-    --bs-border-radius-pill: 50rem;
+    --bs-body-bg: #1a1c1d;
+    --bs-body-color-rgb: 255, 255, 255;
+    --bs-body-bg-rgb: 26, 28, 29;
     --bs-link-color: #f12421;
     --bs-link-hover-color: #ff5a58;
-    --bs-code-color: #f12421;
-    --bs-highlight-bg: #fff3cd;
-  }
+    --bs-border-color: #333;
+    --bs-border-color-translucent: rgba(255, 255, 255, 0.08);
+    --bs-body-font-family: 'Poppins', sans-serif;
+}
 
-/* ===== SRFV Global Overrides ===== */
+/* ===== CRITICAL: Override template's body background ===== */
+html, body {
+    background-color: var(--srfv-bg-darkest) !important;
+    background-image: none !important;
+    color: var(--srfv-text);
+    overflow-x: hidden;
+}
 
-/* Dark theme forms */
+/* ===== CRITICAL: Fix template's img { width: 100% } ===== */
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+/* ===== Page Content Container ===== */
+body .page-content {
+    background-color: var(--srfv-bg-dark);
+    border-radius: 23px;
+    padding: 30px;
+    margin-top: 100px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* ===== Dark-theme Form Controls ===== */
 .form-control {
-    background-color: #1f2122;
-    border: 1px solid #444;
-    color: #fff;
+    background-color: var(--srfv-bg-darker);
+    border: 1px solid var(--srfv-border-light);
+    color: var(--srfv-text);
 }
 .form-control:focus {
-    background-color: #27292a;
-    border-color: #f12421;
-    color: #fff;
+    background-color: var(--srfv-bg-dark);
+    border-color: var(--srfv-primary);
+    color: var(--srfv-text);
     box-shadow: 0 0 0 0.2rem rgba(241, 36, 33, 0.25);
 }
 .form-control::placeholder {
-    color: #888;
+    color: var(--srfv-text-dim);
 }
 .form-label {
     color: #ccc;
 }
 
-/* Primary button override */
+/* ===== Primary Button ===== */
 .btn-primary {
-    background-color: #f12421 !important;
-    border-color: #f12421 !important;
+    background-color: var(--srfv-primary) !important;
+    border-color: var(--srfv-primary) !important;
     color: #fff !important;
     border-radius: 25px;
     padding: 10px 30px;
     font-weight: 500;
     transition: all .3s;
 }
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus {
     background-color: #fff !important;
-    border-color: #f12421 !important;
-    color: #f12421 !important;
+    border-color: var(--srfv-primary) !important;
+    color: var(--srfv-primary) !important;
 }
 
-/* Outline light button (login) */
+/* ===== Outline Light Button (login) ===== */
 .btn-outline-light {
-    border-color: #f12421 !important;
-    color: #f12421 !important;
+    border-color: var(--srfv-primary) !important;
+    color: var(--srfv-primary) !important;
     border-radius: 25px;
     padding: 10px 30px;
     font-weight: 500;
     transition: all .3s;
 }
 .btn-outline-light:hover {
-    background-color: #f12421 !important;
-    border-color: #f12421 !important;
+    background-color: var(--srfv-primary) !important;
+    border-color: var(--srfv-primary) !important;
     color: #fff !important;
 }
 
-/* Dark cards */
+/* ===== Dark Cards ===== */
 .card {
-    background-color: #1f2122 !important;
-    border: 1px solid #444 !important;
-    color: #fff !important;
+    background-color: var(--srfv-bg-darker) !important;
+    border: 1px solid var(--srfv-border-light) !important;
+    color: var(--srfv-text) !important;
 }
 .card-body {
-    color: #fff !important;
+    color: var(--srfv-text) !important;
 }
 .card .text-black,
 .card .text-dark {
-    color: #fff !important;
+    color: var(--srfv-text) !important;
 }
 
-/* Alert */
+/* ===== Alerts ===== */
 .alert-danger {
     background-color: rgba(241, 36, 33, 0.15);
-    border-color: #f12421;
+    border-color: var(--srfv-primary);
     color: #ff8a88;
 }
 
-/* Form check */
+/* ===== Checkboxes ===== */
 .form-check-input:checked {
-    background-color: #f12421;
-    border-color: #f12421;
+    background-color: var(--srfv-primary);
+    border-color: var(--srfv-primary);
 }
 .form-check-label {
     color: #ccc;
 }
 .form-check-label a {
-    color: #f12421 !important;
+    color: var(--srfv-primary) !important;
 }
 
-/* Gradient section (login) */
+/* ===== Gradient section ===== */
 .gradient-custom {
     background: transparent;
 }
 
-/* ===== Responsiveness ===== */
+/* ===== BANNER ===== */
+.main-banner {
+    background-size: cover;
+    background-position: center;
+    border-radius: 23px;
+    padding: 60px 50px;
+    min-height: 350px;
+    position: relative;
+    overflow: hidden;
+}
+.main-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+    border-radius: 23px;
+    z-index: 0;
+}
+.main-banner .row {
+    position: relative;
+    z-index: 1;
+}
+.main-banner h6 {
+    font-size: 18px;
+    color: #ddd;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+.main-banner h4 {
+    font-size: 36px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+.main-banner h4 em {
+    font-style: normal;
+    color: var(--srfv-primary);
+}
 
-/* Responsive iframes */
+/* ===== SECTION HEADINGS ===== */
+.heading-section h4 {
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+.heading-section h4 em {
+    font-style: normal;
+    color: var(--srfv-primary);
+}
+
+/* ===== MOST POPULAR (Arts/Movies grid) ===== */
+.most-popular {
+    margin-top: 40px;
+    padding: 30px;
+    background-color: var(--srfv-bg-darker);
+    border-radius: 23px;
+}
+.most-popular .item {
+    background-color: var(--srfv-bg-dark);
+    padding: 15px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.most-popular .item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+.most-popular .item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+.most-popular .item h4 {
+    font-size: 14px;
+    margin-top: 12px;
+    margin-bottom: 0;
+    display: inline-block;
+    line-height: 1.4;
+}
+.most-popular .item span {
+    color: #888;
+    display: block;
+    margin-top: 4px;
+    font-weight: 400;
+    font-size: 13px;
+}
+.most-popular .item ul {
+    float: right;
+    margin-top: 12px;
+}
+.most-popular .item ul li {
+    text-align: right;
+    color: #fff;
+    font-size: 13px;
+}
+.most-popular .item ul li:first-child i {
+    color: #ffc107;
+}
+.most-popular .item ul li:last-child i {
+    color: var(--srfv-primary);
+}
+.most-popular .item ul li a {
+    color: var(--srfv-primary);
+    font-size: 16px;
+    transition: color .2s;
+}
+.most-popular .item ul li a:hover {
+    color: var(--srfv-primary-hover);
+}
+.most-popular .main-button {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: -53px;
+}
+
+/* ===== GAMING LIBRARY (table list) ===== */
+.gaming-library {
+    margin-top: 40px;
+    padding: 30px;
+    background-color: var(--srfv-bg-darker);
+    border-radius: 23px;
+}
+.gaming-library .item {
+    border-bottom: 1px solid var(--srfv-bg-dark);
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+.gaming-library .item ul {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.gaming-library .item ul li {
+    flex: 1;
+    font-size: 14px;
+}
+.gaming-library .item ul li:first-child {
+    flex: 0 0 80px;
+}
+.gaming-library .item ul li:last-child {
+    flex: 0 0 auto;
+    text-align: right;
+}
+.gaming-library .item ul li img.templatemo-item {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+.gaming-library .item ul li h4 {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+.gaming-library .item ul li span {
+    color: #888;
+    font-size: 13px;
+}
+.gaming-library .main-button {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: -53px;
+}
+
+/* ===== MAIN BUTTONS (primary CTA) ===== */
+.main-button a {
+    font-size: 14px;
+    color: #fff;
+    background-color: var(--srfv-primary);
+    padding: 12px 30px;
+    display: inline-block;
+    border-radius: 25px;
+    font-weight: 500;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    transition: all .3s;
+}
+.main-button a:hover {
+    background-color: #fff;
+    color: var(--srfv-primary);
+}
+
+/* ===== BORDER BUTTONS ===== */
+.main-border-button a {
+    font-size: 14px;
+    color: var(--srfv-primary);
+    background-color: transparent;
+    border: 1px solid var(--srfv-primary);
+    padding: 10px 25px;
+    display: inline-block;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all .3s;
+}
+.main-border-button a:hover {
+    background-color: var(--srfv-primary);
+    border-color: var(--srfv-primary);
+    color: #fff;
+}
+
+/* ===== START STREAM / "Como funciona" section ===== */
+.start-stream {
+    margin-top: 40px;
+}
+.start-stream .heading-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.start-stream .item {
+    padding: 30px 25px;
+    border: 1px solid var(--srfv-border);
+    border-radius: 16px;
+    background-color: var(--srfv-bg-darker);
+    text-align: center;
+    margin-bottom: 20px;
+    transition: transform 0.2s, border-color 0.2s;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.start-stream .item:hover {
+    transform: translateY(-3px);
+    border-color: var(--srfv-primary);
+}
+.start-stream .item .icon {
+    margin-bottom: 15px;
+}
+.start-stream .item .icon img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.start-stream .item h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.start-stream .item p {
+    color: var(--srfv-text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+.start-stream .main-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* ===== FEATURED GAMES (carousel section) ===== */
+.featured-games {
+    border-radius: 23px;
+    background-color: var(--srfv-bg-darker);
+    padding: 30px;
+    margin-bottom: 0;
+}
+.featured-games .item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+.featured-games .item h4 {
+    font-size: 14px;
+    margin-top: 15px;
+}
+.featured-games .item span {
+    color: #888;
+    font-size: 13px;
+}
+.featured-games .item ul li:first-child i {
+    color: #ffc107;
+}
+.featured-games .item ul li:last-child i {
+    color: var(--srfv-primary);
+}
+/* Hover effect */
+.featured-games .item .thumb .hover-effect h6 {
+    background-color: rgba(241, 36, 33, 0.9);
+    color: #fff;
+}
+
+/* ===== TOP DOWNLOADED sidebar ===== */
+.top-downloaded {
+    border-radius: 23px;
+    background-color: var(--srfv-bg-darker);
+    padding: 25px;
+    max-height: none;
+    min-height: auto;
+}
+.top-downloaded ul li {
+    border-bottom-color: var(--srfv-bg-dark);
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+.top-downloaded ul li img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.top-downloaded ul li .download i {
+    color: var(--srfv-primary);
+    background-color: var(--srfv-bg-dark);
+}
+.top-downloaded ul li span .fa-star {
+    color: #ffc107 !important;
+}
+.top-downloaded ul li span .fa-download {
+    color: var(--srfv-primary) !important;
+}
+
+/* ===== TOP STREAMERS sidebar ===== */
+.top-streamers {
+    border-radius: 23px;
+    background-color: var(--srfv-bg-darker);
+    padding: 25px;
+    max-height: none;
+    min-height: auto;
+}
+.top-streamers ul li {
+    border-bottom-color: var(--srfv-border);
+}
+.top-streamers ul li img {
+    width: 46px !important;
+    height: 46px !important;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.top-streamers ul li h6 {
+    color: var(--srfv-primary);
+}
+.top-streamers ul li h6 i {
+    background-color: var(--srfv-primary);
+}
+
+/* ===== LIVE STREAM (game grid on games page) ===== */
+.live-stream {
+    margin-top: 40px;
+    border-radius: 23px;
+    background-color: var(--srfv-bg-darker);
+    padding: 30px;
+}
+.live-stream .item {
+    margin-bottom: 25px;
+}
+.live-stream .item .thumb img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+.live-stream .down-content .avatar img {
+    width: 40px !important;
+    height: 40px !important;
+    object-fit: cover;
+    border-radius: 50%;
+    float: left;
+}
+.live-stream span i {
+    background-color: var(--srfv-primary);
+}
+.live-stream span {
+    color: var(--srfv-primary);
+}
+.live-stream .hover-effect .live a {
+    background-color: rgba(241, 36, 33, 0.9);
+}
+.live-stream .hover-effect ul li a {
+    background-color: rgba(241, 36, 33, 0.85);
+}
+
+/* ===== PROFILE / ART PAGE ===== */
+.main-profile {
+    border-radius: 23px;
+    padding: 30px;
+    background-color: var(--srfv-bg-darker);
+}
+.main-profile img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+.main-profile .main-info span {
+    background-color: var(--srfv-primary);
+}
+.main-profile ul li span {
+    color: var(--srfv-primary) !important;
+}
+
+/* Clips / Art section */
+.clips .item {
+    background-color: var(--srfv-bg-dark);
+}
+.clips .item .thumb img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.clips .item .thumb a {
+    color: var(--srfv-primary);
+}
+.clips .item span i {
+    color: var(--srfv-primary);
+}
+
+/* ===== OTHER GAMES (art list) ===== */
+.other-games {
+    margin-top: 40px;
+    border-radius: 23px;
+    padding: 30px;
+    background-color: var(--srfv-bg-darker);
+}
+.other-games .item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--srfv-bg-dark);
+}
+.other-games .item img.templatemo-item {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 14px;
+    flex-shrink: 0;
+}
+.other-games ul li:first-child i {
+    color: #ffc107;
+}
+.other-games ul li:last-child i {
+    color: var(--srfv-primary);
+}
+
+/* ===== RESPONSIVE IFRAMES (embed pages) ===== */
 .embed-responsive-container {
     position: relative;
     width: 100%;
@@ -171,52 +598,81 @@
     height: auto;
     aspect-ratio: 4/3;
     border-radius: 12px;
-    border: 2px solid #444;
+    border: 2px solid var(--srfv-border-light);
 }
 
-/* ===== Footer always at bottom ===== */
+/* ===== FOOTER ===== */
 footer {
     margin-top: auto !important;
     width: 100%;
     flex-shrink: 0;
+    background-color: var(--srfv-bg-darkest);
 }
 footer p {
-    background-color: #1f2122 !important;
-    border-top: 1px solid #333;
-    margin-top: 0 !important;
-    padding: 25px 15px !important;
-    color: #aaa !important;
-    font-size: 14px;
+    background-color: var(--srfv-bg-darkest) !important;
+    border-top: 1px solid var(--srfv-border);
+    margin: 0 !important;
+    padding: 20px 15px !important;
+    color: var(--srfv-text-muted) !important;
+    font-size: 13px;
+    text-align: center;
 }
 footer p a {
-    color: #f12421 !important;
+    color: var(--srfv-primary) !important;
 }
 footer p a:hover {
-    color: #ff5a58 !important;
+    color: var(--srfv-primary-hover) !important;
 }
 
-/* ===== Mobile dark nav fix ===== */
+/* ===== NAVBAR FIXES ===== */
+.header-area {
+    background-color: var(--srfv-bg-darkest) !important;
+    border-bottom: 1px solid var(--srfv-border);
+}
+.header-area .main-nav .nav li a.active {
+    color: var(--srfv-primary) !important;
+}
+/* Logo sizing */
+.header-area .main-nav .logo img {
+    width: 70px;
+    height: auto;
+}
+/* Logout button in nav */
+.header-area .main-nav .nav li form button {
+    background: none;
+    border: none;
+    color: var(--srfv-primary);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 13px 10px;
+    font-family: inherit;
+    font-weight: 500;
+    transition: color .2s;
+}
+.header-area .main-nav .nav li form button:hover {
+    color: var(--srfv-primary-hover);
+}
+
+/* ===== MOBILE NAV (dark) ===== */
 @media (max-width: 992px) {
-    /* Dark mobile menu instead of white */
     .header-area .main-nav .nav li {
-        background: #1f2122 !important;
-        border-bottom: 1px solid #333 !important;
+        background: var(--srfv-bg-darker) !important;
+        border-bottom: 1px solid var(--srfv-border) !important;
     }
     .header-area .main-nav .nav li:first-child {
-        border-top: 1px solid #333 !important;
+        border-top: 1px solid var(--srfv-border) !important;
     }
     .header-area .main-nav .nav li a {
-        background: #1f2122 !important;
+        background: var(--srfv-bg-darker) !important;
         color: #fff !important;
     }
     .header-area .main-nav .nav li a:hover,
     .header-area .main-nav .nav li a.active {
-        color: #f12421 !important;
+        color: var(--srfv-primary) !important;
     }
     .header-area {
-        background-color: #27292a !important;
+        background-color: var(--srfv-bg-dark) !important;
     }
-    /* Logout button in mobile nav */
     .header-area .main-nav .nav li form button {
         width: 100%;
         text-align: center;
@@ -224,18 +680,32 @@ footer p a:hover {
         line-height: 50px !important;
         padding: 0 !important;
         font-size: 14px;
-        color: #f12421 !important;
+        color: var(--srfv-primary) !important;
+    }
+    .featured-games {
+        margin-bottom: 30px;
+    }
+    .top-streamers ul li .main-button {
+        float: none;
+        margin-top: 10px;
+    }
+    .top-streamers ul li .main-button a {
+        width: 100%;
+        text-align: center;
     }
 }
 
-/* Mobile fixes */
+/* ===== MOBILE (< 768px) ===== */
 @media (max-width: 768px) {
     body .page-content {
         margin-top: 90px;
         padding: 15px;
+        border-radius: 16px;
     }
+
+    /* Banner */
     .main-banner {
-        padding: 40px 20px;
+        padding: 35px 25px;
         min-height: 250px;
         text-align: center;
     }
@@ -243,101 +713,123 @@ footer p a:hover {
         font-size: 22px;
     }
     .main-banner h6 {
-        font-size: 16px;
+        font-size: 15px;
     }
+    .main-banner::before {
+        background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+    }
+
+    /* Sections */
     .most-popular,
     .gaming-library,
-    .featured-games,
     .live-stream,
     .start-stream,
     .other-games {
         padding: 15px;
+        border-radius: 16px;
     }
+    .most-popular {
+        margin-top: 25px;
+    }
+    .most-popular .item img {
+        height: 160px;
+    }
+
+    /* Headings */
     .heading-section h4 {
-        font-size: 20px;
+        font-size: 18px;
     }
-    .start-stream .item {
-        margin-bottom: 15px;
+
+    /* Gaming library table mobile */
+    .gaming-library .item ul {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 5px;
     }
-    .embed-responsive-container iframe {
-        aspect-ratio: 16/9;
-    }
-    /* Fix gaming library table on mobile */
     .gaming-library .item ul li {
-        display: block !important;
         width: 100% !important;
         text-align: center !important;
-        margin-bottom: 8px;
     }
-    .gaming-library .item ul li img {
-        margin: 0 auto 10px;
-        display: block;
+    .gaming-library .item ul li:first-child {
+        flex: none;
     }
     .gaming-library .item ul li:last-child {
         text-align: center !important;
     }
-    /* Cards stack properly */
+    .gaming-library .item ul li img.templatemo-item {
+        margin: 0 auto;
+        display: block;
+    }
+
+    /* Cards */
+    .card {
+        margin: 0 5px;
+    }
     .card-body {
         padding: 20px !important;
     }
-    /* Carousel items on mobile */
-    .owl-features .item .thumb img {
-        width: 100%;
-        height: auto;
+
+    /* Start stream */
+    .start-stream .item {
+        min-height: auto;
+        margin-bottom: 15px;
     }
-    /* Top downloaded / streamers on mobile */
+
+    /* Featured games carousel */
+    .featured-games .item img {
+        height: 170px;
+    }
+
+    /* Live stream grid */
+    .live-stream .item .thumb img {
+        height: 170px;
+    }
+
+    /* Clip grid */
+    .clips .item .thumb img {
+        height: 150px;
+    }
+
+    /* Embed */
+    .embed-responsive-container iframe {
+        aspect-ratio: 16/9;
+    }
+
+    /* Profile img */
+    .main-profile img {
+        max-height: 200px;
+        margin-bottom: 15px;
+    }
+
+    /* Top downloaded / streamers */
     .top-downloaded,
     .top-streamers {
         margin-top: 30px;
-    }
-    /* Most popular items */
-    .most-popular .item {
-        margin-bottom: 20px;
-    }
-    .most-popular .item img {
-        width: 100%;
-        height: auto;
-    }
-    /* Live stream grid on mobile */
-    .live-stream .item {
-        margin-bottom: 20px;
-    }
-    .live-stream .item .thumb img {
-        width: 100%;
-        height: auto;
-    }
-    /* Art grid on mobile */
-    .other-games .item {
-        margin-bottom: 20px;
-    }
-    .other-games .item img {
-        width: 100%;
-        height: auto;
+        max-height: none;
+        min-height: auto;
     }
 }
 
+/* ===== SMALL MOBILE ( < 576px) ===== */
 @media (max-width: 576px) {
     .main-banner h4 {
         font-size: 18px;
     }
     .main-banner h6 {
-        font-size: 14px;
+        font-size: 13px;
     }
     .heading-section h4 {
-        font-size: 18px;
+        font-size: 16px;
     }
     .most-popular .item {
-        padding: 15px 10px;
+        padding: 12px;
     }
-    /* Form card on small screens */
-    .card {
-        margin: 0 10px;
-    }
-    .card-body {
-        padding: 15px !important;
+    .most-popular .item img {
+        height: 140px;
     }
     .card-body h2 {
-        font-size: 22px;
+        font-size: 20px;
     }
     .form-control-lg {
         font-size: 14px;
@@ -349,35 +841,52 @@ footer p a:hover {
     }
 }
 
-/* Tablet fixes */
+/* ===== TABLET (769px - 1024px) ===== */
 @media (min-width: 769px) and (max-width: 1024px) {
     body .page-content {
         padding: 25px;
     }
-    .gaming-library .item ul li {
-        width: 20% !important;
-        font-size: 13px;
+    .most-popular .item img {
+        height: 170px;
+    }
+    .featured-games .item img {
+        height: 180px;
+    }
+    .live-stream .item .thumb img {
+        height: 180px;
     }
 }
 
-/* ===== PC widescreen fixes ===== */
+/* ===== DESKTOP (>= 1200px) ===== */
 @media (min-width: 1200px) {
     .container {
         max-width: 1200px;
     }
     .page-content {
-        padding: 30px;
+        padding: 35px;
     }
-    /* Ensure images don't overflow on large screens */
-    .most-popular .item img,
-    .live-stream .item .thumb img,
-    .other-games .item img {
-        max-width: 100%;
-        height: auto;
-        object-fit: cover;
-    }
-    .featured-games .owl-features .item .thumb img {
-        max-width: 100%;
-        height: auto;
-    }
+}
+
+/* ===== UTILITY: templatemo-item (small thumbnail) ===== */
+.templatemo-item {
+    max-width: 80px;
+    width: 80px !important;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+/* ===== Scrollbar (aesthetic) ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--srfv-bg-darkest);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--srfv-border-light);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

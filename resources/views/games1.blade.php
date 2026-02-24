@@ -58,8 +58,8 @@
                     <img src="{{ asset('assets/arts/a.png') }}" alt="" class="templatemo-item">
                     <h4>Bumblebee</h4>
                     <h6>By Fallen</h6>
-                    <span><i class="fa fa-star" style="color: yellow;"></i> 4.1</span>
-                    <span><i class="fa fa-download" style="color: #ec6090;"></i> 242</span>
+                    <span><i class="fa fa-star"></i> 4.1</span>
+                    <span><i class="fa fa-download"></i> 242</span>
                     <div class="download">
                       <a href="{{ asset('assets/arts/a.png') }}" download><i class="fa fa-download"></i></a>
                     </div>
@@ -70,8 +70,8 @@
                     <img src="{{ asset('assets/arts/b.webp') }}" alt="" class="templatemo-item">
                     <h4>Bomberman</h4>
                     <h6>By Victor</h6>
-                    <span><i class="fa fa-star" style="color: yellow;"></i> 4.4</span>
-                    <span><i class="fa fa-download" style="color: #ec6090;"></i> 1.132</span>
+                    <span><i class="fa fa-star"></i> 4.4</span>
+                    <span><i class="fa fa-download"></i> 1.132</span>
                     <div class="download">
                       <a href="{{ asset('assets/arts/b.webp') }}" download><i class="fa fa-download"></i></a>
                     </div>
@@ -82,8 +82,8 @@
                     <img src="{{ asset('assets/arts/c.webp') }}" alt="" class="templatemo-item">
                     <h4>Polygoth</h4>
                     <h6>By Legendary</h6>
-                    <span><i class="fa fa-star" style="color: yellow;"></i> 4.9</span>
-                    <span><i class="fa fa-download" style="color: #ec6090;"></i> 738</span>
+                    <span><i class="fa fa-star"></i> 4.9</span>
+                    <span><i class="fa fa-download"></i> 738</span>
                     <div class="download">
                       <a href="{{ asset('assets/arts/c.webp') }}" download><i class="fa fa-download"></i></a>
                     </div>
@@ -120,7 +120,7 @@
                   </div>
                   <div class="down-content">
                     <div class="avatar">
-                      <img src="{{ asset('assets/images/cr.webp') }}" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      <img src="{{ asset('assets/images/cr.webp') }}" alt="">
                     </div>
                     <span><i class="fa fa-check"></i> Naughty Dog</span>
                     <h4>Crash Team Racing</h4>
@@ -145,7 +145,7 @@
                   </div>
                   <div class="down-content">
                     <div class="avatar">
-                      <img src="{{ asset('assets/images/ms.jpg') }}" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      <img src="{{ asset('assets/images/ms.jpg') }}" alt="">
                     </div>
                     <span><i class="fa fa-check"></i> Konami</span>
                     <h4>Metal Slug 1</h4>
@@ -170,7 +170,7 @@
                   </div>
                   <div class="down-content">
                     <div class="avatar">
-                      <img src="{{ asset('assets/images/te.webp') }}" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      <img src="{{ asset('assets/images/te.webp') }}" alt="">
                     </div>
                     <span><i class="fa fa-check"></i> Nanco</span>
                     <h4>Tekken 3</h4>
@@ -195,7 +195,7 @@
                   </div>
                   <div class="down-content">
                     <div class="avatar">
-                      <img src="{{ asset('assets/images/boob.png') }}" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      <img src="{{ asset('assets/images/boob.png') }}" alt="">
                     </div>
                     <span><i class="fa fa-check"></i> Accolade</span>
                     <h4>Bubsy 3D</h4>
@@ -222,7 +222,7 @@
                   </div>
                   <div class="down-content">
                     <div class="avatar">
-                      <img src="{{ asset('assets/images/re33.png') }}" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      <img src="{{ asset('assets/images/re33.png') }}" alt="">
                     </div>
                     <span><i class="fa fa-check"></i> Capcom</span>
                     <h4>Resident Evil 3</h4>
@@ -247,7 +247,7 @@
                   </div>
                   <div class="down-content">
                     <div class="avatar">
-                      <img src="{{ asset('assets/images/tom.png') }}" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      <img src="{{ asset('assets/images/tom.png') }}" alt="">
                     </div>
                     <span><i class="fa fa-check"></i> EIDOS</span>
                     <h4>Tomb Raider II</h4>
@@ -272,7 +272,7 @@
                   </div>
                   <div class="down-content">
                     <div class="avatar">
-                      <img src="{{ asset('assets/images/stree.webp') }}" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      <img src="{{ asset('assets/images/stree.webp') }}" alt="">
                     </div>
                     <span><i class="fa fa-check"></i> Capcom</span>
                     <h4>Street Fighter 2</h4>
@@ -297,7 +297,7 @@
                   </div>
                   <div class="down-content">
                     <div class="avatar">
-                      <img src="{{ asset('assets/images/fif.png') }}" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      <img src="{{ asset('assets/images/fif.png') }}" alt="">
                     </div>
                     <span><i class="fa fa-check"></i> EA SPORTS</span>
                     <h4>FIFA 2000</h4>
@@ -324,7 +324,7 @@
                   </div>
                   <div class="down-content">
                     <div class="avatar">
-                      <img src="{{ asset('assets/images/ff7.webp') }}" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      <img src="{{ asset('assets/images/ff7.webp') }}" alt="">
                     </div>
                     <span><i class="fa fa-check"></i> Square</span>
                     <h4>Final Fantasy 7</h4>
@@ -349,7 +349,7 @@
                   </div>
                   <div class="down-content">
                     <div class="avatar">
-                      <img src="{{ asset('assets/images/gran.jfif') }}" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      <img src="{{ asset('assets/images/gran.jfif') }}" alt="">
                     </div>
                     <span><i class="fa fa-check"></i> Sony</span>
                     <h4>Gran Turismo</h4>
@@ -374,7 +374,7 @@
                   </div>
                   <div class="down-content">
                     <div class="avatar">
-                      <img src="{{ asset('assets/images/cs3.webp') }}" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      <img src="{{ asset('assets/images/cs3.webp') }}" alt="">
                     </div>
                     <span><i class="fa fa-check"></i> Naugthy Dog</span>
                     <h4>Crash Bandicoot 3</h4>
@@ -399,7 +399,7 @@
                   </div>
                   <div class="down-content">
                     <div class="avatar">
-                      <img src="{{ asset('assets/images/tn3.jpg') }}" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      <img src="{{ asset('assets/images/tn3.jpg') }}" alt="">
                     </div>
                     <span><i class="fa fa-check"></i> Activision</span>
                     <h4>Tony Hawk 2</h4>

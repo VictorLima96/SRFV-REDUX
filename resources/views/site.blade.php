@@ -4,10 +4,10 @@
           <!-- ***** Banner Start ***** -->
           <div class="main-banner">
             <div class="row">
-              <div class="col-lg-7">
+              <div class="col-lg-8 col-md-10">
                 <div class="header-text">
                   <h6>Bem-Vindo ao SRFV Games</h6>
-                  <h4><em>Jogo em Destaque</em> Resident Evil 3 - Nemesis </h4>
+                  <h4><em>Jogo em Destaque</em> Resident Evil 3 - Nemesis</h4>
                   <div class="main-button">
                     <a href="/abaResident" target="_blank">Jogue Agora</a>
                   </div>
@@ -128,13 +128,12 @@
 
           <!-- ***** Gaming Library Start ***** -->
           <div class="gaming-library">
-            <div class="col-lg-12">
               <div class="heading-section">
                 <h4><em>Games em</em> Destaque</h4>
               </div>
               <div class="item">
                 <ul>
-                  <li><img src="assets/images/ms.jpg" alt="" class="templatemo-item"></li>
+                  <li><img src="{{ asset('assets/images/ms.jpg') }}" alt="Metal Slug" class="templatemo-item"></li>
                   <li><h4>Metal Slug</h4><span>Shooter 2D</span></li>
                   <li><h4>Lançamento</h4><span>24/08/2007</span></li>
                   <li><h4>Criado por</h4><span>Victor Lima</span></li>
@@ -144,17 +143,17 @@
               </div>
               <div class="item">
                 <ul>
-                  <li><img src="assets/images/cr.webp" alt="" class="templatemo-item"></li>
+                  <li><img src="{{ asset('assets/images/cr.webp') }}" alt="Crash Racing" class="templatemo-item"></li>
                   <li><h4>Crash Racing</h4><span>Corrida</span></li>
                   <li><h4>Lançamento</h4><span>12/01/2001</span></li>
                   <li><h4>Criado por</h4><span>FbKnor</span></li>
-                  <li><h4>Empresa</h4><span>Naugthy Dog</span></li>
+                  <li><h4>Empresa</h4><span>Naughty Dog</span></li>
                   <li><div class="main-border-button"><a href="/abaCrash" target="_blank">Jogue</a></div></li>
                 </ul>
               </div>
               <div class="item last-item">
                 <ul>
-                  <li><img src="assets/images/te.webp" alt="" class="templatemo-item"></li>
+                  <li><img src="{{ asset('assets/images/te.webp') }}" alt="Tekken 3" class="templatemo-item"></li>
                   <li><h4>Tekken 3</h4><span>Luta</span></li>
                   <li><h4>Lançamento</h4><span>14/11/1998</span></li>
                   <li><h4>Criado por</h4><span>Nagazaki Hiroshi</span></li>
@@ -162,19 +161,16 @@
                   <li><div class="main-border-button"><a href="/abaTekken" target="_blank">Jogue</a></div></li>
                 </ul>
               </div>
-            </div>
-            <div class="col-lg-12">
               <div class="main-button">
                 <a href="/games1">Veja mais Games</a>
               </div>
-            </div>
           </div>
           <!-- ***** Gaming Library End ***** -->
           <div class="most-popular">
             <div class="row">
               <div class="col-lg-12">
                 <div class="heading-section">
-                  <h4><em>Filmes em Destaque</em> Destaque</h4>
+                  <h4><em>Filmes em</em> Destaque</h4>
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-sm-6">
@@ -269,45 +265,43 @@
   
                  <!-- ***** Start Stream Start ***** -->
                  <div class="start-stream">
-                  <div class="col-lg-12">
                     <div class="heading-section">
                       <h4><em>Como funciona</em> o Site</h4>
                     </div>
                     <div class="row">
-                      <div class="col-lg-4">
+                      <div class="col-lg-4 col-md-6 mb-3">
                         <div class="item">
                           <div class="icon">
-                            <img src="assets/images/service-01.jpg" alt="" style="max-width: 60px; border-radius: 50%;">
+                            <img src="{{ asset('assets/images/service-01.jpg') }}" alt="Jogos">
                           </div>
                           <h4>Jogue Gratuitamente</h4>
-                          <p>A SRFV Games é o melhor site para você poder se divertir, e jogar.</p>
+                          <p>A SRFV Games é o melhor site para você poder se divertir e jogar.</p>
                         </div>
                       </div>
-                      <div class="col-lg-4">
+                      <div class="col-lg-4 col-md-6 mb-3">
                         <div class="item">
                           <div class="icon">
-                            <img src="assets/images/service-02.jpg" alt="" style="max-width: 60px; border-radius: 50%;">
+                            <img src="{{ asset('assets/images/service-02.jpg') }}" alt="Filmes">
                           </div>
                           <h4>Filmes Online</h4>
-                          <p>A SRFV Games além dos jogos, você poderá assistir aos melhores filmes.</p>
+                          <p>Além dos jogos, você poderá assistir aos melhores filmes.</p>
                         </div>
                       </div>
-                      <div class="col-lg-4">
+                      <div class="col-lg-4 col-md-12 mb-3">
                         <div class="item">
                           <div class="icon">
-                            <img src="assets/images/service-03.jpg" alt="" style="max-width: 60px; border-radius: 50%;">
+                            <img src="{{ asset('assets/images/service-03.jpg') }}" alt="Artes">
                           </div>
                           <h4>Artes da Comunidade</h4>
-                          <p>Confira as artes da nossa incrivel comunidade do Discord.</p>
+                          <p>Confira as artes da nossa incrível comunidade do Discord.</p>
                         </div>
                       </div>
                       <div class="col-lg-12">
                         <div class="main-button">
-                          <a href="{{route('login')}}">Cadastro/Login</a>
+                          <a href="{{ route('login') }}">Cadastro/Login</a>
                         </div>
                       </div>
                     </div>
-                  </div>
                 </div>
 
 

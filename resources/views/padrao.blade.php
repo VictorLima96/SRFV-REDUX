@@ -47,14 +47,14 @@
                         <li><a href="/art1">Art</a></li>
                         @guest
                             <li><a href="/signup">Cadastrar</a></li>
-                            <li><a href="{{route('login')}}">Login <img src="{{ asset('assets/images/profile-header.jpg') }}" alt=""></a></li>
+                            <li><a href="{{ route('login') }}">Login</a></li>
                         @endguest
                         @auth
                             <li><a href="/alterarsenha">{{ Auth::user()->name }}</a></li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                                     @csrf
-                                    <button type="submit" style="background:none;border:none;color:#f12421;cursor:pointer;font-size:14px;padding:13px 10px;font-family:inherit;">Sair</button>
+                                    <button type="submit">Sair</button>
                                 </form>
                             </li>
                         @endauth
@@ -85,8 +85,8 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <p>Copyright &copy; 2025 <a href="#">SRFV Games</a> Company. All rights reserved.
-          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">SRFV Company</a>  Distributed By <a href="https://themewagon.com" target="_blank">Fb</a></p>
+          <p>Copyright &copy; 2026 <a href="#">SRFV Games</a> Company. All rights reserved.
+          <br>Design: <a href="#">SRFV Company</a></p>
         </div>
       </div>
     </div>

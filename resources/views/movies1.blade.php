@@ -68,7 +68,7 @@
                 <ul>
                   <li>
                     <span>01</span>
-                    <img src="{{ asset('assets/images/vic.png') }}" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
+                    <img src="{{ asset('assets/images/vic.png') }}" alt="">
                     <h6><i class="fa fa-check"></i> Victor</h6>
                     <div class="main-button">
                       <a href="https://br.linkedin.com/in/victor-lima-da-silva-1a374b236" target="_blank">Seguir</a>
@@ -76,7 +76,7 @@
                   </li>
                   <li>
                     <span>02</span>
-                    <img src="{{ asset('assets/images/ra.png') }}" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
+                    <img src="{{ asset('assets/images/ra.png') }}" alt="">
                     <h6><i class="fa fa-check"></i> Raphael</h6>
                     <div class="main-button">
                       <a href="https://www.youtube.com/@manoloeditsbr" target="_blank">Seguir</a>
@@ -84,7 +84,7 @@
                   </li>
                   <li>
                     <span>03</span>
-                    <img src="{{ asset('assets/images/avatar-03.jpg') }}" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
+                    <img src="{{ asset('assets/images/avatar-03.jpg') }}" alt="">
                     <h6><i class="fa fa-check"></i> Felipe</h6>
                     <div class="main-button">
                       <a href="https://www.youtube.com/@knoxmindovermatter" target="_blank">Seguir</a>
@@ -92,7 +92,7 @@
                   </li>
                   <li>
                     <span>04</span>
-                    <img src="{{ asset('assets/images/sa.jfif') }}" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
+                    <img src="{{ asset('assets/images/sa.jfif') }}" alt="">
                     <h6><i class="fa fa-check"></i> Samuel</h6>
                     <div class="main-button">
                       <a href="https://www.youtube.com/@anjoaguiel6933" target="_blank">Seguir</a>
@@ -100,7 +100,7 @@
                   </li>
                   <li>
                     <span>05</span>
-                    <img src="{{ asset('assets/images/silvio.jfif') }}" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
+                    <img src="{{ asset('assets/images/silvio.jfif') }}" alt="">
                     <h6><i class="fa fa-check"></i> Silvio</h6>
                     <div class="main-button">
                       <a href="https://br.linkedin.com/in/silvio-florentino-90a8861b9" target="_blank">Seguir</a>
