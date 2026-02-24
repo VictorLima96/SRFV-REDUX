@@ -50,7 +50,7 @@
         "DB_PORT": "5432",
         "DB_DATABASE": "postgres",
         "DB_USERNAME": "postgres",
-        "DB_PASSWORD": "@supabase_db_password",
+        "DB_PASSWORD": "REDACTED_DB_PASS",
         "DB_SSLMODE": "require",
         "CACHE_DRIVER": "array",
         "SESSION_DRIVER": "cookie",

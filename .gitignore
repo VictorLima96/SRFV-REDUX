@@ -20,3 +20,4 @@ yarn-error.log
 
 # Large media files
 public/assets/som/*.mp3
+.vercel
