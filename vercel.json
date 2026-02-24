@@ -55,6 +55,7 @@
         "CACHE_DRIVER": "array",
         "SESSION_DRIVER": "cookie",
         "SESSION_LIFETIME": "120",
+        "SESSION_SECURE_COOKIE": "true",
         "QUEUE_CONNECTION": "sync",
         "VIEW_COMPILED_PATH": "/tmp/views"
     }
