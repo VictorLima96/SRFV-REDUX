@@ -1,14 +1,16 @@
 {
     "version": 2,
     "framework": null,
-    "buildCommand": "npm run build",
-    "outputDirectory": "public",
     "functions": {
         "api/index.php": {
             "runtime": "vercel-php@0.7.2"
         }
     },
     "routes": [
+        {
+            "src": "/build/(.*)",
+            "dest": "/public/build/$1"
+        },
         {
             "src": "/assets/(.*)",
             "dest": "/public/assets/$1"
@@ -33,8 +35,14 @@
     "env": {
         "APP_NAME": "SRFV Games",
         "APP_ENV": "production",
-        "APP_DEBUG": "false",
-        "APP_URL": "https://your-domain.vercel.app",
+        "APP_DEBUG": "true",
+        "APP_KEY": "base64:pV1BwAiQl+WQ6SXIAUNV5x+9XDuNMpl7dcCeiHbkMJg=",
+        "APP_URL": "https://srfv-redux.vercel.app",
+        "APP_CONFIG_CACHE": "/tmp/config.php",
+        "APP_EVENTS_CACHE": "/tmp/events.php",
+        "APP_PACKAGES_CACHE": "/tmp/packages.php",
+        "APP_ROUTES_CACHE": "/tmp/routes.php",
+        "APP_SERVICES_CACHE": "/tmp/services.php",
         "LOG_CHANNEL": "stderr",
         "DB_CONNECTION": "sqlite",
         "CACHE_DRIVER": "array",
