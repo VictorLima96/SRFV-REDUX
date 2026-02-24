@@ -39,19 +39,21 @@ html, body {
     overflow-x: hidden;
 }
 
-/* ===== CRITICAL: Fix template's img { width: 100% } ===== */
+/* ===== GLOBAL IMAGE FIX =====
+   Template sets img { width: 100% } globally which stretches EVERYTHING.
+   We keep width:100% for content images (they fill their containers)
+   but constrain with max-width and fix specific problem areas. */
 img {
     max-width: 100%;
     height: auto;
-    width: auto;
 }
 
 /* ===== Page Content Container ===== */
 body .page-content {
     background-color: var(--srfv-bg-dark);
     border-radius: 23px;
-    padding: 30px;
-    margin-top: 100px;
+    padding: 40px;
+    margin-top: 110px;
     max-width: 100%;
     overflow: hidden;
 }
@@ -145,13 +147,18 @@ body .page-content {
     background: transparent;
 }
 
+
+/* ===========================================================
+   LAYOUT SECTIONS - Desktop-first (template is desktop-first)
+   =========================================================== */
+
 /* ===== BANNER ===== */
 .main-banner {
     background-size: cover;
     background-position: center;
     border-radius: 23px;
-    padding: 60px 50px;
-    min-height: 350px;
+    padding: 80px 60px;
+    min-height: 380px;
     position: relative;
     overflow: hidden;
 }
@@ -168,15 +175,15 @@ body .page-content {
     z-index: 1;
 }
 .main-banner h6 {
-    font-size: 18px;
+    font-size: 20px;
     color: #ddd;
     font-weight: 400;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 .main-banner h4 {
-    font-size: 36px;
+    font-size: 45px;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     line-height: 1.2;
 }
 .main-banner h4 em {
@@ -271,17 +278,24 @@ body .page-content {
 }
 .gaming-library .item {
     border-bottom: 1px solid var(--srfv-bg-dark);
-    margin-bottom: 15px;
-    padding-bottom: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
 }
+/* Desktop: horizontal flex row with proper alignment */
 .gaming-library .item ul {
-    display: flex;
+    display: flex !important;
     align-items: center;
     gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 .gaming-library .item ul li {
+    display: block !important;
+    width: auto !important;
     flex: 1;
     font-size: 14px;
+    margin-top: 0 !important;
 }
 .gaming-library .item ul li:first-child {
     flex: 0 0 80px;
@@ -291,10 +305,11 @@ body .page-content {
     text-align: right;
 }
 .gaming-library .item ul li img.templatemo-item {
-    width: 70px;
+    width: 70px !important;
     height: 70px;
     object-fit: cover;
     border-radius: 14px;
+    margin-top: 0 !important;
 }
 .gaming-library .item ul li h4 {
     font-size: 14px;
@@ -376,7 +391,7 @@ body .page-content {
     margin-bottom: 15px;
 }
 .start-stream .item .icon img {
-    width: 55px;
+    width: 55px !important;
     height: 55px;
     border-radius: 50%;
     object-fit: cover;
@@ -426,8 +441,14 @@ body .page-content {
 }
 /* Hover effect */
 .featured-games .item .thumb .hover-effect h6 {
-    background-color: rgba(241, 36, 33, 0.9);
-    color: #fff;
+    background-color: rgba(241, 36, 33, 0.9) !important;
+    color: #fff !important;
+}
+
+/* ===== OWL CAROUSEL nav arrows ===== */
+.featured-games .owl-nav .owl-prev span:hover,
+.featured-games .owl-nav .owl-next span:hover {
+    color: var(--srfv-primary) !important;
 }
 
 /* ===== TOP DOWNLOADED sidebar ===== */
@@ -444,19 +465,22 @@ body .page-content {
     padding-bottom: 20px;
 }
 .top-downloaded ul li img {
-    width: 60px;
+    width: 60px !important;
     height: 60px;
     object-fit: cover;
     border-radius: 12px;
 }
 .top-downloaded ul li .download i {
-    color: var(--srfv-primary);
+    color: var(--srfv-primary) !important;
     background-color: var(--srfv-bg-dark);
 }
 .top-downloaded ul li span .fa-star {
     color: #ffc107 !important;
 }
 .top-downloaded ul li span .fa-download {
+    color: var(--srfv-primary) !important;
+}
+.top-downloaded .text-button a {
     color: var(--srfv-primary) !important;
 }
 
@@ -515,10 +539,10 @@ body .page-content {
     color: var(--srfv-primary);
 }
 .live-stream .hover-effect .live a {
-    background-color: rgba(241, 36, 33, 0.9);
+    background-color: rgba(241, 36, 33, 0.9) !important;
 }
 .live-stream .hover-effect ul li a {
-    background-color: rgba(241, 36, 33, 0.85);
+    background-color: rgba(241, 36, 33, 0.85) !important;
 }
 
 /* ===== PROFILE / ART PAGE ===== */
@@ -527,7 +551,7 @@ body .page-content {
     padding: 30px;
     background-color: var(--srfv-bg-darker);
 }
-.main-profile img {
+.main-profile > .row > .col-lg-4:first-child img {
     width: 100%;
     max-height: 250px;
     object-fit: cover;
@@ -543,6 +567,7 @@ body .page-content {
 /* Clips / Art section */
 .clips .item {
     background-color: var(--srfv-bg-dark);
+    border-radius: 23px;
 }
 .clips .item .thumb img {
     width: 100%;
@@ -551,10 +576,10 @@ body .page-content {
     border-radius: 12px;
 }
 .clips .item .thumb a {
-    color: var(--srfv-primary);
+    color: var(--srfv-primary) !important;
 }
 .clips .item span i {
-    color: var(--srfv-primary);
+    color: var(--srfv-primary) !important;
 }
 
 /* ===== OTHER GAMES (art list) ===== */
@@ -565,19 +590,22 @@ body .page-content {
     background-color: var(--srfv-bg-darker);
 }
 .other-games .item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+    position: relative;
     border-bottom: 1px solid var(--srfv-bg-dark);
+    padding-bottom: 25px;
+    margin-bottom: 25px;
 }
 .other-games .item img.templatemo-item {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    border-radius: 14px;
-    flex-shrink: 0;
+    float: left;
+    margin-right: 15px;
+}
+.other-games .item h4 {
+    padding-top: 15px;
+}
+.other-games ul {
+    position: absolute;
+    right: 0;
+    top: 15px;
 }
 .other-games ul li:first-child i {
     color: #ffc107;
@@ -634,7 +662,7 @@ footer p a:hover {
 }
 /* Logo sizing */
 .header-area .main-nav .logo img {
-    width: 70px;
+    width: 70px !important;
     height: auto;
 }
 /* Logout button in nav */
@@ -653,7 +681,85 @@ footer p a:hover {
     color: var(--srfv-primary-hover);
 }
 
-/* ===== MOBILE NAV (dark) ===== */
+/* ===== UTILITY: templatemo-item (small thumbnail) ===== */
+.templatemo-item {
+    max-width: 80px;
+    width: 80px !important;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+/* ===== Scrollbar (aesthetic) ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--srfv-bg-darkest);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--srfv-border-light);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+/* ===========================================================
+   RESPONSIVE BREAKPOINTS
+   =========================================================== */
+
+/* ===== DESKTOP (>= 1200px) ===== */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+    body .page-content {
+        padding: 40px;
+    }
+    .most-popular .item img {
+        height: 200px;
+    }
+}
+
+/* ===== MEDIUM DESKTOP / SMALL LAPTOP (992px - 1199px) ===== */
+@media (min-width: 992px) and (max-width: 1199px) {
+    body .page-content {
+        padding: 30px;
+    }
+    .main-banner {
+        padding: 60px 40px;
+    }
+    .main-banner h4 {
+        font-size: 36px;
+    }
+    .most-popular .item img {
+        height: 170px;
+    }
+    .featured-games .item img {
+        height: 180px;
+    }
+    .live-stream .item .thumb img {
+        height: 180px;
+    }
+    /* Gaming library: slightly smaller text on medium desktop */
+    .gaming-library .item ul li h4 {
+        font-size: 13px;
+    }
+    .gaming-library .item ul li span {
+        font-size: 12px;
+    }
+    .gaming-library .item ul li:first-child {
+        flex: 0 0 70px;
+    }
+    .gaming-library .item ul li img.templatemo-item {
+        width: 60px !important;
+        height: 60px;
+    }
+}
+
+/* ===== NAV MOBILE (<=992px) ===== */
 @media (max-width: 992px) {
     .header-area .main-nav .nav li {
         background: var(--srfv-bg-darker) !important;
@@ -682,8 +788,80 @@ footer p a:hover {
         font-size: 14px;
         color: var(--srfv-primary) !important;
     }
+}
+
+/* ===== TABLET (768px - 991px) ===== */
+@media (min-width: 768px) and (max-width: 991px) {
+    body .page-content {
+        margin-top: 95px;
+        padding: 25px;
+    }
+
+    /* Banner */
+    .main-banner {
+        padding: 50px 35px;
+        min-height: 300px;
+    }
+    .main-banner h4 {
+        font-size: 30px;
+    }
+    .main-banner h6 {
+        font-size: 17px;
+    }
+
+    /* Headings */
+    .heading-section h4 {
+        font-size: 20px;
+    }
+
+    /* Featured Games: carousel takes full width, sidebar below */
     .featured-games {
         margin-bottom: 30px;
+    }
+
+    /* Most Popular: 3 columns on tablet */
+    .most-popular .item img {
+        height: 170px;
+    }
+
+    /* Gaming library: wrap on tablet */
+    .gaming-library .item ul {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+    .gaming-library .item ul li {
+        flex: 0 0 auto !important;
+        width: auto !important;
+    }
+    .gaming-library .item ul li:first-child {
+        flex: 0 0 70px !important;
+    }
+    .gaming-library .item ul li:last-child {
+        flex: 0 0 100% !important;
+        text-align: center !important;
+        margin-top: 5px !important;
+    }
+    .gaming-library .item ul li img.templatemo-item {
+        width: 60px !important;
+        height: 60px;
+    }
+
+    /* Live stream: 2 cols */
+    .live-stream .item .thumb img {
+        height: 180px;
+    }
+
+    /* Start stream: 2 cols is fine (col-md-6) */
+    .start-stream .item {
+        min-height: 180px;
+    }
+
+    /* Top downloaded / streamers: below their sections */
+    .top-downloaded,
+    .top-streamers {
+        margin-top: 30px;
+        max-height: none !important;
+        min-height: auto !important;
     }
     .top-streamers ul li .main-button {
         float: none;
@@ -693,10 +871,29 @@ footer p a:hover {
         width: 100%;
         text-align: center;
     }
+
+    /* Profile / Art page */
+    .main-profile > .row > .col-lg-4:first-child img {
+        max-height: 200px;
+        margin-bottom: 20px;
+    }
+    .main-profile .main-info {
+        margin-bottom: 20px;
+    }
+
+    /* Clips */
+    .clips .item .thumb img {
+        height: 160px;
+    }
+
+    /* Embed */
+    .embed-responsive-container iframe {
+        aspect-ratio: 16/9;
+    }
 }
 
 /* ===== MOBILE (< 768px) ===== */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     body .page-content {
         margin-top: 90px;
         padding: 15px;
@@ -740,19 +937,20 @@ footer p a:hover {
         font-size: 18px;
     }
 
-    /* Gaming library table mobile */
+    /* Gaming library table mobile: stack vertically */
     .gaming-library .item ul {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column !important;
+        align-items: center !important;
         text-align: center;
-        gap: 5px;
+        gap: 5px !important;
     }
     .gaming-library .item ul li {
         width: 100% !important;
         text-align: center !important;
+        flex: none !important;
     }
     .gaming-library .item ul li:first-child {
-        flex: none;
+        flex: none !important;
     }
     .gaming-library .item ul li:last-child {
         text-align: center !important;
@@ -777,6 +975,9 @@ footer p a:hover {
     }
 
     /* Featured games carousel */
+    .featured-games {
+        margin-bottom: 30px;
+    }
     .featured-games .item img {
         height: 170px;
     }
@@ -797,22 +998,57 @@ footer p a:hover {
     }
 
     /* Profile img */
-    .main-profile img {
+    .main-profile > .row > .col-lg-4:first-child img {
         max-height: 200px;
         margin-bottom: 15px;
+    }
+    .main-profile .main-info {
+        margin-bottom: 20px;
     }
 
     /* Top downloaded / streamers */
     .top-downloaded,
     .top-streamers {
         margin-top: 30px;
-        max-height: none;
-        min-height: auto;
+        max-height: none !important;
+        min-height: auto !important;
+    }
+    .top-streamers ul li .main-button {
+        float: none;
+        margin-top: 10px;
+    }
+    .top-streamers ul li .main-button a {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Other games: stack vertically */
+    .other-games .item {
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+    .other-games .item img.templatemo-item {
+        float: none !important;
+        display: block;
+        margin: 0 auto 10px;
+    }
+    .other-games .item h4 {
+        text-align: center;
+        padding-top: 0;
+    }
+    .other-games .item span {
+        text-align: center;
+        display: block;
+    }
+    .other-games ul {
+        position: static;
+        text-align: center;
+        margin-top: 10px;
     }
 }
 
 /* ===== SMALL MOBILE ( < 576px) ===== */
-@media (max-width: 576px) {
+@media (max-width: 575px) {
     .main-banner h4 {
         font-size: 18px;
     }
@@ -839,54 +1075,4 @@ footer p a:hover {
         font-size: 14px;
         padding: 8px 25px;
     }
-}
-
-/* ===== TABLET (769px - 1024px) ===== */
-@media (min-width: 769px) and (max-width: 1024px) {
-    body .page-content {
-        padding: 25px;
-    }
-    .most-popular .item img {
-        height: 170px;
-    }
-    .featured-games .item img {
-        height: 180px;
-    }
-    .live-stream .item .thumb img {
-        height: 180px;
-    }
-}
-
-/* ===== DESKTOP (>= 1200px) ===== */
-@media (min-width: 1200px) {
-    .container {
-        max-width: 1200px;
-    }
-    .page-content {
-        padding: 35px;
-    }
-}
-
-/* ===== UTILITY: templatemo-item (small thumbnail) ===== */
-.templatemo-item {
-    max-width: 80px;
-    width: 80px !important;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 14px;
-}
-
-/* ===== Scrollbar (aesthetic) ===== */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: var(--srfv-bg-darkest);
-}
-::-webkit-scrollbar-thumb {
-    background: var(--srfv-border-light);
-    border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
 }

@@ -3,7 +3,7 @@
 
           <!-- ***** Featured Games Start ***** -->
           <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-8 col-md-7">
               <div class="featured-games header-text">
                 <div class="heading-section">
                   <h4><em>Jogos</em> em Destaque</h4>
@@ -48,7 +48,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-5">
               <div class="top-downloaded">
                 <div class="heading-section">
                   <h4><em>Melhores</em> Artes</h4>
@@ -102,7 +102,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="item">
                   <div class="thumb">
                     <img src="{{ asset('assets/images/cr.webp') }}" alt="">
@@ -127,7 +127,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="item">
                   <div class="thumb">
                     <img src="{{ asset('assets/images/ms.jpg') }}" alt="">
@@ -152,7 +152,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="item">
                   <div class="thumb">
                     <img src="{{ asset('assets/images/te.webp') }}" alt="">
@@ -177,7 +177,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="item">
                   <div class="thumb">
                     <img src="{{ asset('assets/images/boob.png') }}" alt="">
@@ -204,7 +204,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="item">
                   <div class="thumb">
                     <img src="{{ asset('assets/images/re33.png') }}" alt="">
@@ -229,7 +229,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="item">
                   <div class="thumb">
                     <img src="{{ asset('assets/images/tom.png') }}" alt="">
@@ -254,7 +254,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="item">
                   <div class="thumb">
                     <img src="{{ asset('assets/images/stree.webp') }}" alt="">
@@ -279,7 +279,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="item">
                   <div class="thumb">
                     <img src="{{ asset('assets/images/fif.png') }}" alt="">
@@ -306,7 +306,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="item">
                   <div class="thumb">
                     <img src="{{ asset('assets/images/ff7.webp') }}" alt="">
@@ -331,7 +331,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="item">
                   <div class="thumb">
                     <img src="{{ asset('assets/images/gran.jfif') }}" alt="">
@@ -356,7 +356,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="item">
                   <div class="thumb">
                     <img src="{{ asset('assets/images/cs3.webp') }}" alt="">
@@ -381,7 +381,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="item">
                   <div class="thumb">
                     <img src="{{ asset('assets/images/tn3.jpg') }}" alt="">

@@ -6,10 +6,10 @@
   <div class="col-lg-12">
     <div class="main-profile">
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-4">
           <img src="{{ asset('assets/arts/discord.jpg') }}" alt="">
         </div>
-        <div class="col-lg-4 align-self-center">
+        <div class="col-lg-4 col-md-4 align-self-center">
           <div class="main-info header-text">
             <span>SRFV</span>
             <h4>Envie sua Arte</h4>
@@ -19,7 +19,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4 align-self-center">
+        <div class="col-lg-4 col-md-4 align-self-center">
           <ul>
             <li>Artes Enviadas <span>36</span></li>
             <li>Artes em Analise <span>18</span></li>
@@ -38,7 +38,7 @@
                   <h4><em>Artes mais</em> Populares</h4>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="item">
                   <div class="thumb">
                     <img src="{{ asset('assets/arts/a.png') }}" alt="">
@@ -50,7 +50,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="item">
                   <div class="thumb">
                     <img src="{{ asset('assets/arts/b.webp') }}" alt="">
@@ -62,7 +62,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="item">
                   <div class="thumb">
                     <img src="{{ asset('assets/arts/k.webp') }}" alt="">
@@ -74,7 +74,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-6">
+              <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="item">
                   <div class="thumb">
                     <img src="{{ asset('assets/arts/s.webp') }}" alt="">
@@ -103,7 +103,7 @@
         <h4><em>Todas as</em> Artes</h4>
       </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6">
       <div class="item">
         <img src="{{ asset('assets/arts/a.png') }}" alt="" class="templatemo-item">
         <a href="{{ asset('assets/arts/a.png') }}" download><i class="fa fa-download"></i></a>
@@ -114,7 +114,7 @@
         </ul>
       </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6">
       <div class="item">
         <img src="{{ asset('assets/arts/b.webp') }}" alt="" class="templatemo-item">
         <a href="{{ asset('assets/arts/b.webp') }}" download><i class="fa fa-download"></i></a>
@@ -125,7 +125,7 @@
         </ul>
       </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6">
       <div class="item">
         <img src="{{ asset('assets/arts/e.webp') }}" alt="" class="templatemo-item">
         <a href="{{ asset('assets/arts/e.webp') }}" download><i class="fa fa-download"></i></a>
@@ -136,7 +136,7 @@
         </ul>
       </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6">
       <div class="item">
         <img src="{{ asset('assets/arts/m.webp') }}" alt="" class="templatemo-item">
         <a href="{{ asset('assets/arts/m.webp') }}" download><i class="fa fa-download"></i></a>
@@ -147,7 +147,7 @@
         </ul>
       </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6">
       <div class="item">
         <img src="{{ asset('assets/arts/n.webp') }}" alt="" class="templatemo-item">
         <a href="{{ asset('assets/arts/n.webp') }}" download><i class="fa fa-download"></i></a>
@@ -158,7 +158,7 @@
         </ul>
       </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6">
       <div class="item">
         <img src="{{ asset('assets/arts/s.webp') }}" alt="" class="templatemo-item">
         <a href="{{ asset('assets/arts/s.webp') }}" download><i class="fa fa-download"></i></a>
@@ -169,7 +169,7 @@
         </ul>
       </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6">
       <div class="item">
         <img src="{{ asset('assets/arts/k.webp') }}" alt="" class="templatemo-item">
         <a href="{{ asset('assets/arts/k.webp') }}" download><i class="fa fa-download"></i></a>
@@ -180,7 +180,7 @@
         </ul>
       </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6">
       <div class="item">
         <img src="{{ asset('assets/arts/c.webp') }}" alt="" class="templatemo-item">
         <a href="{{ asset('assets/arts/c.webp') }}" download><i class="fa fa-download"></i></a>
@@ -191,7 +191,7 @@
         </ul>
       </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6">
       <div class="item">
         <img src="{{ asset('assets/images/game-03.jpg') }}" alt="" class="templatemo-item">
         <a href="{{ asset('assets/images/game-03.jpg') }}" download><i class="fa fa-download"></i></a>
@@ -202,7 +202,7 @@
         </ul>
       </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6">
       <div class="item">
         <img src="{{ asset('assets/arts/to.webp') }}" alt="" class="templatemo-item">
         <a href="{{ asset('assets/arts/to.webp') }}" download><i class="fa fa-download"></i></a>

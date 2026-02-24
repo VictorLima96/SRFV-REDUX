@@ -3,7 +3,7 @@
 
           <!-- ***** Featured Movies Start ***** -->
           <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-8 col-md-7">
               <div class="featured-games header-text">
                 <div class="heading-section">
                   <h4><em>Filmes</em> Populares</h4>
@@ -60,7 +60,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-5">
               <div class="top-streamers">
                 <div class="heading-section">
                   <h4><em>Criadores</em> do Site</h4>
@@ -120,7 +120,7 @@
                   <h4><em></em> Todos os Filmes</h4>
                 </div>
                 <div class="row">
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/movies/d.png') }}" alt="">
                       <h4>Donnie Darko<br><span>Pandora</span></h4>
@@ -130,7 +130,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/movies/c.png') }}" alt="">
                       <h4>Crash: o Filme<br><span>Sony</span></h4>
@@ -140,7 +140,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/movies/t.jpg') }}" alt="">
                       <h4>Tekken<br><span>Crystal Sky Pictures</span></h4>
@@ -150,7 +150,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/movies/s.jpg') }}" alt="">
                       <h4>Homem Aranha: lótus<br><span>GJK</span></h4>
@@ -160,7 +160,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/movies/p.png') }}" alt="">
                       <h4>Jogador nº 1<br><span>Discovery Global</span></h4>
@@ -170,7 +170,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/movies/r.jpg') }}" alt="">
                       <h4>Resident Evil<br><span>Viacom</span></h4>
@@ -180,7 +180,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/movies/m.webp') }}" alt="">
                       <h4>Super Mario Bros<br><span>Illumination</span></h4>
@@ -190,7 +190,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/movies/s.webp') }}" alt="">
                       <h4>Sonic 2: o filme<br><span>Paramount Pictures</span></h4>

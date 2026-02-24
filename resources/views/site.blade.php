@@ -25,7 +25,7 @@
                   <h4><em>Artes Populares</em> Agora</h4>
                 </div>
                 <div class="row">
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
                         <img src="{{ asset('assets/arts/a.png') }}" alt="">
                       <div class="hover-effect">
@@ -38,9 +38,9 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
-                      <img src="assets/arts/b.webp" alt="">
+                      <img src="{{ asset('assets/arts/b.webp') }}" alt="">
                       <a href="assets/arts/b.webp" download><i class="fa fa-download"></i></a>
                       <h4>Bomberman<br><span>By Victor</span></h4>
                       <ul>
@@ -49,9 +49,9 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
-                      <img src="assets/arts/e.webp" alt="">
+                      <img src="{{ asset('assets/arts/e.webp') }}" alt="">
                       <a href="assets/arts/e.webp" download><i class="fa fa-download"></i></a>
                       <h4>Bob Esponja<br><span>By Steam-X</span></h4>
                       <ul>
@@ -60,9 +60,9 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
-                      <img src="assets/arts/c.webp" alt="">
+                      <img src="{{ asset('assets/arts/c.webp') }}" alt="">
                       <a href="assets/arts/c.webp" download><i class="fa fa-download"></i></a>
                       <h4>Polygoth<br><span>By Legendary</span></h4>
                       <ul>
@@ -71,9 +71,9 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
-                      <img src="assets/arts/k.webp" alt="">
+                      <img src="{{ asset('assets/arts/k.webp') }}" alt="">
                       <a href="assets/arts/k.webp" download><i class="fa fa-download"></i></a>
                       <h4>Knuckles<br><span>By CrashGamis</span></h4>
                       <ul>
@@ -82,9 +82,9 @@
                       </ul>
                     </div>
                   </div>
-                        <div class="col-lg-3 col-sm-6">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
                           <div class="item">
-                            <img src="assets/arts/m.webp" alt="">
+                            <img src="{{ asset('assets/arts/m.webp') }}" alt="">
                             <a href="assets/arts/m.webp" download><i class="fa fa-download"></i></a>
                             <h4>Luigi<br><span>By ElTopoGira</span></h4>
                             <ul>
@@ -93,9 +93,9 @@
                             </ul>
                           </div>
                         </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
-                      <img src="assets/arts/n.webp" alt="">
+                      <img src="{{ asset('assets/arts/n.webp') }}" alt="">
                       <a href="assets/arts/n.webp" download><i class="fa fa-download"></i></a>
                       <h4>Pizza Tower<br><span>By Max 3D</span></h4>
                       <ul>
@@ -104,9 +104,9 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
-                      <img src="assets/arts/s.webp" alt="">
+                      <img src="{{ asset('assets/arts/s.webp') }}" alt="">
                       <a href="assets/arts/s.webp" download><i class="fa fa-download"></i></a>
                       <h4>Shadow<br><span>By FonSekito</span></h4>
                       <ul>
@@ -173,9 +173,9 @@
                   <h4><em>Filmes em</em> Destaque</h4>
                 </div>
                 <div class="row">
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
-                      <img src="assets/movies/d.png" alt="">
+                      <img src="{{ asset('assets/movies/d.png') }}" alt="">
                       <h4>Donnie Darko<br><span>Pandora</span></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> 5.0</li>
@@ -183,9 +183,9 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
-                      <img src="assets/movies/c.png" alt="">
+                      <img src="{{ asset('assets/movies/c.png') }}" alt="">
                       <h4>Crash: o Filme<br><span>Sony</span></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> 5.0</li>
@@ -193,9 +193,9 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
-                      <img src="assets/movies/t.jpg" alt="">
+                      <img src="{{ asset('assets/movies/t.jpg') }}" alt="">
                       <h4>Tekken<br><span>Crystal Sky Pictures</span></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> 2.8</li>
@@ -203,9 +203,9 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
-                      <img src="assets/movies/s.jpg" alt="">
+                      <img src="{{ asset('assets/movies/s.jpg') }}" alt="">
                       <h4>Homem Aranha: lótus<br><span>GJK</span></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> 3.8</li>
@@ -213,9 +213,9 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
-                      <img src="assets/movies/p.png" alt="">
+                      <img src="{{ asset('assets/movies/p.png') }}" alt="">
                       <h4>Jogador nº 1<br><span>Discovery Global</span></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> 4.9</li>
@@ -223,9 +223,9 @@
                       </ul>
                     </div>
                   </div>
-                        <div class="col-lg-3 col-sm-6">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
                           <div class="item">
-                            <img src="assets/movies/r.jpg" alt="">
+                            <img src="{{ asset('assets/movies/r.jpg') }}" alt="">
                             <h4>Resident Evil<br><span>Viacom</span></h4>
                             <ul>
                               <li><i class="fa fa-star"></i> 3.0</li>
@@ -233,9 +233,9 @@
                             </ul>
                           </div>
                         </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
-                      <img src="assets/movies/m.webp" alt="">
+                      <img src="{{ asset('assets/movies/m.webp') }}" alt="">
                       <h4>Super Mario Bros<br><span>Illumination</span></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> 1.8</li>
@@ -243,9 +243,9 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item">
-                      <img src="assets/movies/s.webp" alt="">
+                      <img src="{{ asset('assets/movies/s.webp') }}" alt="">
                       <h4>Sonic 2: o filme<br><span>Paramount Pictures</span></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> 5.0</li>
