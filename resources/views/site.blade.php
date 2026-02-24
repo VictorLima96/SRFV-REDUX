@@ -1,7 +1,5 @@
 @extends('padrao')
 @section('content')
-<!DOCTYPE html>
-
 
           <!-- ***** Banner Start ***** -->
           <div class="main-banner">
@@ -29,7 +27,7 @@
                 <div class="row">
                   <div class="col-lg-3 col-sm-6">
                     <div class="item">
-                        <img src="assets/arts/a.png" alt="">
+                        <img src="{{ asset('assets/arts/a.png') }}" alt="">
                       <div class="hover-effect">
                       </div>
                       <a href="assets/arts/a.png" download><i class="fa fa-download"></i></a>
@@ -315,8 +313,4 @@
 
 
 
-  </body>
-
-</html>
-
-@endSection
+@endsection
