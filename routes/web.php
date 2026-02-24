@@ -46,5 +46,32 @@ Route::post('/logout', function () {
     return redirect('/');
 })->name('logout');
 
+// Temporary diagnostic route - REMOVE after debugging
+Route::get('/db-diag', function () {
+    $info = [
+        'DB_CONNECTION' => env('DB_CONNECTION'),
+        'DB_HOST' => env('DB_HOST'),
+        'DB_PORT' => env('DB_PORT'),
+        'DB_DATABASE' => env('DB_DATABASE'),
+        'DB_USERNAME' => env('DB_USERNAME'),
+        'DB_PASSWORD_LENGTH' => strlen(env('DB_PASSWORD', '')),
+        'DB_PASSWORD_FIRST3' => substr(env('DB_PASSWORD', ''), 0, 3),
+        'DATABASE_URL_SET' => env('DATABASE_URL') ? 'YES' : 'NO',
+        'DATABASE_URL_LENGTH' => strlen(env('DATABASE_URL', '')),
+        'DB_SSLMODE' => env('DB_SSLMODE'),
+    ];
+
+    try {
+        $pdo = \DB::connection()->getPdo();
+        $info['CONNECTION'] = 'SUCCESS';
+        $info['SERVER_VERSION'] = $pdo->getAttribute(\PDO::ATTR_SERVER_VERSION);
+    } catch (\Exception $e) {
+        $info['CONNECTION'] = 'FAILED';
+        $info['ERROR'] = $e->getMessage();
+    }
+
+    return response()->json($info, 200, [], JSON_PRETTY_PRINT);
+});
+
 
 
