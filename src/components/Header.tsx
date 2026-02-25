@@ -23,6 +23,7 @@ export default function Header() {
   };
 
   const userName = user?.user_metadata?.name || user?.email?.split('@')[0] || 'User';
+  const avatarUrl = user?.user_metadata?.avatar_url || '';
 
   return (
     <header className="sticky top-0 z-50 bg-srfv-bg-darkest/95 backdrop-blur border-b border-srfv-border">
@@ -55,7 +56,14 @@ export default function Header() {
         <div className="hidden lg:flex items-center gap-3 ml-4">
           {user ? (
             <>
-              <Link href="/alterarsenha" className="text-sm text-srfv-primary hover:underline">{userName}</Link>
+              <Link href="/alterarsenha" className="flex items-center gap-2 text-sm text-srfv-primary hover:underline">
+                {avatarUrl ? (
+                  <img src={avatarUrl} alt="Avatar" className="w-7 h-7 rounded-full object-cover border border-srfv-primary" />
+                ) : (
+                  <span className="w-7 h-7 rounded-full bg-srfv-primary text-white flex items-center justify-center text-xs font-bold">{userName.charAt(0).toUpperCase()}</span>
+                )}
+                {userName}
+              </Link>
               <button onClick={handleLogout} className="btn-outline-srfv text-xs px-4 py-1.5">Sair</button>
             </>
           ) : (
@@ -101,7 +109,14 @@ export default function Header() {
           <div className="pt-3 border-t border-srfv-border flex gap-3">
             {user ? (
               <>
-                <Link href="/alterarsenha" onClick={() => setMenuOpen(false)} className="text-sm text-srfv-primary">{userName}</Link>
+                <Link href="/alterarsenha" onClick={() => setMenuOpen(false)} className="flex items-center gap-2 text-sm text-srfv-primary">
+                  {avatarUrl ? (
+                    <img src={avatarUrl} alt="Avatar" className="w-7 h-7 rounded-full object-cover border border-srfv-primary" />
+                  ) : (
+                    <span className="w-7 h-7 rounded-full bg-srfv-primary text-white flex items-center justify-center text-xs font-bold">{userName.charAt(0).toUpperCase()}</span>
+                  )}
+                  {userName}
+                </Link>
                 <button onClick={handleLogout} className="btn-outline-srfv text-xs px-4 py-1.5">Sair</button>
               </>
             ) : (
