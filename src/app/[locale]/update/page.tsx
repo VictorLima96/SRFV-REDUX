@@ -234,41 +234,46 @@ export default function ProfilePage() {
       )}
 
       {/* ═══ BANNER ═══ */}
-      <div className="relative h-40 sm:h-52 rounded-t-srfv overflow-hidden bg-gradient-to-br from-srfv-primary/30 to-srfv-bg-darker group">
+      <div className="relative h-40 sm:h-52 rounded-t-srfv overflow-hidden bg-gradient-to-br from-srfv-primary/20 via-srfv-bg-darker to-srfv-bg-darkest group">
         {bannerUrl && (
-          <img src={bannerUrl} alt="Banner" className="absolute inset-0 w-full h-full object-cover" />
+          <img src={bannerUrl} alt="Banner" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
         )}
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-t from-srfv-bg-darker via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
           <button
             onClick={() => bannerInput.current?.click()}
-            className="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-xs px-4 py-2 rounded-full"
+            className="opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-black/60 backdrop-blur-sm text-white text-xs px-5 py-2.5 rounded-full ring-1 ring-white/10 hover:ring-white/20"
           >
-            {bannerUploading ? t('uploading') : t('changeBanner')}
+            {bannerUploading ? (
+              <span className="flex items-center gap-2"><span className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin" />{t('uploading')}</span>
+            ) : t('changeBanner')}
           </button>
         </div>
         <input ref={bannerInput} type="file" accept="image/*" className="hidden" onChange={handleBannerChange} />
       </div>
 
       {/* ═══ AVATAR + NAME HEADER ═══ */}
-      <div className="relative bg-srfv-bg-darker px-6 pb-6">
+      <div className="relative bg-srfv-bg-darker/80 backdrop-blur-sm px-6 pb-6">
         <div className="flex flex-col sm:flex-row items-center sm:items-end gap-4 -mt-12 sm:-mt-14">
           {/* Avatar */}
           <div className="relative group flex-shrink-0">
-            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-4 border-srfv-bg-darker overflow-hidden bg-srfv-bg-dark">
+            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full ring-4 ring-srfv-bg-darker shadow-glow-sm overflow-hidden bg-gradient-to-br from-srfv-primary to-red-600">
               {avatarUrl ? (
                 <img src={avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-3xl text-srfv-text-muted">
+                <div className="w-full h-full flex items-center justify-center text-3xl font-bold text-white">
                   {name ? name[0].toUpperCase() : email[0].toUpperCase()}
                 </div>
               )}
             </div>
             <button
               onClick={() => avatarInput.current?.click()}
-              className="absolute inset-0 rounded-full bg-black/0 group-hover:bg-black/50 flex items-center justify-center transition-colors"
+              className="absolute inset-0 rounded-full bg-black/0 group-hover:bg-black/50 flex items-center justify-center transition-all duration-300"
             >
-              <span className="opacity-0 group-hover:opacity-100 text-white text-xs transition-opacity">
-                {avatarUploading ? '...' : '📷'}
+              <span className="opacity-0 group-hover:opacity-100 text-white text-lg transition-all duration-300 scale-75 group-hover:scale-100">
+                {avatarUploading ? (
+                  <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin inline-block" />
+                ) : '📷'}
               </span>
             </button>
             <input ref={avatarInput} type="file" accept="image/*" className="hidden" onChange={handleAvatarChange} />
@@ -283,13 +288,16 @@ export default function ProfilePage() {
 
         {/* Bio under avatar area */}
         {bio && (
-          <p className="mt-4 text-sm text-srfv-text-secondary whitespace-pre-wrap">{bio}</p>
+          <p className="mt-4 text-sm text-srfv-text-secondary whitespace-pre-wrap leading-relaxed">{bio}</p>
         )}
       </div>
 
       {/* ═══ PROFILE FIELDS ═══ */}
       <div className="section-box !rounded-t-none space-y-0">
-        <h2 className="text-lg font-bold mb-2">{t('myProfile')} <span className="heading-em">{t('myProfileHighlight')}</span></h2>
+        <div className="flex items-center gap-3 mb-2">
+          <h2 className="text-lg font-bold">{t('myProfile')} <span className="heading-em">{t('myProfileHighlight')}</span></h2>
+        </div>
+        <div className="gradient-line w-16 mb-4" />
 
         <EditableField
           label={t('labelName')}

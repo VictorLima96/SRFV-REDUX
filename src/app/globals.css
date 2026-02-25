@@ -2,69 +2,118 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 /* ===== Base ===== */
 html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #191a1b;
+  background-color: #0d0e12;
   color: #fff;
   overflow-x: hidden;
 }
 
-/* ===== Scrollbar ===== */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #191a1b; }
-::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #555; }
+/* ===== Noise grain overlay ===== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-/* ===== Card hover ===== */
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(241, 36, 33, 0.5); }
+
+/* ===== Selection ===== */
+::selection { background: rgba(241, 36, 33, 0.3); color: #fff; }
+
+/* ===== Component Layer ===== */
 @layer components {
+  /* --- Glass Card --- */
   .card-srfv {
-    @apply bg-srfv-bg-dark rounded-srfv-sm p-4 transition-all duration-200;
+    @apply relative bg-srfv-bg-card backdrop-blur-sm rounded-srfv-sm p-4 
+           border border-srfv-border transition-all duration-300 ease-out;
   }
   .card-srfv:hover {
-    @apply -translate-y-1;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    @apply -translate-y-1.5 border-srfv-border-light;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.05);
   }
+
+  /* --- Buttons --- */
   .btn-primary-srfv {
-    @apply inline-block bg-srfv-primary text-white font-medium rounded-full px-8 py-3 transition-all duration-300 text-sm;
+    @apply inline-flex items-center justify-center bg-gradient-to-r from-srfv-primary to-red-600 
+           text-white font-semibold rounded-full px-8 py-3 text-sm
+           transition-all duration-300 ease-out shadow-glow-sm;
   }
   .btn-primary-srfv:hover {
-    @apply bg-white text-srfv-primary;
+    @apply scale-[1.03] shadow-glow;
+    filter: brightness(1.15);
+  }
+  .btn-primary-srfv:active {
+    @apply scale-[0.98];
   }
   .btn-outline-srfv {
-    @apply inline-block border border-srfv-primary text-srfv-primary font-medium rounded-full px-6 py-2.5 transition-all duration-300 text-sm;
+    @apply inline-flex items-center justify-center 
+           border border-srfv-primary/60 text-srfv-primary font-medium 
+           rounded-full px-6 py-2.5 text-sm
+           transition-all duration-300 ease-out backdrop-blur-sm;
   }
   .btn-outline-srfv:hover {
-    @apply bg-srfv-primary text-white border-srfv-primary;
+    @apply bg-srfv-primary/10 border-srfv-primary text-white shadow-glow-sm;
   }
+
+  /* --- Section Box (glass panel) --- */
   .section-box {
-    @apply bg-srfv-bg-darker rounded-srfv p-6 md:p-8;
+    @apply bg-srfv-bg-card backdrop-blur-sm rounded-srfv p-6 md:p-8 
+           border border-srfv-border shadow-glass;
   }
-  .page-content {
-    @apply bg-srfv-bg-dark rounded-srfv p-5 md:p-8 lg:p-10 mt-24;
-  }
+
+  /* --- Heading accent --- */
   .heading-em {
-    @apply text-srfv-primary not-italic;
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-srfv-primary to-red-400 not-italic;
+  }
+
+  /* --- Tag / Badge --- */
+  .tag-srfv {
+    @apply text-xs px-3 py-1 rounded-full font-semibold backdrop-blur-sm;
   }
 }
 
 /* ===== Form dark theme ===== */
 .form-input {
-  @apply bg-srfv-bg-darker border border-srfv-border-light text-white rounded-lg px-4 py-3 w-full focus:outline-none focus:border-srfv-primary transition-colors;
+  @apply bg-srfv-bg-darker/80 border border-srfv-border-light text-white 
+         rounded-srfv-xs px-4 py-3 w-full 
+         focus:outline-none focus:border-srfv-primary/60 focus:ring-1 focus:ring-srfv-primary/20 
+         transition-all duration-200 backdrop-blur-sm;
 }
-input::placeholder {
+input::placeholder, textarea::placeholder {
   @apply text-srfv-text-dim;
 }
 
-/* ===== Sticky header ===== */
-.header-sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
+/* ===== Page transition ===== */
+main {
+  animation: fade-in 0.4s ease-out;
 }
+
+/* ===== Gradient accent line (for sections) ===== */
+.gradient-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #f12421, transparent);
+}
+
+/* ===== Glow dot decoration ===== */
+.glow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f12421;
+  box-shadow: 0 0 8px rgba(241, 36, 33, 0.6);
+}
+

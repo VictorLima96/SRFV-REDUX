@@ -35,21 +35,33 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-[60vh]">
-      <div className="section-box w-full max-w-md">
+    <div className="flex items-center justify-center min-h-[60vh] relative">
+      {/* Background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-srfv-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="section-box w-full max-w-md relative animate-fade-in">
+        {/* Decorative top accent */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-transparent via-srfv-primary to-transparent rounded-full" />
+
+        <div className="flex justify-center mb-4 pt-2">
+          <div className="w-14 h-14 rounded-full bg-gradient-to-br from-srfv-primary to-red-600 flex items-center justify-center shadow-glow-sm">
+            <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" /></svg>
+          </div>
+        </div>
+
         <h1 className="text-2xl font-bold text-center mb-6">
           <span className="heading-em">{t('title')}</span>
         </h1>
 
         {error && (
-          <div className="bg-red-500/20 border border-red-500/50 rounded-lg px-4 py-3 mb-4 text-sm text-red-300">
+          <div className="bg-red-500/10 border border-red-500/30 backdrop-blur-sm rounded-srfv-xs px-4 py-3 mb-4 text-sm text-red-300 animate-fade-in">
             {error}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-sm text-srfv-text-secondary mb-1">{t('name')}</label>
+            <label className="block text-sm text-srfv-text-secondary mb-1.5 font-medium">{t('name')}</label>
             <input
               type="text"
               value={name}
@@ -60,7 +72,7 @@ export default function SignupPage() {
             />
           </div>
           <div>
-            <label className="block text-sm text-srfv-text-secondary mb-1">{t('email')}</label>
+            <label className="block text-sm text-srfv-text-secondary mb-1.5 font-medium">{t('email')}</label>
             <input
               type="email"
               value={email}
@@ -71,7 +83,7 @@ export default function SignupPage() {
             />
           </div>
           <div>
-            <label className="block text-sm text-srfv-text-secondary mb-1">{t('password')}</label>
+            <label className="block text-sm text-srfv-text-secondary mb-1.5 font-medium">{t('password')}</label>
             <input
               type="password"
               value={password}
@@ -83,14 +95,14 @@ export default function SignupPage() {
             />
           </div>
 
-          <label className="flex items-start gap-2 cursor-pointer">
+          <label className="flex items-start gap-3 cursor-pointer group">
             <input
               type="checkbox"
               checked={agreed}
               onChange={(e) => setAgreed(e.target.checked)}
-              className="mt-1 accent-srfv-primary"
+              className="mt-0.5 w-4 h-4 accent-srfv-primary rounded"
             />
-            <span className="text-xs text-srfv-text-muted">
+            <span className="text-xs text-srfv-text-muted group-hover:text-srfv-text-secondary transition-colors">
               {t('agreeWith')}{' '}
               <a href="https://policies.google.com/terms?hl=pt-BR" target="_blank" rel="noopener noreferrer" className="text-srfv-primary hover:underline">
                 {t('termsOfService')}
@@ -98,15 +110,23 @@ export default function SignupPage() {
             </span>
           </label>
 
-          <button type="submit" disabled={loading} className="btn-primary-srfv w-full disabled:opacity-50">
-            {loading ? t('submitting') : t('submit')}
+          <button type="submit" disabled={loading} className="btn-primary-srfv w-full disabled:opacity-50 !py-3 text-base font-semibold">
+            {loading ? (
+              <span className="flex items-center justify-center gap-2">
+                <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                {t('submitting')}
+              </span>
+            ) : t('submit')}
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-srfv-text-muted">
-          {t('hasAccount')}{' '}
-          <Link href="/login" className="text-srfv-primary hover:underline">{t('loginLink')}</Link>
-        </p>
+        <div className="mt-8 text-center">
+          <div className="gradient-line w-full mb-3" />
+          <p className="text-sm text-srfv-text-muted">
+            {t('hasAccount')}{' '}
+            <Link href="/login" className="text-srfv-primary hover:underline font-medium">{t('loginLink')}</Link>
+          </p>
+        </div>
       </div>
     </div>
   );

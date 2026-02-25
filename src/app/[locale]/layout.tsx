@@ -33,12 +33,12 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <body className="bg-srfv-bg-darkest text-white min-h-screen flex flex-col antialiased">
+    <html lang={locale} className="dark">
+      <body className="bg-srfv-bg-darkest text-white min-h-screen flex flex-col antialiased font-poppins">
         <NextIntlClientProvider messages={messages}>
           <AuthProvider>
             <Header />
-            <main className="flex-1 w-full max-w-[1400px] mx-auto px-4 py-6">
+            <main className="flex-1 w-full max-w-[1400px] mx-auto px-4 sm:px-6 py-8">
               {children}
             </main>
             <Footer />
