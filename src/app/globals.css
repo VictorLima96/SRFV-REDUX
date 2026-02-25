@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ===== Base ===== */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #191a1b;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #191a1b; }
+::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+/* ===== Card hover ===== */
+@layer components {
+  .card-srfv {
+    @apply bg-srfv-bg-dark rounded-srfv-sm p-4 transition-all duration-200;
+  }
+  .card-srfv:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  }
+  .btn-primary-srfv {
+    @apply inline-block bg-srfv-primary text-white font-medium rounded-full px-8 py-3 transition-all duration-300 text-sm;
+  }
+  .btn-primary-srfv:hover {
+    @apply bg-white text-srfv-primary;
+  }
+  .btn-outline-srfv {
+    @apply inline-block border border-srfv-primary text-srfv-primary font-medium rounded-full px-6 py-2.5 transition-all duration-300 text-sm;
+  }
+  .btn-outline-srfv:hover {
+    @apply bg-srfv-primary text-white border-srfv-primary;
+  }
+  .section-box {
+    @apply bg-srfv-bg-darker rounded-srfv p-6 md:p-8;
+  }
+  .page-content {
+    @apply bg-srfv-bg-dark rounded-srfv p-5 md:p-8 lg:p-10 mt-24;
+  }
+  .heading-em {
+    @apply text-srfv-primary not-italic;
+  }
+}
+
+/* ===== Form dark theme ===== */
+.form-input {
+  @apply bg-srfv-bg-darker border border-srfv-border-light text-white rounded-lg px-4 py-3 w-full focus:outline-none focus:border-srfv-primary transition-colors;
+}
+input::placeholder {
+  @apply text-srfv-text-dim;
+}
+
+/* ===== Sticky header ===== */
+.header-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}

@@ -1,23 +1,26 @@
-/.phpunit.cache
+# Dependencies
 /node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
+
+# Next.js
+/.next
+/out
+
+# Environment
 .env
-.env.backup
+.env.local
 .env.production
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-auth.json
-npm-debug.log
-yarn-error.log
+
+# IDE
 /.fleet
 /.idea
 /.vscode
 
-# Large media files
-public/assets/som/*.mp3
+# Vercel
 .vercel
+
+# Debug
+npm-debug.log
+yarn-error.log
+
+# Large media
+public/assets/som/*.mp3
