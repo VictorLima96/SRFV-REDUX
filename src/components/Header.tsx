@@ -47,7 +47,7 @@ export default function Header() {
       <div className="max-w-[1400px] mx-auto px-4 py-3 flex items-center gap-4">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
-          <Image src="/assets/images/logoz1.png" alt="SRFV Games" width={70} height={58} priority />
+          <Image src="/assets/images/srfv-logo.png" alt="SRFV Games" width={70} height={58} priority />
         </Link>
 
         {/* Search */}

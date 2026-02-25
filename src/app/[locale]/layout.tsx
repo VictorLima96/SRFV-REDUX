@@ -11,7 +11,7 @@ import '../globals.css';
 export const metadata: Metadata = {
   title: 'SRFV Games',
   description: 'Play retro games, watch movies and download arts — all free at SRFV Games.',
-  icons: { icon: '/assets/images/favicon-srfv.png' },
+  icons: { icon: '/assets/images/srfv-logo.png' },
 };
 
 export function generateStaticParams() {
