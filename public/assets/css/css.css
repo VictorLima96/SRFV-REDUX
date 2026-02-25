@@ -719,44 +719,76 @@ footer p a:hover {
    ============================================================= */
 
 body.device-desktop .page-content {
-    padding: 40px;
+    padding: 45px;
     margin-top: 110px;
 }
 body.device-desktop .container {
-    max-width: 1200px;
+    max-width: 1320px;
 }
 
-/* Banner – desktop */
+/* Banner – desktop: wide, cinematic */
 body.device-desktop .main-banner {
-    padding: 80px 60px;
-    min-height: 380px;
+    padding: 90px 70px;
+    min-height: 400px;
 }
 body.device-desktop .main-banner h4 {
-    font-size: 45px;
+    font-size: 48px;
 }
 body.device-desktop .main-banner h6 {
     font-size: 20px;
+    margin-bottom: 30px;
 }
 
 /* Headings – desktop */
 body.device-desktop .heading-section h4 {
-    font-size: 22px;
+    font-size: 24px;
+    margin-bottom: 30px;
 }
 
-/* Most Popular grid – 4 cols, tall images */
+/* ===== DESKTOP CARDS – enhanced proportions ===== */
+/* Most Popular grid (arts/movies) – 4 cols, bigger images */
+body.device-desktop .most-popular {
+    padding: 35px;
+}
+body.device-desktop .most-popular .item {
+    padding: 18px;
+    border-radius: 18px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+body.device-desktop .most-popular .item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
 body.device-desktop .most-popular .item img {
-    height: 200px;
+    height: 220px;
+    border-radius: 14px;
+}
+body.device-desktop .most-popular .item h4 {
+    font-size: 15px;
+    margin-top: 14px;
+}
+body.device-desktop .most-popular .item span {
+    font-size: 13px;
 }
 
-/* Featured games / live stream – full height images */
+/* Featured games / live stream */
+body.device-desktop .featured-games {
+    padding: 35px;
+}
 body.device-desktop .featured-games .item img {
-    height: 200px;
+    height: 220px;
+}
+body.device-desktop .live-stream {
+    padding: 35px;
+}
+body.device-desktop .live-stream .item {
+    margin-bottom: 30px;
 }
 body.device-desktop .live-stream .item .thumb img {
-    height: 200px;
+    height: 220px;
 }
 body.device-desktop .clips .item .thumb img {
-    height: 180px;
+    height: 200px;
 }
 
 /* Gaming Library – FORCE horizontal row (overrides template 992px rule) */
@@ -790,7 +822,14 @@ body.device-desktop .gaming-library .item ul li img.templatemo-item {
 
 /* Start stream – 3 cols across */
 body.device-desktop .start-stream .item {
-    min-height: 200px;
+    min-height: 210px;
+    padding: 35px 30px;
+}
+body.device-desktop .start-stream .item h4 {
+    font-size: 19px;
+}
+body.device-desktop .start-stream .item p {
+    font-size: 14px;
 }
 
 /* Sidebar sections stay beside main */
@@ -806,6 +845,9 @@ body.device-desktop .main-profile > .row > .col-lg-4:first-child img {
 }
 
 /* Other games – horizontal items */
+body.device-desktop .other-games {
+    padding: 35px;
+}
 body.device-desktop .other-games .item img.templatemo-item {
     float: left !important;
     margin-right: 15px;
@@ -820,22 +862,48 @@ body.device-desktop .other-games ul {
     top: 15px;
 }
 
-/* Desktop grid columns override (ensure 4 cols on large screens) */
+/* Cards / generic card styling for desktop */
+body.device-desktop .card {
+    border-radius: 18px !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+body.device-desktop .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+body.device-desktop .card-body {
+    padding: 25px !important;
+}
+
+/* ===== DESKTOP GRID – Bootstrap 5 column overrides (use width, not max-width) ===== */
 body.device-desktop .col-lg-3 {
-    flex: 0 0 25%;
-    max-width: 25%;
+    flex: 0 0 auto !important;
+    width: 25% !important;
 }
 body.device-desktop .col-lg-4 {
-    flex: 0 0 33.333%;
-    max-width: 33.333%;
+    flex: 0 0 auto !important;
+    width: 33.333333% !important;
+}
+body.device-desktop .col-lg-6 {
+    flex: 0 0 auto !important;
+    width: 50% !important;
 }
 body.device-desktop .col-lg-8 {
-    flex: 0 0 66.666%;
-    max-width: 66.666%;
+    flex: 0 0 auto !important;
+    width: 66.666667% !important;
 }
 body.device-desktop .col-lg-12 {
-    flex: 0 0 100%;
-    max-width: 100%;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+}
+
+/* Large desktop (1400px+): even bigger cards */
+@media (min-width: 1400px) {
+    body.device-desktop .container { max-width: 1400px; }
+    body.device-desktop .most-popular .item img { height: 240px; }
+    body.device-desktop .featured-games .item img { height: 240px; }
+    body.device-desktop .live-stream .item .thumb img { height: 240px; }
+    body.device-desktop .clips .item .thumb img { height: 220px; }
 }
 
 
@@ -978,30 +1046,50 @@ body.device-tablet .header-area .main-nav .nav li form button {
     color: var(--srfv-primary) !important;
 }
 
-/* Tablet grid columns (force 2-3 cols where appropriate) */
+/* Tablet cards */
+body.device-tablet .most-popular .item {
+    padding: 14px;
+    border-radius: 14px;
+}
+body.device-tablet .most-popular .item h4 {
+    font-size: 13px;
+}
+body.device-tablet .card {
+    border-radius: 14px !important;
+}
+body.device-tablet .card-body {
+    padding: 20px !important;
+}
+
+/* Tablet grid columns (Bootstrap 5 syntax: use width) */
 body.device-tablet .col-md-4 {
-    flex: 0 0 33.333%;
-    max-width: 33.333%;
+    flex: 0 0 auto !important;
+    width: 33.333333% !important;
 }
 body.device-tablet .col-md-5 {
-    flex: 0 0 41.666%;
-    max-width: 41.666%;
+    flex: 0 0 auto !important;
+    width: 41.666667% !important;
 }
 body.device-tablet .col-md-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
+    flex: 0 0 auto !important;
+    width: 50% !important;
 }
 body.device-tablet .col-md-7 {
-    flex: 0 0 58.333%;
-    max-width: 58.333%;
+    flex: 0 0 auto !important;
+    width: 58.333333% !important;
 }
 body.device-tablet .col-md-10 {
-    flex: 0 0 83.333%;
-    max-width: 83.333%;
+    flex: 0 0 auto !important;
+    width: 83.333333% !important;
 }
 body.device-tablet .col-md-12 {
-    flex: 0 0 100%;
-    max-width: 100%;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+}
+/* Force col-lg-* to behave as full-width on tablet */
+body.device-tablet .row > [class*="col-lg-"]:not([class*="col-md-"]) {
+    flex: 0 0 auto !important;
+    width: 100% !important;
 }
 
 
@@ -1189,15 +1277,27 @@ body.device-mobile .header-area .main-nav .nav li form button {
     color: var(--srfv-primary) !important;
 }
 
-/* Mobile grid columns (force single/dual column) */
+/* Mobile cards */
+body.device-mobile .most-popular .item {
+    padding: 12px;
+    border-radius: 12px;
+}
+body.device-mobile .most-popular .item h4 {
+    font-size: 13px;
+}
+body.device-mobile .card {
+    border-radius: 12px !important;
+}
+
+/* Mobile grid columns (Bootstrap 5 syntax: use width) */
 body.device-mobile .col-sm-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
+    flex: 0 0 auto !important;
+    width: 50% !important;
 }
 body.device-mobile .row > [class*="col-lg-"],
 body.device-mobile .row > [class*="col-md-"]:not([class*="col-sm-"]) {
-    flex: 0 0 100%;
-    max-width: 100%;
+    flex: 0 0 auto !important;
+    width: 100% !important;
 }
 
 /* Small mobile extra compaction */
