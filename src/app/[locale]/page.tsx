@@ -33,9 +33,9 @@ const movies = [
 ];
 
 const services = [
-  { img: '/assets/images/service-01.jpg', titleKey: 'serviceFreePlay' as const,    descKey: 'serviceFreePlayDesc' as const },
-  { img: '/assets/images/service-02.jpg', titleKey: 'serviceMovies' as const,      descKey: 'serviceMoviesDesc' as const },
-  { img: '/assets/images/service-03.jpg', titleKey: 'serviceCommunityArt' as const, descKey: 'serviceCommunityArtDesc' as const },
+  { img: '/assets/images/gato-buxa.jpg', titleKey: 'serviceFreePlay' as const,    descKey: 'serviceFreePlayDesc' as const },
+  { img: '/assets/images/bolsonaro.jpg', titleKey: 'serviceMovies' as const,      descKey: 'serviceMoviesDesc' as const },
+  { img: '/assets/images/coisas.jpg', titleKey: 'serviceCommunityArt' as const, descKey: 'serviceCommunityArtDesc' as const },
 ];
 
 /* ── page ─────────────────────────────────────────────────── */
