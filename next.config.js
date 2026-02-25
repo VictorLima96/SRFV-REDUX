@@ -15,6 +15,7 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() || 'https://cegiaxwwaiwtomjqsdmq.supabase.co',
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim() || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNlZ2lheHd3YWl3dG9tanFzZG1xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NDY2MDcsImV4cCI6MjA4NzUyMjYwN30.DUmUZEFPz22Icnlzd_HemfxCP8qokEBNblfsrrOCyZQ',
+    SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY?.trim() || 'REDACTED_SERVICE_ROLE_KEY',
   },
 };
 

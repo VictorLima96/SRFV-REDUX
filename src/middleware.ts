@@ -39,6 +39,13 @@ export default function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  // Handle old /alterarsenha route → /update (any locale)
+  if (pathname.endsWith('/alterarsenha')) {
+    const url = request.nextUrl.clone();
+    url.pathname = pathname.replace('/alterarsenha', '/update');
+    return NextResponse.redirect(url);
+  }
+
   return intlMiddleware(request);
 }
 

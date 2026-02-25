@@ -94,21 +94,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (!supabase) return { url: null, error: 'Supabase not configured' };
     if (!user) return { url: null, error: 'User not authenticated' };
 
-    const ext = file.name.split('.').pop()?.toLowerCase() || 'jpg';
-    const path = `${user.id}/${type}.${ext}`;
+    // Get the current session token
+    const { data: { session: currentSession } } = await supabase.auth.getSession();
+    if (!currentSession?.access_token) return { url: null, error: 'No active session' };
 
-    const { error } = await supabase.storage
-      .from('avatars')
-      .upload(path, file, { upsert: true, contentType: file.type });
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('type', type);
 
-    if (error) return { url: null, error: error.message };
-
-    const { data: { publicUrl } } = supabase.storage
-      .from('avatars')
-      .getPublicUrl(path);
-
-    // Cache-busting param so browser loads the new image
-    return { url: `${publicUrl}?t=${Date.now()}`, error: null };
+    try {
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${currentSession.access_token}` },
+        body: formData,
+      });
+      const data = await res.json();
+      if (!res.ok) return { url: null, error: data.error || 'Upload failed' };
+      return { url: data.url, error: null };
+    } catch (err: any) {
+      return { url: null, error: err.message || 'Upload failed' };
+    }
   };
 
   return (

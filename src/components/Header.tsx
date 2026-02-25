@@ -106,7 +106,7 @@ export default function Header() {
         <div className="hidden lg:flex items-center gap-3 ml-2">
           {user ? (
             <>
-              <Link href="/alterarsenha" className="flex items-center gap-2 text-sm text-srfv-primary hover:underline">
+              <Link href="/update" className="flex items-center gap-2 text-sm text-srfv-primary hover:underline">
                 {avatarUrl ? (
                   <img src={avatarUrl} alt="Avatar" className="w-7 h-7 rounded-full object-cover border border-srfv-primary" />
                 ) : (
@@ -178,7 +178,7 @@ export default function Header() {
           <div className="pt-3 border-t border-srfv-border flex gap-3">
             {user ? (
               <>
-                <Link href="/alterarsenha" onClick={() => setMenuOpen(false)} className="flex items-center gap-2 text-sm text-srfv-primary">
+                <Link href="/update" onClick={() => setMenuOpen(false)} className="flex items-center gap-2 text-sm text-srfv-primary">
                   {avatarUrl ? (
                     <img src={avatarUrl} alt="Avatar" className="w-7 h-7 rounded-full object-cover border border-srfv-primary" />
                   ) : (
