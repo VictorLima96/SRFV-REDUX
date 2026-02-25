@@ -4,7 +4,7 @@
           <!-- ***** Banner Start ***** -->
           <div class="main-banner">
             <div class="row">
-              <div class="col-lg-8 col-md-10">
+              <div class="col-xxl-7 col-xl-8 col-lg-9 col-md-10">
                 <div class="header-text">
                   <h6>Bem-Vindo ao SRFV Games</h6>
                   <h4><em>Jogo em Destaque</em> Resident Evil 3 - Nemesis</h4>
@@ -25,7 +25,7 @@
                   <h4><em>Artes Populares</em> Agora</h4>
                 </div>
                 <div class="row">
-                  <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                     <div class="item">
                         <img src="{{ asset('assets/arts/a.png') }}" alt="">
                       <div class="hover-effect">
@@ -38,7 +38,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/arts/b.webp') }}" alt="">
                       <a href="assets/arts/b.webp" download><i class="fa fa-download"></i></a>
@@ -49,7 +49,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/arts/e.webp') }}" alt="">
                       <a href="assets/arts/e.webp" download><i class="fa fa-download"></i></a>
@@ -60,7 +60,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/arts/c.webp') }}" alt="">
                       <a href="assets/arts/c.webp" download><i class="fa fa-download"></i></a>
@@ -71,7 +71,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/arts/k.webp') }}" alt="">
                       <a href="assets/arts/k.webp" download><i class="fa fa-download"></i></a>
@@ -82,7 +82,7 @@
                       </ul>
                     </div>
                   </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                           <div class="item">
                             <img src="{{ asset('assets/arts/m.webp') }}" alt="">
                             <a href="assets/arts/m.webp" download><i class="fa fa-download"></i></a>
@@ -93,7 +93,7 @@
                             </ul>
                           </div>
                         </div>
-                  <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/arts/n.webp') }}" alt="">
                       <a href="assets/arts/n.webp" download><i class="fa fa-download"></i></a>
@@ -104,7 +104,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/arts/s.webp') }}" alt="">
                       <a href="assets/arts/s.webp" download><i class="fa fa-download"></i></a>
@@ -173,7 +173,7 @@
                   <h4><em>Filmes em</em> Destaque</h4>
                 </div>
                 <div class="row">
-                  <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/movies/d.png') }}" alt="">
                       <h4>Donnie Darko<br><span>Pandora</span></h4>
@@ -183,7 +183,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/movies/c.png') }}" alt="">
                       <h4>Crash: o Filme<br><span>Sony</span></h4>
@@ -193,7 +193,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/movies/t.jpg') }}" alt="">
                       <h4>Tekken<br><span>Crystal Sky Pictures</span></h4>
@@ -203,7 +203,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/movies/s.jpg') }}" alt="">
                       <h4>Homem Aranha: lótus<br><span>GJK</span></h4>
@@ -213,7 +213,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/movies/p.png') }}" alt="">
                       <h4>Jogador nº 1<br><span>Discovery Global</span></h4>
@@ -223,7 +223,7 @@
                       </ul>
                     </div>
                   </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                           <div class="item">
                             <img src="{{ asset('assets/movies/r.jpg') }}" alt="">
                             <h4>Resident Evil<br><span>Viacom</span></h4>
@@ -233,7 +233,7 @@
                             </ul>
                           </div>
                         </div>
-                  <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/movies/m.webp') }}" alt="">
                       <h4>Super Mario Bros<br><span>Illumination</span></h4>
@@ -243,7 +243,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                     <div class="item">
                       <img src="{{ asset('assets/movies/s.webp') }}" alt="">
                       <h4>Sonic 2: o filme<br><span>Paramount Pictures</span></h4>
@@ -269,7 +269,7 @@
                       <h4><em>Como funciona</em> o Site</h4>
                     </div>
                     <div class="row">
-                      <div class="col-lg-4 col-md-6 mb-3">
+                      <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 mb-3">
                         <div class="item">
                           <div class="icon">
                             <img src="{{ asset('assets/images/service-01.jpg') }}" alt="Jogos">
@@ -278,7 +278,7 @@
                           <p>A SRFV Games é o melhor site para você poder se divertir e jogar.</p>
                         </div>
                       </div>
-                      <div class="col-lg-4 col-md-6 mb-3">
+                      <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 mb-3">
                         <div class="item">
                           <div class="icon">
                             <img src="{{ asset('assets/images/service-02.jpg') }}" alt="Filmes">
@@ -287,7 +287,7 @@
                           <p>Além dos jogos, você poderá assistir aos melhores filmes.</p>
                         </div>
                       </div>
-                      <div class="col-lg-4 col-md-12 mb-3">
+                      <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 mb-3">
                         <div class="item">
                           <div class="icon">
                             <img src="{{ asset('assets/images/service-03.jpg') }}" alt="Artes">

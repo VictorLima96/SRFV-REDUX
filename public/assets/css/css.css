@@ -875,7 +875,34 @@ body.device-desktop .card-body {
     padding: 25px !important;
 }
 
-/* ===== DESKTOP GRID – Bootstrap 5 column overrides (use width, not max-width) ===== */
+/* ===== DESKTOP GRID – Bootstrap 5 column overrides (xl/xxl for desktop) ===== */
+/* xxl (≥1400px) - Desktop Grande */
+body.device-desktop .col-xxl-3 {
+    flex: 0 0 auto !important;
+    width: 25% !important;
+}
+body.device-desktop .col-xxl-4 {
+    flex: 0 0 auto !important;
+    width: 33.333333% !important;
+}
+body.device-desktop .col-xxl-7 {
+    flex: 0 0 auto !important;
+    width: 58.333333% !important;
+}
+/* xl (≥1200px) - Desktop Pequeno */
+body.device-desktop .col-xl-3 {
+    flex: 0 0 auto !important;
+    width: 25% !important;
+}
+body.device-desktop .col-xl-4 {
+    flex: 0 0 auto !important;
+    width: 33.333333% !important;
+}
+body.device-desktop .col-xl-8 {
+    flex: 0 0 auto !important;
+    width: 66.666667% !important;
+}
+/* lg fallback on desktop */
 body.device-desktop .col-lg-3 {
     flex: 0 0 auto !important;
     width: 25% !important;
@@ -891,6 +918,10 @@ body.device-desktop .col-lg-6 {
 body.device-desktop .col-lg-8 {
     flex: 0 0 auto !important;
     width: 66.666667% !important;
+}
+body.device-desktop .col-lg-9 {
+    flex: 0 0 auto !important;
+    width: 75% !important;
 }
 body.device-desktop .col-lg-12 {
     flex: 0 0 auto !important;
@@ -1062,6 +1093,24 @@ body.device-tablet .card-body {
 }
 
 /* Tablet grid columns (Bootstrap 5 syntax: use width) */
+/* lg (≥992px) - Tablet Grande */
+body.device-tablet .col-lg-4 {
+    flex: 0 0 auto !important;
+    width: 33.333333% !important;
+}
+body.device-tablet .col-lg-8 {
+    flex: 0 0 auto !important;
+    width: 66.666667% !important;
+}
+body.device-tablet .col-lg-9 {
+    flex: 0 0 auto !important;
+    width: 75% !important;
+}
+body.device-tablet .col-lg-12 {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+}
+/* md (≥768px) - Tablet Pequeno */
 body.device-tablet .col-md-4 {
     flex: 0 0 auto !important;
     width: 33.333333% !important;
@@ -1086,8 +1135,13 @@ body.device-tablet .col-md-12 {
     flex: 0 0 auto !important;
     width: 100% !important;
 }
-/* Force col-lg-* to behave as full-width on tablet */
-body.device-tablet .row > [class*="col-lg-"]:not([class*="col-md-"]) {
+/* sm fallback on tablet */
+body.device-tablet .col-sm-6 {
+    flex: 0 0 auto !important;
+    width: 50% !important;
+}
+/* Force col-xl/xxl to fall back to col-lg on tablet */
+body.device-tablet .row > [class*="col-xxl-"]:not([class*="col-lg-"]):not([class*="col-md-"]) {
     flex: 0 0 auto !important;
     width: 100% !important;
 }
@@ -1294,6 +1348,9 @@ body.device-mobile .col-sm-6 {
     flex: 0 0 auto !important;
     width: 50% !important;
 }
+/* Reset all larger breakpoint columns to full-width on mobile */
+body.device-mobile .row > [class*="col-xxl-"],
+body.device-mobile .row > [class*="col-xl-"],
 body.device-mobile .row > [class*="col-lg-"],
 body.device-mobile .row > [class*="col-md-"]:not([class*="col-sm-"]) {
     flex: 0 0 auto !important;
