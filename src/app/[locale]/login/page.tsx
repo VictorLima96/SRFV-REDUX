@@ -71,7 +71,7 @@ export default function LoginPage() {
         </form>
 
         <div className="mt-6 text-center space-y-2">
-          <Link href="/alterarsenha" className="text-sm text-srfv-text-muted hover:text-srfv-primary transition-colors">
+          <Link href="/update" className="text-sm text-srfv-text-muted hover:text-srfv-primary transition-colors">
             {t('forgotPassword')}
           </Link>
           <p className="text-sm text-srfv-text-muted">
