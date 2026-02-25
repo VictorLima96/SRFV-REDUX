@@ -707,372 +707,558 @@ footer p a:hover {
 
 
 /* ===========================================================
-   RESPONSIVE BREAKPOINTS
+   DEVICE-SPECIFIC LAYOUTS
+   Controlled by device-detect.js → body.device-desktop / tablet / mobile
+   High-specificity selectors to override template CSS conflicts
    =========================================================== */
 
-/* ===== DESKTOP (>= 1200px) ===== */
-@media (min-width: 1200px) {
-    .container {
-        max-width: 1200px;
-    }
-    body .page-content {
-        padding: 40px;
-    }
-    .most-popular .item img {
-        height: 200px;
+
+/* =============================================================
+   1. DESKTOP LAYOUT  (body.device-desktop)
+   Full multi-column grid, large banner, horizontal gaming table
+   ============================================================= */
+
+body.device-desktop .page-content {
+    padding: 40px;
+    margin-top: 110px;
+}
+body.device-desktop .container {
+    max-width: 1200px;
+}
+
+/* Banner – desktop */
+body.device-desktop .main-banner {
+    padding: 80px 60px;
+    min-height: 380px;
+}
+body.device-desktop .main-banner h4 {
+    font-size: 45px;
+}
+body.device-desktop .main-banner h6 {
+    font-size: 20px;
+}
+
+/* Headings – desktop */
+body.device-desktop .heading-section h4 {
+    font-size: 22px;
+}
+
+/* Most Popular grid – 4 cols, tall images */
+body.device-desktop .most-popular .item img {
+    height: 200px;
+}
+
+/* Featured games / live stream – full height images */
+body.device-desktop .featured-games .item img {
+    height: 200px;
+}
+body.device-desktop .live-stream .item .thumb img {
+    height: 200px;
+}
+body.device-desktop .clips .item .thumb img {
+    height: 180px;
+}
+
+/* Gaming Library – FORCE horizontal row (overrides template 992px rule) */
+body.device-desktop .gaming-library .item ul {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    gap: 10px;
+}
+body.device-desktop .gaming-library .item ul li {
+    display: block !important;
+    width: auto !important;
+    flex: 1;
+    font-size: 14px;
+    text-align: left !important;
+}
+body.device-desktop .gaming-library .item ul li:first-child {
+    flex: 0 0 80px;
+}
+body.device-desktop .gaming-library .item ul li:last-child {
+    flex: 0 0 auto;
+    text-align: right !important;
+}
+body.device-desktop .gaming-library .item ul li img.templatemo-item {
+    width: 70px !important;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+/* Start stream – 3 cols across */
+body.device-desktop .start-stream .item {
+    min-height: 200px;
+}
+
+/* Sidebar sections stay beside main */
+body.device-desktop .top-downloaded,
+body.device-desktop .top-streamers {
+    max-height: none;
+    min-height: auto;
+}
+
+/* Profile page */
+body.device-desktop .main-profile > .row > .col-lg-4:first-child img {
+    max-height: 250px;
+}
+
+/* Other games – horizontal items */
+body.device-desktop .other-games .item img.templatemo-item {
+    float: left !important;
+    margin-right: 15px;
+}
+body.device-desktop .other-games .item h4 {
+    text-align: left;
+    padding-top: 15px;
+}
+body.device-desktop .other-games ul {
+    position: absolute;
+    right: 0;
+    top: 15px;
+}
+
+/* Desktop grid columns override (ensure 4 cols on large screens) */
+body.device-desktop .col-lg-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+body.device-desktop .col-lg-4 {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+}
+body.device-desktop .col-lg-8 {
+    flex: 0 0 66.666%;
+    max-width: 66.666%;
+}
+body.device-desktop .col-lg-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+
+/* =============================================================
+   2. TABLET LAYOUT  (body.device-tablet)
+   2-3 column grid, compact banner, wrapped gaming table
+   ============================================================= */
+
+body.device-tablet .page-content {
+    margin-top: 95px;
+    padding: 25px;
+}
+
+/* Banner – tablet */
+body.device-tablet .main-banner {
+    padding: 50px 35px;
+    min-height: 300px;
+}
+body.device-tablet .main-banner h4 {
+    font-size: 30px;
+}
+body.device-tablet .main-banner h6 {
+    font-size: 17px;
+}
+
+/* Headings – tablet */
+body.device-tablet .heading-section h4 {
+    font-size: 20px;
+}
+
+/* Most Popular grid – reduce image height */
+body.device-tablet .most-popular .item img {
+    height: 170px;
+}
+
+/* Featured/live sections */
+body.device-tablet .featured-games {
+    margin-bottom: 30px;
+}
+body.device-tablet .featured-games .item img {
+    height: 180px;
+}
+body.device-tablet .live-stream .item .thumb img {
+    height: 180px;
+}
+body.device-tablet .clips .item .thumb img {
+    height: 160px;
+}
+
+/* Gaming Library – wrapped flex (overrides template 992px rule) */
+body.device-tablet .gaming-library .item ul {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    align-items: center;
+}
+body.device-tablet .gaming-library .item ul li {
+    display: block !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    text-align: left !important;
+}
+body.device-tablet .gaming-library .item ul li:first-child {
+    flex: 0 0 70px !important;
+}
+body.device-tablet .gaming-library .item ul li:last-child {
+    flex: 0 0 100% !important;
+    text-align: center !important;
+    margin-top: 5px !important;
+}
+body.device-tablet .gaming-library .item ul li img.templatemo-item {
+    width: 60px !important;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+/* Start stream */
+body.device-tablet .start-stream .item {
+    min-height: 180px;
+}
+
+/* Sidebars go below main on tablet */
+body.device-tablet .top-downloaded,
+body.device-tablet .top-streamers {
+    margin-top: 30px;
+    max-height: none !important;
+    min-height: auto !important;
+}
+body.device-tablet .top-streamers ul li .main-button {
+    float: none;
+    margin-top: 10px;
+}
+body.device-tablet .top-streamers ul li .main-button a {
+    width: 100%;
+    text-align: center;
+}
+
+/* Profile / Art page – tablet */
+body.device-tablet .main-profile > .row > .col-lg-4:first-child img {
+    max-height: 200px;
+    margin-bottom: 20px;
+}
+body.device-tablet .main-profile .main-info {
+    margin-bottom: 20px;
+}
+
+/* Embed */
+body.device-tablet .embed-responsive-container iframe {
+    aspect-ratio: 16/9;
+}
+
+/* Tablet nav – hamburger menu */
+body.device-tablet .header-area .main-nav .nav li {
+    background: var(--srfv-bg-darker) !important;
+    border-bottom: 1px solid var(--srfv-border) !important;
+}
+body.device-tablet .header-area .main-nav .nav li:first-child {
+    border-top: 1px solid var(--srfv-border) !important;
+}
+body.device-tablet .header-area .main-nav .nav li a {
+    background: var(--srfv-bg-darker) !important;
+    color: #fff !important;
+}
+body.device-tablet .header-area .main-nav .nav li a:hover,
+body.device-tablet .header-area .main-nav .nav li a.active {
+    color: var(--srfv-primary) !important;
+}
+body.device-tablet .header-area {
+    background-color: var(--srfv-bg-dark) !important;
+}
+body.device-tablet .header-area .main-nav .nav li form button {
+    width: 100%;
+    text-align: center;
+    height: 50px !important;
+    line-height: 50px !important;
+    padding: 0 !important;
+    font-size: 14px;
+    color: var(--srfv-primary) !important;
+}
+
+/* Tablet grid columns (force 2-3 cols where appropriate) */
+body.device-tablet .col-md-4 {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+}
+body.device-tablet .col-md-5 {
+    flex: 0 0 41.666%;
+    max-width: 41.666%;
+}
+body.device-tablet .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+body.device-tablet .col-md-7 {
+    flex: 0 0 58.333%;
+    max-width: 58.333%;
+}
+body.device-tablet .col-md-10 {
+    flex: 0 0 83.333%;
+    max-width: 83.333%;
+}
+body.device-tablet .col-md-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+
+/* =============================================================
+   3. MOBILE LAYOUT  (body.device-mobile)
+   Single column, stacked vertically, compact everything
+   ============================================================= */
+
+body.device-mobile .page-content {
+    margin-top: 90px;
+    padding: 15px;
+    border-radius: 16px;
+}
+
+/* Banner – mobile: centered text */
+body.device-mobile .main-banner {
+    padding: 35px 25px;
+    min-height: 250px;
+    text-align: center;
+}
+body.device-mobile .main-banner h4 {
+    font-size: 22px;
+}
+body.device-mobile .main-banner h6 {
+    font-size: 15px;
+}
+body.device-mobile .main-banner::before {
+    background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+}
+
+/* Headings – mobile */
+body.device-mobile .heading-section h4 {
+    font-size: 18px;
+}
+
+/* Sections – compact padding */
+body.device-mobile .most-popular,
+body.device-mobile .gaming-library,
+body.device-mobile .live-stream,
+body.device-mobile .start-stream,
+body.device-mobile .other-games {
+    padding: 15px;
+    border-radius: 16px;
+}
+body.device-mobile .most-popular {
+    margin-top: 25px;
+}
+body.device-mobile .most-popular .item img {
+    height: 160px;
+}
+
+/* Featured/live sections */
+body.device-mobile .featured-games {
+    margin-bottom: 30px;
+}
+body.device-mobile .featured-games .item img {
+    height: 170px;
+}
+body.device-mobile .live-stream .item .thumb img {
+    height: 170px;
+}
+body.device-mobile .clips .item .thumb img {
+    height: 150px;
+}
+
+/* Gaming Library – FORCE vertical stack (overrides template rules) */
+body.device-mobile .gaming-library .item ul {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+    gap: 5px !important;
+}
+body.device-mobile .gaming-library .item ul li {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    flex: none !important;
+}
+body.device-mobile .gaming-library .item ul li:first-child {
+    flex: none !important;
+}
+body.device-mobile .gaming-library .item ul li:last-child {
+    text-align: center !important;
+}
+body.device-mobile .gaming-library .item ul li img.templatemo-item {
+    margin: 0 auto;
+    display: block;
+}
+
+/* Cards – mobile */
+body.device-mobile .card {
+    margin: 0 5px;
+}
+body.device-mobile .card-body {
+    padding: 20px !important;
+}
+
+/* Start stream */
+body.device-mobile .start-stream .item {
+    min-height: auto;
+    margin-bottom: 15px;
+}
+
+/* Embed */
+body.device-mobile .embed-responsive-container iframe {
+    aspect-ratio: 16/9;
+}
+
+/* Profile */
+body.device-mobile .main-profile > .row > .col-lg-4:first-child img {
+    max-height: 200px;
+    margin-bottom: 15px;
+}
+body.device-mobile .main-profile .main-info {
+    margin-bottom: 20px;
+}
+
+/* Sidebars */
+body.device-mobile .top-downloaded,
+body.device-mobile .top-streamers {
+    margin-top: 30px;
+    max-height: none !important;
+    min-height: auto !important;
+}
+body.device-mobile .top-streamers ul li .main-button {
+    float: none;
+    margin-top: 10px;
+}
+body.device-mobile .top-streamers ul li .main-button a {
+    width: 100%;
+    text-align: center;
+}
+
+/* Other games – stack vertically */
+body.device-mobile .other-games .item {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+body.device-mobile .other-games .item img.templatemo-item {
+    float: none !important;
+    display: block;
+    margin: 0 auto 10px;
+}
+body.device-mobile .other-games .item h4 {
+    text-align: center;
+    padding-top: 0;
+}
+body.device-mobile .other-games .item span {
+    text-align: center;
+    display: block;
+}
+body.device-mobile .other-games ul {
+    position: static;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Mobile nav – hamburger */
+body.device-mobile .header-area .main-nav .nav li {
+    background: var(--srfv-bg-darker) !important;
+    border-bottom: 1px solid var(--srfv-border) !important;
+}
+body.device-mobile .header-area .main-nav .nav li:first-child {
+    border-top: 1px solid var(--srfv-border) !important;
+}
+body.device-mobile .header-area .main-nav .nav li a {
+    background: var(--srfv-bg-darker) !important;
+    color: #fff !important;
+}
+body.device-mobile .header-area .main-nav .nav li a:hover,
+body.device-mobile .header-area .main-nav .nav li a.active {
+    color: var(--srfv-primary) !important;
+}
+body.device-mobile .header-area {
+    background-color: var(--srfv-bg-dark) !important;
+}
+body.device-mobile .header-area .main-nav .nav li form button {
+    width: 100%;
+    text-align: center;
+    height: 50px !important;
+    line-height: 50px !important;
+    padding: 0 !important;
+    font-size: 14px;
+    color: var(--srfv-primary) !important;
+}
+
+/* Mobile grid columns (force single/dual column) */
+body.device-mobile .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+body.device-mobile .row > [class*="col-lg-"],
+body.device-mobile .row > [class*="col-md-"]:not([class*="col-sm-"]) {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* Small mobile extra compaction */
+@media (max-width: 575px) {
+    body.device-mobile .main-banner h4 { font-size: 18px; }
+    body.device-mobile .main-banner h6 { font-size: 13px; }
+    body.device-mobile .heading-section h4 { font-size: 16px; }
+    body.device-mobile .most-popular .item { padding: 12px; }
+    body.device-mobile .most-popular .item img { height: 140px; }
+    body.device-mobile .card-body h2 { font-size: 20px; }
+    body.device-mobile .form-control-lg { font-size: 14px; padding: 8px 12px; }
+    body.device-mobile .btn-lg { font-size: 14px; padding: 8px 25px; }
+    /* Single column on very small screens */
+    body.device-mobile .col-sm-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
     }
 }
 
-/* ===== MEDIUM DESKTOP / SMALL LAPTOP (992px - 1199px) ===== */
-@media (min-width: 992px) and (max-width: 1199px) {
-    body .page-content {
-        padding: 30px;
-    }
-    .main-banner {
-        padding: 60px 40px;
-    }
-    .main-banner h4 {
-        font-size: 36px;
-    }
-    .most-popular .item img {
-        height: 170px;
-    }
-    .featured-games .item img {
-        height: 180px;
-    }
-    .live-stream .item .thumb img {
-        height: 180px;
-    }
-    /* Gaming library: slightly smaller text on medium desktop */
-    .gaming-library .item ul li h4 {
-        font-size: 13px;
-    }
-    .gaming-library .item ul li span {
-        font-size: 12px;
-    }
-    .gaming-library .item ul li:first-child {
-        flex: 0 0 70px;
-    }
-    .gaming-library .item ul li img.templatemo-item {
-        width: 60px !important;
-        height: 60px;
-    }
-}
 
-/* ===== NAV MOBILE (<=992px) ===== */
+/* =============================================================
+   4. FALLBACK @media queries (when JS disabled / not loaded yet)
+   ============================================================= */
+
+/* Nav hamburger fallback */
 @media (max-width: 992px) {
-    .header-area .main-nav .nav li {
+    body:not(.device-desktop):not(.device-tablet):not(.device-mobile) .header-area .main-nav .nav li {
         background: var(--srfv-bg-darker) !important;
         border-bottom: 1px solid var(--srfv-border) !important;
     }
-    .header-area .main-nav .nav li:first-child {
-        border-top: 1px solid var(--srfv-border) !important;
-    }
-    .header-area .main-nav .nav li a {
+    body:not(.device-desktop):not(.device-tablet):not(.device-mobile) .header-area .main-nav .nav li a {
         background: var(--srfv-bg-darker) !important;
         color: #fff !important;
     }
-    .header-area .main-nav .nav li a:hover,
-    .header-area .main-nav .nav li a.active {
-        color: var(--srfv-primary) !important;
-    }
-    .header-area {
+    body:not(.device-desktop):not(.device-tablet):not(.device-mobile) .header-area {
         background-color: var(--srfv-bg-dark) !important;
     }
-    .header-area .main-nav .nav li form button {
-        width: 100%;
-        text-align: center;
-        height: 50px !important;
-        line-height: 50px !important;
-        padding: 0 !important;
-        font-size: 14px;
-        color: var(--srfv-primary) !important;
-    }
 }
 
-/* ===== TABLET (768px - 991px) ===== */
-@media (min-width: 768px) and (max-width: 991px) {
-    body .page-content {
-        margin-top: 95px;
-        padding: 25px;
-    }
-
-    /* Banner */
-    .main-banner {
-        padding: 50px 35px;
-        min-height: 300px;
-    }
-    .main-banner h4 {
-        font-size: 30px;
-    }
-    .main-banner h6 {
-        font-size: 17px;
-    }
-
-    /* Headings */
-    .heading-section h4 {
-        font-size: 20px;
-    }
-
-    /* Featured Games: carousel takes full width, sidebar below */
-    .featured-games {
-        margin-bottom: 30px;
-    }
-
-    /* Most Popular: 3 columns on tablet */
-    .most-popular .item img {
-        height: 170px;
-    }
-
-    /* Gaming library: wrap on tablet */
-    .gaming-library .item ul {
-        flex-wrap: wrap !important;
-        gap: 8px !important;
-    }
-    .gaming-library .item ul li {
-        flex: 0 0 auto !important;
-        width: auto !important;
-    }
-    .gaming-library .item ul li:first-child {
-        flex: 0 0 70px !important;
-    }
-    .gaming-library .item ul li:last-child {
-        flex: 0 0 100% !important;
-        text-align: center !important;
-        margin-top: 5px !important;
-    }
-    .gaming-library .item ul li img.templatemo-item {
-        width: 60px !important;
-        height: 60px;
-    }
-
-    /* Live stream: 2 cols */
-    .live-stream .item .thumb img {
-        height: 180px;
-    }
-
-    /* Start stream: 2 cols is fine (col-md-6) */
-    .start-stream .item {
-        min-height: 180px;
-    }
-
-    /* Top downloaded / streamers: below their sections */
-    .top-downloaded,
-    .top-streamers {
-        margin-top: 30px;
-        max-height: none !important;
-        min-height: auto !important;
-    }
-    .top-streamers ul li .main-button {
-        float: none;
-        margin-top: 10px;
-    }
-    .top-streamers ul li .main-button a {
-        width: 100%;
-        text-align: center;
-    }
-
-    /* Profile / Art page */
-    .main-profile > .row > .col-lg-4:first-child img {
-        max-height: 200px;
-        margin-bottom: 20px;
-    }
-    .main-profile .main-info {
-        margin-bottom: 20px;
-    }
-
-    /* Clips */
-    .clips .item .thumb img {
-        height: 160px;
-    }
-
-    /* Embed */
-    .embed-responsive-container iframe {
-        aspect-ratio: 16/9;
-    }
-}
-
-/* ===== MOBILE (< 768px) ===== */
+/* Mobile fallback */
 @media (max-width: 767px) {
-    body .page-content {
+    body:not(.device-desktop):not(.device-tablet):not(.device-mobile) .page-content {
         margin-top: 90px;
         padding: 15px;
         border-radius: 16px;
     }
-
-    /* Banner */
-    .main-banner {
+    body:not(.device-desktop):not(.device-tablet):not(.device-mobile) .main-banner {
         padding: 35px 25px;
         min-height: 250px;
         text-align: center;
     }
-    .main-banner h4 {
+    body:not(.device-desktop):not(.device-tablet):not(.device-mobile) .main-banner h4 {
         font-size: 22px;
     }
-    .main-banner h6 {
-        font-size: 15px;
-    }
-    .main-banner::before {
-        background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
-    }
-
-    /* Sections */
-    .most-popular,
-    .gaming-library,
-    .live-stream,
-    .start-stream,
-    .other-games {
-        padding: 15px;
-        border-radius: 16px;
-    }
-    .most-popular {
-        margin-top: 25px;
-    }
-    .most-popular .item img {
-        height: 160px;
-    }
-
-    /* Headings */
-    .heading-section h4 {
-        font-size: 18px;
-    }
-
-    /* Gaming library table mobile: stack vertically */
-    .gaming-library .item ul {
+    body:not(.device-desktop):not(.device-tablet):not(.device-mobile) .gaming-library .item ul {
         flex-direction: column !important;
         align-items: center !important;
-        text-align: center;
-        gap: 5px !important;
     }
-    .gaming-library .item ul li {
+    body:not(.device-desktop):not(.device-tablet):not(.device-mobile) .gaming-library .item ul li {
         width: 100% !important;
         text-align: center !important;
         flex: none !important;
-    }
-    .gaming-library .item ul li:first-child {
-        flex: none !important;
-    }
-    .gaming-library .item ul li:last-child {
-        text-align: center !important;
-    }
-    .gaming-library .item ul li img.templatemo-item {
-        margin: 0 auto;
-        display: block;
-    }
-
-    /* Cards */
-    .card {
-        margin: 0 5px;
-    }
-    .card-body {
-        padding: 20px !important;
-    }
-
-    /* Start stream */
-    .start-stream .item {
-        min-height: auto;
-        margin-bottom: 15px;
-    }
-
-    /* Featured games carousel */
-    .featured-games {
-        margin-bottom: 30px;
-    }
-    .featured-games .item img {
-        height: 170px;
-    }
-
-    /* Live stream grid */
-    .live-stream .item .thumb img {
-        height: 170px;
-    }
-
-    /* Clip grid */
-    .clips .item .thumb img {
-        height: 150px;
-    }
-
-    /* Embed */
-    .embed-responsive-container iframe {
-        aspect-ratio: 16/9;
-    }
-
-    /* Profile img */
-    .main-profile > .row > .col-lg-4:first-child img {
-        max-height: 200px;
-        margin-bottom: 15px;
-    }
-    .main-profile .main-info {
-        margin-bottom: 20px;
-    }
-
-    /* Top downloaded / streamers */
-    .top-downloaded,
-    .top-streamers {
-        margin-top: 30px;
-        max-height: none !important;
-        min-height: auto !important;
-    }
-    .top-streamers ul li .main-button {
-        float: none;
-        margin-top: 10px;
-    }
-    .top-streamers ul li .main-button a {
-        width: 100%;
-        text-align: center;
-    }
-
-    /* Other games: stack vertically */
-    .other-games .item {
-        padding-bottom: 15px;
-        margin-bottom: 15px;
-    }
-    .other-games .item img.templatemo-item {
-        float: none !important;
-        display: block;
-        margin: 0 auto 10px;
-    }
-    .other-games .item h4 {
-        text-align: center;
-        padding-top: 0;
-    }
-    .other-games .item span {
-        text-align: center;
-        display: block;
-    }
-    .other-games ul {
-        position: static;
-        text-align: center;
-        margin-top: 10px;
-    }
-}
-
-/* ===== SMALL MOBILE ( < 576px) ===== */
-@media (max-width: 575px) {
-    .main-banner h4 {
-        font-size: 18px;
-    }
-    .main-banner h6 {
-        font-size: 13px;
-    }
-    .heading-section h4 {
-        font-size: 16px;
-    }
-    .most-popular .item {
-        padding: 12px;
-    }
-    .most-popular .item img {
-        height: 140px;
-    }
-    .card-body h2 {
-        font-size: 20px;
-    }
-    .form-control-lg {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
-    .btn-lg {
-        font-size: 14px;
-        padding: 8px 25px;
     }
 }

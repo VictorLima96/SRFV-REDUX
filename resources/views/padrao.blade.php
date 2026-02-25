@@ -19,6 +19,15 @@
     <title>SRFV Games</title>
 </head>
 <body class="text-center text-white label-center d-flex flex-column min-vh-100">
+<!-- Device Detection: runs IMMEDIATELY to prevent layout flash -->
+<script>
+(function(){var u=navigator.userAgent||'',w=window.innerWidth||screen.width,d='desktop';
+if(/iPad|Android(?!.*Mobile)|Tablet|PlayBook|Silk|Kindle|SM-T|Tab/i.test(u)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1))d='tablet';
+else if(/iPhone|iPod|Android.*Mobile|webOS|BlackBerry|Opera Mini|IEMobile|Windows Phone/i.test(u))d='mobile';
+else if(w<768)d='mobile';else if(w<1024)d='tablet';
+document.body.classList.add('device-'+d);document.body.setAttribute('data-srfv-device',d);
+})();
+</script>
 
      <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
@@ -101,6 +110,7 @@
   <script src="{{ asset('assets/js/tabs.js') }}"></script>
   <script src="{{ asset('assets/js/popup.js') }}"></script>
   <script src="{{ asset('assets/js/custom.js') }}"></script>
+  <script src="{{ asset('assets/js/device-detect.js') }}"></script>
 </body>
 </html>
 
