@@ -12,7 +12,7 @@ interface AuthContextType {
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
   updateProfile: (data: { email?: string; password?: string; name?: string; avatar_url?: string; banner_url?: string; bio?: string }) => Promise<{ error: string | null }>;
-  uploadAvatar: (file: File) => Promise<{ url: string | null; error: string | null }>;
+  uploadFile: (file: File, type?: 'avatar' | 'banner') => Promise<{ url: string | null; error: string | null }>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -40,7 +40,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const signUp = async (email: string, password: string, name: string) => {
-    if (!supabase) return { error: 'Supabase não configurado' };
+    if (!supabase) return { error: 'Supabase not configured' };
     const { error } = await supabase.auth.signUp({
       email,
       password,
@@ -50,7 +50,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signIn = async (email: string, password: string) => {
-    if (!supabase) return { error: 'Supabase não configurado' };
+    if (!supabase) return { error: 'Supabase not configured' };
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     return { error: error?.message ?? null };
   };
@@ -60,7 +60,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const updateProfile = async (data: { email?: string; password?: string; name?: string; avatar_url?: string; banner_url?: string; bio?: string }) => {
-    if (!supabase) return { error: 'Supabase não configurado' };
+    if (!supabase) return { error: 'Supabase not configured' };
 
     // Build auth-level updates (email, password)
     const authUpdates: Record<string, unknown> = {};
@@ -79,19 +79,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
 
     if (Object.keys(authUpdates).length === 0) {
-      return { error: 'Nenhuma alteração detectada.' };
+      return { error: 'No changes detected.' };
     }
 
-    const { error } = await supabase.auth.updateUser(authUpdates);
+    const { error, data: updatedData } = await supabase.auth.updateUser(authUpdates);
+    // Refresh local user state immediately so UI updates
+    if (!error && updatedData?.user) {
+      setUser(updatedData.user);
+    }
     return { error: error?.message ?? null };
   };
 
-  const uploadAvatar = async (file: File): Promise<{ url: string | null; error: string | null }> => {
-    if (!supabase) return { url: null, error: 'Supabase não configurado' };
-    if (!user) return { url: null, error: 'Usuário não autenticado' };
+  const uploadFile = async (file: File, type: 'avatar' | 'banner' = 'avatar'): Promise<{ url: string | null; error: string | null }> => {
+    if (!supabase) return { url: null, error: 'Supabase not configured' };
+    if (!user) return { url: null, error: 'User not authenticated' };
 
-    const ext = file.name.split('.').pop();
-    const path = `${user.id}/avatar.${ext}`;
+    const ext = file.name.split('.').pop()?.toLowerCase() || 'jpg';
+    const path = `${user.id}/${type}.${ext}`;
 
     const { error } = await supabase.storage
       .from('avatars')
@@ -103,11 +107,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       .from('avatars')
       .getPublicUrl(path);
 
-    return { url: publicUrl, error: null };
+    // Cache-busting param so browser loads the new image
+    return { url: `${publicUrl}?t=${Date.now()}`, error: null };
   };
 
   return (
-    <AuthContext.Provider value={{ user, session, loading, signUp, signIn, signOut, updateProfile, uploadAvatar }}>
+    <AuthContext.Provider value={{ user, session, loading, signUp, signIn, signOut, updateProfile, uploadFile }}>
       {children}
     </AuthContext.Provider>
   );

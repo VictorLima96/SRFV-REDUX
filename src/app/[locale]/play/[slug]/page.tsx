@@ -1,28 +1,31 @@
 import { embeds } from '@/lib/embeds';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { notFound } from 'next/navigation';
+import { getTranslations } from 'next-intl/server';
 
 interface Props {
-  params: { slug: string };
+  params: { locale: string; slug: string };
 }
 
 export function generateStaticParams() {
   return Object.keys(embeds).map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props) {
   const embed = embeds[params.slug];
-  if (!embed) return { title: 'Não encontrado - SRFV Games' };
+  if (!embed) return { title: 'Not Found - SRFV Games' };
   return { title: `${embed.title} - SRFV Games` };
 }
 
-export default function PlayPage({ params }: Props) {
+export default async function PlayPage({ params }: Props) {
   const embed = embeds[params.slug];
   if (!embed) notFound();
 
+  const t = await getTranslations('Play');
+
   const isGame = embed.type === 'game';
   const backHref = isGame ? '/games1' : '/movies1';
-  const backLabel = isGame ? 'Voltar a Games' : 'Voltar a Filmes';
+  const backLabel = isGame ? t('backToGames') : t('backToMovies');
 
   return (
     <div className="space-y-4">
@@ -35,7 +38,7 @@ export default function PlayPage({ params }: Props) {
           <h1 className="text-xl font-bold mt-1">{embed.title}</h1>
         </div>
         <span className={`text-xs px-3 py-1 rounded-full font-semibold ${isGame ? 'bg-srfv-primary/20 text-srfv-primary' : 'bg-blue-500/20 text-blue-400'}`}>
-          {isGame ? 'GAME' : 'MOVIE'}
+          {isGame ? t('game') : t('movie')}
         </span>
       </div>
 
@@ -54,10 +57,7 @@ export default function PlayPage({ params }: Props) {
 
       {/* INFO */}
       <div className="text-center text-sm text-srfv-text-muted">
-        {isGame
-          ? 'Use o teclado para jogar. Clique no jogo para ativar o foco.'
-          : 'Clique no play para assistir o filme.'
-        }
+        {isGame ? t('gameInstructions') : t('movieInstructions')}
       </div>
     </div>
   );

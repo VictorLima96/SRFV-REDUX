@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import { getTranslations } from 'next-intl/server';
 
 const featured = [
   { img: '/assets/images/cr.webp', title: 'Crash Team Racing', desc: 'Naughty Dog, 1999', href: '/play/crash' },
@@ -28,12 +29,14 @@ const allGames = [
   { img: '/assets/images/tn3.jpg',   title: 'Tony Hawk 2',       href: '/play/tn2' },
 ];
 
-export default function GamesPage() {
+export default async function GamesPage() {
+  const t = await getTranslations('Games');
+
   return (
     <div className="space-y-12">
       {/* ═══ FEATURED ═══ */}
       <section>
-        <h1 className="text-2xl font-bold mb-6">Games <span className="heading-em">em Destaque</span></h1>
+        <h1 className="text-2xl font-bold mb-6">{t('featured')} <span className="heading-em">{t('featuredHighlight')}</span></h1>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {featured.map((g) => (
             <Link key={g.title} href={g.href} className="card-srfv group overflow-hidden">
@@ -50,14 +53,14 @@ export default function GamesPage() {
       <div className="flex flex-col lg:flex-row gap-8">
         {/* ═══ ALL GAMES GRID ═══ */}
         <section className="flex-1">
-          <h2 className="text-xl font-bold mb-6">Todos os <span className="heading-em">Games</span></h2>
+          <h2 className="text-xl font-bold mb-6">{t('allGames')} <span className="heading-em">{t('allGamesHighlight')}</span></h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4">
             {allGames.map((g) => (
               <Link key={g.title} href={g.href} className="card-srfv group overflow-hidden">
                 <div className="relative">
                   <Image src={g.img} alt={g.title} width={300} height={200} className="w-full h-40 xl:h-48 object-cover rounded-xl" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 rounded-xl">
-                    <span className="bg-srfv-primary text-white text-xs font-bold px-4 py-2 rounded-full">JOGAR</span>
+                    <span className="bg-srfv-primary text-white text-xs font-bold px-4 py-2 rounded-full">{t('play')}</span>
                   </div>
                 </div>
                 <p className="mt-2 text-sm font-medium text-center group-hover:text-srfv-primary transition-colors">{g.title}</p>
@@ -69,7 +72,7 @@ export default function GamesPage() {
         {/* ═══ SIDEBAR ═══ */}
         <aside className="w-full lg:w-72 flex-shrink-0">
           <div className="section-box">
-            <h3 className="font-bold mb-4">Top <span className="heading-em">Arts</span></h3>
+            <h3 className="font-bold mb-4">{t('topArts')} <span className="heading-em">{t('topArtsHighlight')}</span></h3>
             <div className="space-y-3">
               {sidebarArts.map((a, i) => (
                 <a key={a.title} href={a.img} download className="flex items-center gap-3 p-2 rounded-lg hover:bg-srfv-bg-dark transition-colors group">
@@ -77,7 +80,7 @@ export default function GamesPage() {
                   <Image src={a.img} alt={a.title} width={48} height={48} className="w-12 h-12 object-cover rounded-lg" />
                   <div>
                     <p className="text-sm font-medium group-hover:text-srfv-primary transition-colors">{a.title}</p>
-                    <p className="text-xs text-srfv-text-muted">{a.downloads.toLocaleString()} downloads</p>
+                    <p className="text-xs text-srfv-text-muted">{a.downloads.toLocaleString()} {t('downloads')}</p>
                   </div>
                 </a>
               ))}

@@ -1,11 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import { useRouter } from '@/i18n/navigation';
+import { Link } from '@/i18n/navigation';
 import { useAuth } from '@/lib/AuthContext';
+import { useTranslations } from 'next-intl';
 
 export default function SignupPage() {
+  const t = useTranslations('Signup');
   const { signUp } = useAuth();
   const router = useRouter();
   const [name, setName] = useState('');
@@ -18,7 +20,7 @@ export default function SignupPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!agreed) {
-      setError('Você deve concordar com os Termos de Serviço.');
+      setError(t('mustAgree'));
       return;
     }
     setError('');
@@ -36,7 +38,7 @@ export default function SignupPage() {
     <div className="flex items-center justify-center min-h-[60vh]">
       <div className="section-box w-full max-w-md">
         <h1 className="text-2xl font-bold text-center mb-6">
-          <span className="heading-em">Cadastrar</span>
+          <span className="heading-em">{t('title')}</span>
         </h1>
 
         {error && (
@@ -47,29 +49,29 @@ export default function SignupPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm text-srfv-text-secondary mb-1">Nome</label>
+            <label className="block text-sm text-srfv-text-secondary mb-1">{t('name')}</label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
               className="form-input"
-              placeholder="Seu nome"
+              placeholder={t('namePlaceholder')}
             />
           </div>
           <div>
-            <label className="block text-sm text-srfv-text-secondary mb-1">Email</label>
+            <label className="block text-sm text-srfv-text-secondary mb-1">{t('email')}</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
               className="form-input"
-              placeholder="seu@email.com"
+              placeholder={t('emailPlaceholder')}
             />
           </div>
           <div>
-            <label className="block text-sm text-srfv-text-secondary mb-1">Senha</label>
+            <label className="block text-sm text-srfv-text-secondary mb-1">{t('password')}</label>
             <input
               type="password"
               value={password}
@@ -77,7 +79,7 @@ export default function SignupPage() {
               required
               minLength={6}
               className="form-input"
-              placeholder="Mínimo 6 caracteres"
+              placeholder={t('passwordPlaceholder')}
             />
           </div>
 
@@ -89,21 +91,21 @@ export default function SignupPage() {
               className="mt-1 accent-srfv-primary"
             />
             <span className="text-xs text-srfv-text-muted">
-              Concordo com os{' '}
+              {t('agreeWith')}{' '}
               <a href="https://policies.google.com/terms?hl=pt-BR" target="_blank" rel="noopener noreferrer" className="text-srfv-primary hover:underline">
-                Termos de Serviço
+                {t('termsOfService')}
               </a>
             </span>
           </label>
 
           <button type="submit" disabled={loading} className="btn-primary-srfv w-full disabled:opacity-50">
-            {loading ? 'Registrando...' : 'Registrar'}
+            {loading ? t('submitting') : t('submit')}
           </button>
         </form>
 
         <p className="mt-6 text-center text-sm text-srfv-text-muted">
-          Já possui uma conta?{' '}
-          <Link href="/login" className="text-srfv-primary hover:underline">Login</Link>
+          {t('hasAccount')}{' '}
+          <Link href="/login" className="text-srfv-primary hover:underline">{t('loginLink')}</Link>
         </p>
       </div>
     </div>

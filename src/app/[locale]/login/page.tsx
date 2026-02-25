@@ -1,11 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import { useRouter } from '@/i18n/navigation';
+import { Link } from '@/i18n/navigation';
 import { useAuth } from '@/lib/AuthContext';
+import { useTranslations } from 'next-intl';
 
 export default function LoginPage() {
+  const t = useTranslations('Login');
   const { signIn } = useAuth();
   const router = useRouter();
   const [email, setEmail] = useState('');
@@ -30,7 +32,7 @@ export default function LoginPage() {
     <div className="flex items-center justify-center min-h-[60vh]">
       <div className="section-box w-full max-w-md">
         <h1 className="text-2xl font-bold text-center mb-6">
-          <span className="heading-em">Login</span>
+          <span className="heading-em">{t('title')}</span>
         </h1>
 
         {error && (
@@ -41,18 +43,18 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm text-srfv-text-secondary mb-1">Email</label>
+            <label className="block text-sm text-srfv-text-secondary mb-1">{t('email')}</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
               className="form-input"
-              placeholder="seu@email.com"
+              placeholder={t('emailPlaceholder')}
             />
           </div>
           <div>
-            <label className="block text-sm text-srfv-text-secondary mb-1">Senha</label>
+            <label className="block text-sm text-srfv-text-secondary mb-1">{t('password')}</label>
             <input
               type="password"
               value={password}
@@ -64,17 +66,17 @@ export default function LoginPage() {
           </div>
 
           <button type="submit" disabled={loading} className="btn-primary-srfv w-full disabled:opacity-50">
-            {loading ? 'Entrando...' : 'Login'}
+            {loading ? t('submitting') : t('submit')}
           </button>
         </form>
 
         <div className="mt-6 text-center space-y-2">
           <Link href="/alterarsenha" className="text-sm text-srfv-text-muted hover:text-srfv-primary transition-colors">
-            Esqueceu sua senha?
+            {t('forgotPassword')}
           </Link>
           <p className="text-sm text-srfv-text-muted">
-            Não possui uma conta?{' '}
-            <Link href="/signup" className="text-srfv-primary hover:underline">Cadastrar</Link>
+            {t('noAccount')}{' '}
+            <Link href="/signup" className="text-srfv-primary hover:underline">{t('signupLink')}</Link>
           </p>
         </div>
       </div>

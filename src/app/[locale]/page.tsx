@@ -1,23 +1,24 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import { getTranslations } from 'next-intl/server';
 
-/* ── static data ─────────────────────────────────────────────── */
+/* ── static data (titles are proper nouns, not translated) ── */
 
 const arts = [
-  { img: '/assets/arts/a.png',    title: 'Bumblebee',  href: '/assets/arts/a.png' },
-  { img: '/assets/arts/b.webp',   title: 'Bomberman',  href: '/assets/arts/b.webp' },
-  { img: '/assets/arts/e.webp',   title: 'Bob Esponja',href: '/assets/arts/e.webp' },
-  { img: '/assets/arts/c.webp',   title: 'Polygoth',   href: '/assets/arts/c.webp' },
-  { img: '/assets/arts/k.webp',   title: 'Knuckles',   href: '/assets/arts/k.webp' },
-  { img: '/assets/arts/m.webp',   title: 'Luigi',      href: '/assets/arts/m.webp' },
-  { img: '/assets/arts/n.webp',   title: 'Pizza Tower', href: '/assets/arts/n.webp' },
-  { img: '/assets/arts/s.webp',   title: 'Shadow',     href: '/assets/arts/s.webp' },
+  { img: '/assets/arts/a.png',    title: 'Bumblebee',   href: '/assets/arts/a.png' },
+  { img: '/assets/arts/b.webp',   title: 'Bomberman',   href: '/assets/arts/b.webp' },
+  { img: '/assets/arts/e.webp',   title: 'Bob Esponja', href: '/assets/arts/e.webp' },
+  { img: '/assets/arts/c.webp',   title: 'Polygoth',    href: '/assets/arts/c.webp' },
+  { img: '/assets/arts/k.webp',   title: 'Knuckles',    href: '/assets/arts/k.webp' },
+  { img: '/assets/arts/m.webp',   title: 'Luigi',       href: '/assets/arts/m.webp' },
+  { img: '/assets/arts/n.webp',   title: 'Pizza Tower',  href: '/assets/arts/n.webp' },
+  { img: '/assets/arts/s.webp',   title: 'Shadow',      href: '/assets/arts/s.webp' },
 ];
 
 const libraryGames = [
-  { img: '/assets/images/ms.jpg',  title: 'Metal Slug',     desc: 'Super Vehicle-001 — SNK, 1996', href: '/play/metal' },
-  { img: '/assets/images/cr.webp', title: 'Crash Team Racing', desc: 'Naughty Dog, 1999',           href: '/play/crash' },
-  { img: '/assets/images/te.webp', title: 'Tekken 3',       desc: 'Namco, 1997',                    href: '/play/tekken' },
+  { img: '/assets/images/ms.jpg',  title: 'Metal Slug',       desc: 'Super Vehicle-001 — SNK, 1996', href: '/play/metal' },
+  { img: '/assets/images/cr.webp', title: 'Crash Team Racing', desc: 'Naughty Dog, 1999',             href: '/play/crash' },
+  { img: '/assets/images/te.webp', title: 'Tekken 3',         desc: 'Namco, 1997',                   href: '/play/tekken' },
 ];
 
 const movies = [
@@ -32,27 +33,29 @@ const movies = [
 ];
 
 const services = [
-  { img: '/assets/images/service-01.jpg', title: 'Jogue Grátis',   desc: 'Jogos clássicos de PS1, Arcade e mais rodando direto no navegador.' },
-  { img: '/assets/images/service-02.jpg', title: 'Filmes Online',  desc: 'Assista filmes completos sobre games e cultura pop.' },
-  { img: '/assets/images/service-03.jpg', title: 'Arte da Comunidade', desc: 'Baixe e envie artes feitas pela comunidade SRFV.' },
+  { img: '/assets/images/service-01.jpg', titleKey: 'serviceFreePlay' as const,    descKey: 'serviceFreePlayDesc' as const },
+  { img: '/assets/images/service-02.jpg', titleKey: 'serviceMovies' as const,      descKey: 'serviceMoviesDesc' as const },
+  { img: '/assets/images/service-03.jpg', titleKey: 'serviceCommunityArt' as const, descKey: 'serviceCommunityArtDesc' as const },
 ];
 
-/* ── page ─────────────────────────────────────────────────────── */
+/* ── page ─────────────────────────────────────────────────── */
 
-export default function HomePage() {
+export default async function HomePage() {
+  const t = await getTranslations('Home');
+
   return (
     <div className="space-y-12">
       {/* ═══ BANNER ═══ */}
       <section className="section-box flex flex-col md:flex-row items-center gap-8">
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-3xl lg:text-4xl font-bold mb-4">
-            Bem-Vindo ao <span className="heading-em">SRFV Games</span>
+            {t('welcomeTo')} <span className="heading-em">SRFV Games</span>
           </h1>
           <p className="text-srfv-text-secondary mb-6 max-w-lg">
-            Jogue clássicos do PS1, assista filmes icônicos e baixe artes da comunidade — tudo grátis, direto no navegador.
+            {t('description')}
           </p>
           <Link href="/play/resident" className="btn-primary-srfv inline-block">
-            Jogar Resident Evil 3
+            {t('playCTA')}
           </Link>
         </div>
         <div className="w-full md:w-1/2 max-w-md">
@@ -70,8 +73,8 @@ export default function HomePage() {
       {/* ═══ POPULAR ARTS ═══ */}
       <section>
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-bold">Artes <span className="heading-em">Populares</span></h2>
-          <Link href="/art1" className="text-sm text-srfv-primary hover:underline">Ver todas &rarr;</Link>
+          <h2 className="text-xl font-bold">{t('popularArts')} <span className="heading-em">{t('popularArtsHighlight')}</span></h2>
+          <Link href="/art1" className="text-sm text-srfv-primary hover:underline">{t('viewAll')} &rarr;</Link>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {arts.map((a) => (
@@ -85,7 +88,7 @@ export default function HomePage() {
 
       {/* ═══ GAMING LIBRARY ═══ */}
       <section className="section-box">
-        <h2 className="text-xl font-bold mb-6">Biblioteca de <span className="heading-em">Games</span></h2>
+        <h2 className="text-xl font-bold mb-6">{t('gameLibrary')} <span className="heading-em">{t('gameLibraryHighlight')}</span></h2>
         <div className="space-y-4">
           {libraryGames.map((g) => (
             <Link key={g.title} href={g.href} className="flex items-center gap-4 p-3 rounded-srfv-sm bg-srfv-bg-dark hover:bg-srfv-bg-darker transition-colors group">
@@ -99,15 +102,15 @@ export default function HomePage() {
           ))}
         </div>
         <div className="mt-4 text-center">
-          <Link href="/games1" className="btn-outline-srfv inline-block">Ver todos os games</Link>
+          <Link href="/games1" className="btn-outline-srfv inline-block">{t('viewAllGames')}</Link>
         </div>
       </section>
 
       {/* ═══ FEATURED MOVIES ═══ */}
       <section>
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-bold">Filmes <span className="heading-em">em Destaque</span></h2>
-          <Link href="/movies1" className="text-sm text-srfv-primary hover:underline">Ver todos &rarr;</Link>
+          <h2 className="text-xl font-bold">{t('featuredMovies')} <span className="heading-em">{t('featuredMoviesHighlight')}</span></h2>
+          <Link href="/movies1" className="text-sm text-srfv-primary hover:underline">{t('viewAllMovies')} &rarr;</Link>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {movies.map((m) => (
@@ -126,18 +129,18 @@ export default function HomePage() {
 
       {/* ═══ HOW IT WORKS ═══ */}
       <section>
-        <h2 className="text-xl font-bold mb-6 text-center">Como <span className="heading-em">Funciona</span></h2>
+        <h2 className="text-xl font-bold mb-6 text-center">{t('howItWorks')} <span className="heading-em">{t('howItWorksHighlight')}</span></h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {services.map((s) => (
-            <div key={s.title} className="card-srfv text-center">
-              <Image src={s.img} alt={s.title} width={400} height={250} className="w-full h-44 object-cover rounded-xl mb-4" />
-              <h3 className="font-semibold mb-2">{s.title}</h3>
-              <p className="text-xs text-srfv-text-secondary">{s.desc}</p>
+            <div key={s.titleKey} className="card-srfv text-center">
+              <Image src={s.img} alt={t(s.titleKey)} width={400} height={250} className="w-full h-44 object-cover rounded-xl mb-4" />
+              <h3 className="font-semibold mb-2">{t(s.titleKey)}</h3>
+              <p className="text-xs text-srfv-text-secondary">{t(s.descKey)}</p>
             </div>
           ))}
         </div>
         <div className="mt-8 text-center">
-          <Link href="/login" className="btn-primary-srfv inline-block">Login / Cadastrar</Link>
+          <Link href="/login" className="btn-primary-srfv inline-block">{t('loginCTA')}</Link>
         </div>
       </section>
     </div>
