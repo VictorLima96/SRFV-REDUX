@@ -92,8 +92,8 @@ Crie um arquivo `.env.local` na raiz:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://seu-projeto.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=sua-anon-key
-SUPABASE_SERVICE_ROLE_KEY=sua-service-role-key
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sua-publishable-key
+SUPABASE_SECRET_KEY=sua-secret-key
 ```
 
 ### Rodando localmente
@@ -121,15 +121,36 @@ vercel --prod
 
 **Variáveis de ambiente necessárias na Vercel:**
 - `NEXT_PUBLIC_SUPABASE_URL`
-- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-- `SUPABASE_SERVICE_ROLE_KEY`
+- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+- `SUPABASE_SECRET_KEY`
 
 ## 🔒 Segurança
 
 - CSP headers configurados no `next.config.js`
-- Service role key somente no servidor (variável de ambiente, nunca no client)
+- Supabase Secret Key somente no servidor (variável de ambiente, nunca no client)
 - Upload de arquivos validado server-side (tipo, tamanho, extensão)
 - Bucket de storage com políticas de acesso via Supabase RLS
+
+### Pre-commit anti-vazamento (obrigatório)
+
+```bash
+npm run hooks:install
+```
+
+Esse comando ativa o hook local em `.githooks/pre-commit`, que bloqueia commits com possíveis segredos hardcoded.
+
+### OAuth Google: `redirect_uri_mismatch`
+
+Se o login Google falhar com `redirect_uri_mismatch`, confira exatamente estes valores:
+
+- Google Cloud → OAuth Client → **Authorized redirect URI**
+  - `https://SEU-PROJETO.supabase.co/auth/v1/callback`
+- Google Cloud → OAuth Client → **Authorized JavaScript origins**
+  - `https://testesitezin-app.vercel.app`
+  - `http://localhost:3000` (dev)
+- Supabase → Auth → URL Configuration
+  - **Site URL**: `https://testesitezin-app.vercel.app`
+  - **Redirect URLs**: `https://testesitezin-app.vercel.app/auth/callback`
 
 ## 📝 Licença
 

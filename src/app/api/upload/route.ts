@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = (process.env.NEXT_PUBLIC_SUPABASE_URL ?? '').trim();
-const serviceRoleKey = (process.env.SUPABASE_SERVICE_ROLE_KEY ?? '').trim();
+const supabaseSecretKey = (process.env.SUPABASE_SECRET_KEY ?? '').trim();
 
 // Security: allowed MIME types and max file size (5 MB)
 const ALLOWED_TYPES = new Set(['image/jpeg', 'image/png', 'image/gif', 'image/webp']);
@@ -12,7 +12,7 @@ const ALLOWED_UPLOAD_TYPES = new Set(['avatar', 'banner']);
 const SAFE_EXTENSIONS = new Set(['jpg', 'jpeg', 'png', 'gif', 'webp']);
 
 export async function POST(request: NextRequest) {
-  if (!supabaseUrl || !serviceRoleKey) {
+  if (!supabaseUrl || !supabaseSecretKey) {
     return NextResponse.json({ error: 'Server storage not configured' }, { status: 500 });
   }
 
@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid token format' }, { status: 401 });
   }
 
-  const supabaseAdmin = createClient(supabaseUrl, serviceRoleKey);
+  const supabaseAdmin = createClient(supabaseUrl, supabaseSecretKey);
 
   const { data: { user }, error: authError } = await supabaseAdmin.auth.getUser(accessToken);
   if (authError || !user) {
