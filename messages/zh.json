@@ -77,6 +77,8 @@
   },
   "Login": {
     "title": "登录",
+    "continueWith": "使用 {provider} 继续",
+    "orEmail": "或使用邮箱",
     "email": "电子邮件",
     "password": "密码",
     "emailPlaceholder": "you@email.com",
@@ -88,6 +90,8 @@
   },
   "Signup": {
     "title": "注册",
+    "continueWith": "使用 {provider} 继续",
+    "orEmail": "或使用邮箱",
     "name": "姓名",
     "namePlaceholder": "你的姓名",
     "email": "电子邮件",

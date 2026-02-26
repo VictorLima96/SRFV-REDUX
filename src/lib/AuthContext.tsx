@@ -2,7 +2,9 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { supabase } from '@/lib/supabase';
-import type { User, Session } from '@supabase/supabase-js';
+import type { User, Session, Provider } from '@supabase/supabase-js';
+
+export type OAuthProvider = 'google' | 'azure' | 'steam';
 
 interface AuthContextType {
   user: User | null;
@@ -10,6 +12,7 @@ interface AuthContextType {
   loading: boolean;
   signUp: (email: string, password: string, name: string) => Promise<{ error: string | null }>;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
+  signInWithProvider: (provider: OAuthProvider) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
   updateProfile: (data: { email?: string; password?: string; name?: string; avatar_url?: string; banner_url?: string; bio?: string }) => Promise<{ error: string | null }>;
   uploadFile: (file: File, type?: 'avatar' | 'banner') => Promise<{ url: string | null; error: string | null }>;
@@ -52,6 +55,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signIn = async (email: string, password: string) => {
     if (!supabase) return { error: 'Supabase not configured' };
     const { error } = await supabase.auth.signInWithPassword({ email, password });
+    return { error: error?.message ?? null };
+  };
+
+  const signInWithProvider = async (provider: OAuthProvider) => {
+    if (!supabase) return { error: 'Supabase not configured' };
+    const supabaseProvider: Provider = provider === 'steam' ? 'steam' as Provider : provider === 'azure' ? 'azure' : 'google';
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: supabaseProvider,
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+        ...(provider === 'azure' ? { scopes: 'openid profile email' } : {}),
+      },
+    });
     return { error: error?.message ?? null };
   };
 
@@ -117,7 +133,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, session, loading, signUp, signIn, signOut, updateProfile, uploadFile }}>
+    <AuthContext.Provider value={{ user, session, loading, signUp, signIn, signInWithProvider, signOut, updateProfile, uploadFile }}>
       {children}
     </AuthContext.Provider>
   );

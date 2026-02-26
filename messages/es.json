@@ -77,6 +77,8 @@
   },
   "Login": {
     "title": "Iniciar Sesión",
+    "continueWith": "Continuar con {provider}",
+    "orEmail": "o usa correo",
     "email": "Correo",
     "password": "Contraseña",
     "emailPlaceholder": "tu@correo.com",
@@ -88,6 +90,8 @@
   },
   "Signup": {
     "title": "Registrarse",
+    "continueWith": "Continuar con {provider}",
+    "orEmail": "o usa correo",
     "name": "Nombre",
     "namePlaceholder": "Tu nombre",
     "email": "Correo",
