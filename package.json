@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "deploy:vercel:both": "powershell -ExecutionPolicy Bypass -File ./scripts/deploy-both-vercel.ps1",
+    "deploy:vercel:both:skip-build": "powershell -ExecutionPolicy Bypass -File ./scripts/deploy-both-vercel.ps1 -SkipBuild",
     "scan:secrets:staged": "node scripts/security-scan-staged.js",
     "hooks:install": "git config core.hooksPath .githooks"
   },

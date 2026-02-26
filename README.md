@@ -119,6 +119,20 @@ O projeto está configurado para deploy na Vercel com detecção automática do 
 vercel --prod
 ```
 
+### Deploy obrigatório em dois projetos (Preview + Production)
+
+Use sempre este comando para publicar em **ambos** os projetos Vercel (`testesitezin-app` e `SRFV-REDUX`) nos dois ambientes:
+
+```bash
+npm run deploy:vercel:both
+```
+
+Se o build já foi validado antes, você pode usar:
+
+```bash
+npm run deploy:vercel:both:skip-build
+```
+
 **Variáveis de ambiente necessárias na Vercel:**
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
