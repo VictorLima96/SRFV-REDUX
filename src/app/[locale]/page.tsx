@@ -30,16 +30,30 @@ const libraryGames = [
   { img: '/assets/images/tom.png', title: 'Tomb Raider II',   desc: 'Core Design, 1997',             href: '/play/tomb' },
   { img: '/assets/images/tn3.jpg', title: "Tony Hawk's Pro Skater 2", desc: 'Neversoft, 2000',       href: '/play/tn2' },
   { img: '/assets/images/gran.jfif', title: 'Gran Turismo',   desc: 'Polyphony Digital, 1997',       href: '/play/gt' },
+  { img: '/assets/images/re33.png', title: 'Metal Gear Solid', desc: 'Konami, 1998',                  href: '/play/mgs1' },
+  { img: '/assets/images/ra.png', title: 'Medal of Honor: Underground', desc: 'DreamWorks, 2000',     href: '/play/mohu' },
+  { img: '/assets/images/silvio.jfif', title: 'Legacy of Kain: Soul Reaver', desc: 'Crystal Dynamics, 1999', href: '/play/soulreaver' },
 ];
 
 const featuredGamesPool = [
-  { img: '/assets/images/cs3.webp', title: 'Crash Bandicoot: Warped', desc: 'Naughty Dog, 1998', href: '/play/cb3' },
-  { img: '/assets/images/boob.png', title: 'Bubsy 3D', desc: 'Accolade, 1996', href: '/play/bubsy' },
-  { img: '/assets/images/cr.webp', title: 'Crash Team Racing', desc: 'Naughty Dog, 1999', href: '/play/crash' },
-  { img: '/assets/images/te.webp', title: 'Tekken 3', desc: 'Namco, 1997', href: '/play/tekken' },
-  { img: '/assets/images/ms.jpg', title: 'Metal Slug', desc: 'SNK, 1996', href: '/play/metal' },
-  { img: '/assets/images/re33.png', title: 'Resident Evil 3 - Nemesis', desc: 'Capcom, 1999', href: '/play/resident' },
+  { slug: 'crash', img: '/assets/images/cr.webp', title: 'Crash Team Racing', desc: 'Naughty Dog, 1999', href: '/play/crash' },
+  { slug: 'bubsy', img: '/assets/images/boob.png', title: 'Bubsy 3D', desc: 'Accolade, 1996', href: '/play/bubsy' },
+  { slug: 'cb3', img: '/assets/images/cs3.webp', title: 'Crash Bandicoot: Warped', desc: 'Naughty Dog, 1998', href: '/play/cb3' },
+  { slug: 'tekken', img: '/assets/images/te.webp', title: 'Tekken 3', desc: 'Namco, 1997', href: '/play/tekken' },
+  { slug: 'metal', img: '/assets/images/ms.jpg', title: 'Metal Slug', desc: 'SNK, 1996', href: '/play/metal' },
+  { slug: 'mgs1', img: '/assets/images/re33.png', title: 'Metal Gear Solid', desc: 'Konami, 1998', href: '/play/mgs1' },
+  { slug: 'soulreaver', img: '/assets/images/silvio.jfif', title: 'Legacy of Kain: Soul Reaver', desc: 'Crystal Dynamics, 1999', href: '/play/soulreaver' },
 ];
+
+const weeklyFeaturedSlugByDay: Record<number, string> = {
+  1: 'crash',
+  2: 'bubsy',
+  3: 'cb3',
+  4: 'tekken',
+  5: 'metal',
+  6: 'mgs1',
+  0: 'soulreaver',
+};
 
 const movies = [
   { img: '/assets/movies/d.png',  title: 'Donnie Darko',         href: '/play/donnie' },
@@ -76,7 +90,11 @@ export default function HomePage() {
 
   useEffect(() => {
     setRefreshSeed(Date.now() + Math.floor(Math.random() * 100000));
-    setFeaturedIndex(Math.floor(Date.now() / 86400000) % featuredGamesPool.length);
+
+    const weekday = new Date().getDay();
+    const slug = weeklyFeaturedSlugByDay[weekday];
+    const index = featuredGamesPool.findIndex((game) => game.slug === slug);
+    setFeaturedIndex(index >= 0 ? index : 0);
   }, []);
 
   const featuredGame = featuredGamesPool[featuredIndex % featuredGamesPool.length];

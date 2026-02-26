@@ -5,7 +5,7 @@ import { getTranslations } from 'next-intl/server';
 const featured = [
   { img: '/assets/images/cr.webp', title: 'Crash Team Racing', desc: 'Naughty Dog, 1999', href: '/play/crash' },
   { img: '/assets/images/te.webp', title: 'Tekken 3',          desc: 'Namco, 1997',       href: '/play/tekken' },
-  { img: '/assets/images/ms.jpg',  title: 'Metal Slug',        desc: 'SNK, 1996',          href: '/play/metal' },
+  { img: '/assets/images/re33.png',  title: 'Metal Gear Solid',  desc: 'Konami, 1998',       href: '/play/mgs1' },
 ];
 
 const sidebarArts = [
@@ -27,6 +27,9 @@ const allGames = [
   { img: '/assets/images/gran.jfif', title: 'Gran Turismo',      href: '/play/gt' },
   { img: '/assets/images/cs3.webp',  title: 'Crash Bandicoot 3', href: '/play/cb3' },
   { img: '/assets/images/tn3.jpg',   title: 'Tony Hawk 2',       href: '/play/tn2' },
+  { img: '/assets/images/re33.png',  title: 'Metal Gear Solid',  href: '/play/mgs1' },
+  { img: '/assets/images/ra.png',    title: 'Medal of Honor: Underground', href: '/play/mohu' },
+  { img: '/assets/images/silvio.jfif', title: 'Legacy of Kain: Soul Reaver', href: '/play/soulreaver' },
 ];
 
 export default async function GamesPage() {
