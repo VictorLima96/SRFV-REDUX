@@ -5,13 +5,15 @@ import { getTranslations } from 'next-intl/server';
 const featured = [
   { img: '/assets/images/cr.webp', title: 'Crash Team Racing', desc: 'Naughty Dog, 1999', href: '/play/crash' },
   { img: '/assets/images/te.webp', title: 'Tekken 3',          desc: 'Namco, 1997',       href: '/play/tekken' },
-  { img: '/assets/images/re33.png',  title: 'Metal Gear Solid',  desc: 'Konami, 1998',       href: '/play/mgs1' },
+  { img: '/assets/images/mgs1.png',  title: 'Metal Gear Solid',  desc: 'Konami, 1998',       href: '/play/mgs1' },
 ];
 
-const sidebarArts = [
-  { img: '/assets/arts/a.png',  title: 'Bumblebee',  downloads: 242 },
-  { img: '/assets/arts/b.webp', title: 'Bomberman',  downloads: 1132 },
-  { img: '/assets/arts/c.webp', title: 'Polygoth',   downloads: 738 },
+const topGames = [
+  { img: '/assets/images/cr.webp', title: 'Crash Team Racing', plays: 9241, href: '/play/crash' },
+  { img: '/assets/images/te.webp', title: 'Tekken 3', plays: 8812, href: '/play/tekken' },
+  { img: '/assets/images/ms.jpg', title: 'Metal Slug', plays: 8098, href: '/play/metal' },
+  { img: '/assets/images/mgs1.png', title: 'Metal Gear Solid', plays: 7634, href: '/play/mgs1' },
+  { img: '/assets/images/cs3.webp', title: 'Crash Bandicoot: Warped', plays: 7220, href: '/play/cb3' },
 ];
 
 const allGames = [
@@ -27,9 +29,9 @@ const allGames = [
   { img: '/assets/images/gran.jfif', title: 'Gran Turismo',      href: '/play/gt' },
   { img: '/assets/images/cs3.webp',  title: 'Crash Bandicoot 3', href: '/play/cb3' },
   { img: '/assets/images/tn3.jpg',   title: 'Tony Hawk 2',       href: '/play/tn2' },
-  { img: '/assets/images/re33.png',  title: 'Metal Gear Solid',  href: '/play/mgs1' },
-  { img: '/assets/images/ra.png',    title: 'Medal of Honor: Underground', href: '/play/mohu' },
-  { img: '/assets/images/silvio.jfif', title: 'Legacy of Kain: Soul Reaver', href: '/play/soulreaver' },
+  { img: '/assets/images/mgs1.png',  title: 'Metal Gear Solid',  href: '/play/mgs1' },
+  { img: '/assets/images/mohu.png',    title: 'Medal of Honor: Underground', href: '/play/mohu' },
+  { img: '/assets/images/soulreaver.png', title: 'Legacy of Kain: Soul Reaver', href: '/play/soulreaver' },
 ];
 
 export default async function GamesPage() {
@@ -88,19 +90,19 @@ export default async function GamesPage() {
         {/* ═══ SIDEBAR ═══ */}
         <aside className="w-full lg:w-72 flex-shrink-0">
           <div className="section-box lg:sticky lg:top-24">
-            <h3 className="font-bold mb-4">{t('topArts')} <span className="heading-em">{t('topArtsHighlight')}</span></h3>
+            <h3 className="font-bold mb-4">{t('topGames')} <span className="heading-em">{t('topGamesHighlight')}</span></h3>
             <div className="space-y-3">
-              {sidebarArts.map((a, i) => (
-                <a key={a.title} href={a.img} download className="flex items-center gap-3 p-2.5 rounded-srfv-xs hover:bg-white/5 border border-transparent hover:border-srfv-border transition-all duration-200 group">
+              {topGames.map((game, i) => (
+                <Link key={game.title} href={game.href} className="flex items-center gap-3 p-2.5 rounded-srfv-xs hover:bg-white/5 border border-transparent hover:border-srfv-border transition-all duration-200 group">
                   <span className="text-srfv-primary font-bold text-lg w-6 text-center">{i + 1}</span>
                   <div className="relative overflow-hidden rounded-lg flex-shrink-0">
-                    <Image src={a.img} alt={a.title} width={48} height={48} className="w-12 h-12 object-cover transition-transform duration-300 group-hover:scale-110" />
+                    <Image src={game.img} alt={game.title} width={48} height={48} className="w-12 h-12 object-cover transition-transform duration-300 group-hover:scale-110" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium group-hover:text-srfv-primary transition-colors">{a.title}</p>
-                    <p className="text-xs text-srfv-text-muted">{a.downloads.toLocaleString()} {t('downloads')}</p>
+                    <p className="text-sm font-medium group-hover:text-srfv-primary transition-colors">{game.title}</p>
+                    <p className="text-xs text-srfv-text-muted">{game.plays.toLocaleString()} {t('plays')}</p>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

@@ -1,4 +1,5 @@
 import { embeds } from '@/lib/embeds';
+import { sanitizeEmbedUrl } from '@/lib/embedSecurity';
 import { Link } from '@/i18n/navigation';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
@@ -20,6 +21,8 @@ export async function generateMetadata({ params }: Props) {
 export default async function PlayPage({ params }: Props) {
   const embed = embeds[params.slug];
   if (!embed) notFound();
+  const safeEmbedUrl = sanitizeEmbedUrl(embed.url);
+  if (!safeEmbedUrl) notFound();
 
   const t = await getTranslations('Play');
 
@@ -50,10 +53,12 @@ export default async function PlayPage({ params }: Props) {
         <div className="relative section-box !p-0 overflow-hidden">
           <div className="relative w-full" style={{ paddingBottom: isGame ? '75%' : '56.25%' }}>
             <iframe
-              src={embed.url}
+              src={safeEmbedUrl}
               className="absolute inset-0 w-full h-full border-0 rounded-srfv"
               allowFullScreen
               allow="autoplay; fullscreen"
+              sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation"
+              referrerPolicy="strict-origin-when-cross-origin"
               title={embed.title}
             />
           </div>

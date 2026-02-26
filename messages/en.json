@@ -42,9 +42,9 @@
     "allGames": "All",
     "allGamesHighlight": "Games",
     "play": "PLAY",
-    "topArts": "Top",
-    "topArtsHighlight": "Arts",
-    "downloads": "downloads"
+    "topGames": "Top",
+    "topGamesHighlight": "Games",
+    "plays": "plays"
   },
   "Movies": {
     "featured": "Featured",

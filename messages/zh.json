@@ -42,9 +42,9 @@
     "allGames": "所有",
     "allGamesHighlight": "游戏",
     "play": "开始",
-    "topArts": "热门",
-    "topArtsHighlight": "艺术",
-    "downloads": "下载"
+    "topGames": "热门",
+    "topGamesHighlight": "游戏",
+    "plays": "游玩次数"
   },
   "Movies": {
     "featured": "精选",

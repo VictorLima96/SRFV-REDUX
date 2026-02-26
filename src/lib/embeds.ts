@@ -1,3 +1,5 @@
+import { sanitizeEmbedUrl } from './embedSecurity';
+
 export interface EmbedData {
   slug: string;
   title: string;
@@ -5,7 +7,7 @@ export interface EmbedData {
   type: 'game' | 'movie';
 }
 
-export const embeds: Record<string, EmbedData> = {
+const rawEmbeds: Record<string, EmbedData> = {
   tekken:          { slug: 'tekken',          title: 'Tekken 3',                  url: 'https://www.retrogames.cc/embed/40238-tekken-3.html',                              type: 'game'  },
   crash:           { slug: 'crash',           title: 'Crash Team Racing',          url: 'https://www.retrogames.cc/embed/41687-crash-team-racing.html',                      type: 'game'  },
   metal:           { slug: 'metal',           title: 'Metal Slug',                 url: 'https://www.retrogames.cc/embed/9157-metal-slug-super-vehicle-001.html',            type: 'game'  },
@@ -30,3 +32,13 @@ export const embeds: Record<string, EmbedData> = {
   mario:           { slug: 'mario',           title: 'Super Mario Bros',           url: 'https://www.youtube.com/embed/lv7FPDR66Lk',                                        type: 'movie' },
   'tekken-movie':  { slug: 'tekken-movie',    title: 'Tekken',                     url: 'https://www.youtube.com/embed/LMevAl7i994',                                        type: 'movie' },
 };
+
+export const embeds: Record<string, EmbedData> = Object.fromEntries(
+  Object.entries(rawEmbeds)
+    .map(([key, embed]) => {
+      const safeUrl = sanitizeEmbedUrl(embed.url);
+      if (!safeUrl) return null;
+      return [key, { ...embed, url: safeUrl }] as const;
+    })
+    .filter((entry): entry is readonly [string, EmbedData] => entry !== null)
+);

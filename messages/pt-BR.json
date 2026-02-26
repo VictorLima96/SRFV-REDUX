@@ -42,9 +42,9 @@
     "allGames": "Todos os",
     "allGamesHighlight": "Games",
     "play": "JOGAR",
-    "topArts": "Top",
-    "topArtsHighlight": "Arts",
-    "downloads": "downloads"
+    "topGames": "Top",
+    "topGamesHighlight": "Jogos",
+    "plays": "jogadas"
   },
   "Movies": {
     "featured": "Filmes",

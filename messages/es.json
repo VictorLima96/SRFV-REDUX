@@ -42,9 +42,9 @@
     "allGames": "Todos los",
     "allGamesHighlight": "Juegos",
     "play": "JUGAR",
-    "topArts": "Top",
-    "topArtsHighlight": "Artes",
-    "downloads": "descargas"
+    "topGames": "Top",
+    "topGamesHighlight": "Juegos",
+    "plays": "partidas"
   },
   "Movies": {
     "featured": "Películas",
