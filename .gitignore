@@ -9,6 +9,8 @@
 .env
 .env.local
 .env.production
+.env.*.check
+.env.vercel.check
 
 # IDE
 /.fleet

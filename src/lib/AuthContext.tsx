@@ -2,17 +2,15 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { supabase } from '@/lib/supabase';
-import type { User, Session, Provider } from '@supabase/supabase-js';
-
-export type OAuthProvider = 'google' | 'azure' | 'steam';
+import type { User, Session } from '@supabase/supabase-js';
 
 interface AuthContextType {
   user: User | null;
   session: Session | null;
   loading: boolean;
-  signUp: (email: string, password: string, name: string) => Promise<{ error: string | null }>;
+  signUp: (email: string, password: string, name: string, acceptedTerms: boolean) => Promise<{ error: string | null }>;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
-  signInWithProvider: (provider: OAuthProvider) => Promise<{ error: string | null }>;
+  signInWithGoogle: () => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
   updateProfile: (data: { email?: string; password?: string; name?: string; avatar_url?: string; banner_url?: string; bio?: string }) => Promise<{ error: string | null }>;
   uploadFile: (file: File, type?: 'avatar' | 'banner') => Promise<{ url: string | null; error: string | null }>;
@@ -42,12 +40,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => subscription.unsubscribe();
   }, []);
 
-  const signUp = async (email: string, password: string, name: string) => {
+  const signUp = async (email: string, password: string, name: string, acceptedTerms: boolean) => {
     if (!supabase) return { error: 'Supabase not configured' };
     const { error } = await supabase.auth.signUp({
       email,
       password,
-      options: { data: { name } },
+      options: {
+        data: {
+          name,
+          terms_accepted: acceptedTerms,
+          terms_accepted_at: acceptedTerms ? new Date().toISOString() : null,
+          terms_version: acceptedTerms ? '2026-02-26' : null,
+        },
+      },
     });
     return { error: error?.message ?? null };
   };
@@ -58,14 +63,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return { error: error?.message ?? null };
   };
 
-  const signInWithProvider = async (provider: OAuthProvider) => {
+  const signInWithGoogle = async () => {
     if (!supabase) return { error: 'Supabase not configured' };
-    const supabaseProvider: Provider = provider === 'steam' ? 'steam' as Provider : provider === 'azure' ? 'azure' : 'google';
     const { error } = await supabase.auth.signInWithOAuth({
-      provider: supabaseProvider,
+      provider: 'google',
       options: {
         redirectTo: `${window.location.origin}/auth/callback`,
-        ...(provider === 'azure' ? { scopes: 'openid profile email' } : {}),
       },
     });
     return { error: error?.message ?? null };
@@ -133,7 +136,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, session, loading, signUp, signIn, signInWithProvider, signOut, updateProfile, uploadFile }}>
+    <AuthContext.Provider value={{ user, session, loading, signUp, signIn, signInWithGoogle, signOut, updateProfile, uploadFile }}>
       {children}
     </AuthContext.Provider>
   );

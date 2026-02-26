@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useRouter } from '@/i18n/navigation';
 import { Link } from '@/i18n/navigation';
 import { useAuth } from '@/lib/AuthContext';
-import type { OAuthProvider } from '@/lib/AuthContext';
 import { useTranslations } from 'next-intl';
 
 function GoogleIcon() {
@@ -18,20 +17,9 @@ function GoogleIcon() {
   );
 }
 
-function MicrosoftIcon() {
-  return (
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
-      <rect x="1" y="1" width="10" height="10" fill="#F25022"/>
-      <rect x="13" y="1" width="10" height="10" fill="#7FBA00"/>
-      <rect x="1" y="13" width="10" height="10" fill="#00A4EF"/>
-      <rect x="13" y="13" width="10" height="10" fill="#FFB900"/>
-    </svg>
-  );
-}
-
 export default function SignupPage() {
   const t = useTranslations('Signup');
-  const { signUp, signInWithProvider } = useAuth();
+  const { signUp, signInWithGoogle } = useAuth();
   const router = useRouter();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -39,7 +27,7 @@ export default function SignupPage() {
   const [agreed, setAgreed] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [oauthLoading, setOauthLoading] = useState<string | null>(null);
+  const [googleLoading, setGoogleLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,7 +37,7 @@ export default function SignupPage() {
     }
     setError('');
     setLoading(true);
-    const { error } = await signUp(email, password, name);
+    const { error } = await signUp(email, password, name, agreed);
     setLoading(false);
     if (error) {
       setError(error);
@@ -58,13 +46,13 @@ export default function SignupPage() {
     }
   };
 
-  const handleOAuth = async (provider: OAuthProvider) => {
+  const handleGoogleOAuth = async () => {
     setError('');
-    setOauthLoading(provider);
-    const { error } = await signInWithProvider(provider);
+    setGoogleLoading(true);
+    const { error } = await signInWithGoogle();
     if (error) {
       setError(error);
-      setOauthLoading(null);
+      setGoogleLoading(false);
     }
   };
 
@@ -92,44 +80,6 @@ export default function SignupPage() {
             {error}
           </div>
         )}
-
-        {/* OAuth Providers */}
-        <div className="space-y-3 mb-6">
-          <button
-            type="button"
-            onClick={() => handleOAuth('google')}
-            disabled={!!oauthLoading}
-            className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-white/10 to-white/5 hover:from-white/15 hover:to-white/10 border border-white/10 backdrop-blur-sm transition-all duration-200 text-sm font-medium text-white disabled:opacity-50 group"
-          >
-            {oauthLoading === 'google' ? (
-              <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-            ) : (
-              <GoogleIcon />
-            )}
-            {t('continueWith', { provider: 'Google' })}
-          </button>
-
-          <button
-            type="button"
-            onClick={() => handleOAuth('azure')}
-            disabled={!!oauthLoading}
-            className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-[#00a4ef]/10 to-[#00a4ef]/5 hover:from-[#00a4ef]/20 hover:to-[#00a4ef]/10 border border-[#00a4ef]/20 backdrop-blur-sm transition-all duration-200 text-sm font-medium text-white disabled:opacity-50 group"
-          >
-            {oauthLoading === 'azure' ? (
-              <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-            ) : (
-              <MicrosoftIcon />
-            )}
-            {t('continueWith', { provider: 'Microsoft' })}
-          </button>
-        </div>
-
-        {/* Divider */}
-        <div className="flex items-center gap-3 mb-6">
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-          <span className="text-xs text-srfv-text-muted uppercase tracking-wider">{t('orEmail')}</span>
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
@@ -176,9 +126,9 @@ export default function SignupPage() {
             />
             <span className="text-xs text-srfv-text-muted group-hover:text-srfv-text-secondary transition-colors">
               {t('agreeWith')}{' '}
-              <a href="https://policies.google.com/terms?hl=pt-BR" target="_blank" rel="noopener noreferrer" className="text-srfv-primary hover:underline">
+              <Link href="/terms" className="text-srfv-primary hover:underline">
                 {t('termsOfService')}
-              </a>
+              </Link>
             </span>
           </label>
 
@@ -190,6 +140,22 @@ export default function SignupPage() {
               </span>
             ) : t('submit')}
           </button>
+
+          <div className="flex justify-center pt-1">
+            <button
+              type="button"
+              onClick={handleGoogleOAuth}
+              disabled={googleLoading || loading}
+              aria-label="Cadastrar com Google"
+              className="w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/15 border border-white/20 backdrop-blur-sm transition-all duration-200 disabled:opacity-50"
+            >
+              {googleLoading ? (
+                <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              ) : (
+                <GoogleIcon />
+              )}
+            </button>
+          </div>
         </form>
 
         <div className="mt-8 text-center">
