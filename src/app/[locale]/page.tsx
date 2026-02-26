@@ -1,6 +1,10 @@
+'use client';
+
+import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
+import HomeHighlightsCarousel from '@/components/HomeHighlightsCarousel';
 
 /* ── static data (titles are proper nouns, not translated) ── */
 
@@ -19,6 +23,22 @@ const libraryGames = [
   { img: '/assets/images/ms.jpg',  title: 'Metal Slug',       desc: 'Super Vehicle-001 — SNK, 1996', href: '/play/metal' },
   { img: '/assets/images/cr.webp', title: 'Crash Team Racing', desc: 'Naughty Dog, 1999',             href: '/play/crash' },
   { img: '/assets/images/te.webp', title: 'Tekken 3',         desc: 'Namco, 1997',                   href: '/play/tekken' },
+  { img: '/assets/images/cs3.webp', title: 'Crash Bandicoot: Warped', desc: 'Naughty Dog, 1998',      href: '/play/cb3' },
+  { img: '/assets/images/ff7.webp', title: 'Final Fantasy VII', desc: 'Square, 1997',                 href: '/play/ff7' },
+  { img: '/assets/images/fif.png', title: 'FIFA 2000',        desc: 'EA Sports, 1999',               href: '/play/fifa' },
+  { img: '/assets/images/stree.webp', title: 'Street Fighter Alpha 2', desc: 'Capcom, 1996',          href: '/play/street' },
+  { img: '/assets/images/tom.png', title: 'Tomb Raider II',   desc: 'Core Design, 1997',             href: '/play/tomb' },
+  { img: '/assets/images/tn3.jpg', title: "Tony Hawk's Pro Skater 2", desc: 'Neversoft, 2000',       href: '/play/tn2' },
+  { img: '/assets/images/gran.jfif', title: 'Gran Turismo',   desc: 'Polyphony Digital, 1997',       href: '/play/gt' },
+];
+
+const featuredGamesPool = [
+  { img: '/assets/images/cs3.webp', title: 'Crash Bandicoot: Warped', desc: 'Naughty Dog, 1998', href: '/play/cb3' },
+  { img: '/assets/images/boob.png', title: 'Bubsy 3D', desc: 'Accolade, 1996', href: '/play/bubsy' },
+  { img: '/assets/images/cr.webp', title: 'Crash Team Racing', desc: 'Naughty Dog, 1999', href: '/play/crash' },
+  { img: '/assets/images/te.webp', title: 'Tekken 3', desc: 'Namco, 1997', href: '/play/tekken' },
+  { img: '/assets/images/ms.jpg', title: 'Metal Slug', desc: 'SNK, 1996', href: '/play/metal' },
+  { img: '/assets/images/re33.png', title: 'Resident Evil 3 - Nemesis', desc: 'Capcom, 1999', href: '/play/resident' },
 ];
 
 const movies = [
@@ -38,10 +58,48 @@ const services = [
   { img: '/assets/images/coisas.jpg', titleKey: 'serviceCommunityArt' as const, descKey: 'serviceCommunityArtDesc' as const, icon: '🎨' },
 ];
 
+function rotateWithWrap<T>(items: T[], offset: number, size: number): T[] {
+  if (items.length === 0) return [];
+  const result: T[] = [];
+  for (let index = 0; index < size; index += 1) {
+    result.push(items[(offset + index) % items.length]);
+  }
+  return result;
+}
+
 /* ── page ─────────────────────────────────────────────────── */
 
-export default async function HomePage() {
-  const t = await getTranslations('Home');
+export default function HomePage() {
+  const t = useTranslations('Home');
+  const [refreshSeed, setRefreshSeed] = useState(0);
+  const [featuredIndex, setFeaturedIndex] = useState(0);
+
+  useEffect(() => {
+    setRefreshSeed(Date.now() + Math.floor(Math.random() * 100000));
+    setFeaturedIndex(Math.floor(Date.now() / 86400000) % featuredGamesPool.length);
+  }, []);
+
+  const featuredGame = featuredGamesPool[featuredIndex % featuredGamesPool.length];
+
+  const rotatingArts = useMemo(
+    () => rotateWithWrap(arts, refreshSeed % Math.max(1, arts.length), Math.min(4, arts.length)),
+    [refreshSeed]
+  );
+
+  const rotatingMovies = useMemo(
+    () => rotateWithWrap(movies, (refreshSeed + 11) % Math.max(1, movies.length), Math.min(4, movies.length)),
+    [refreshSeed]
+  );
+
+  const rotatingLibraryGames = useMemo(
+    () => rotateWithWrap(libraryGames, (refreshSeed + 23) % Math.max(1, libraryGames.length), Math.min(4, libraryGames.length)),
+    [refreshSeed]
+  );
+
+  const rotatingFeaturedGames = useMemo(
+    () => rotateWithWrap(featuredGamesPool, (refreshSeed + 37) % Math.max(1, featuredGamesPool.length), Math.min(4, featuredGamesPool.length)),
+    [refreshSeed]
+  );
 
   return (
     <div className="space-y-16">
@@ -66,8 +124,8 @@ export default async function HomePage() {
               {t('description')}
             </p>
             <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-              <Link href="/play/resident" className="btn-primary-srfv">
-                {t('playCTA')}
+              <Link href={featuredGame.href} className="btn-primary-srfv">
+                {featuredGame.title}
               </Link>
               <Link href="/games1" className="btn-outline-srfv">
                 {t('viewAllGames')}
@@ -78,8 +136,8 @@ export default async function HomePage() {
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-srfv-primary/30 to-red-600/30 rounded-srfv blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
               <Image
-                src="/assets/images/re33.png"
-                alt="Resident Evil 3 - Nemesis"
+                src={featuredGame.img}
+                alt={featuredGame.title}
                 width={480}
                 height={320}
                 className="relative rounded-srfv w-full h-auto object-cover shadow-2xl"
@@ -89,6 +147,8 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      <HomeHighlightsCarousel items={rotatingFeaturedGames} maxItems={4} intervalMs={4500} />
 
       {/* ═══ POPULAR ARTS ═══ */}
       <section>
@@ -103,7 +163,7 @@ export default async function HomePage() {
           </Link>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {arts.map((a) => (
+          {rotatingArts.map((a) => (
             <a key={a.title} href={a.href} download className="card-srfv group overflow-hidden">
               <div className="relative overflow-hidden rounded-srfv-xs">
                 <Image src={a.img} alt={a.title} width={300} height={200} className="w-full h-40 xl:h-48 object-cover transition-transform duration-500 group-hover:scale-110" />
@@ -125,7 +185,7 @@ export default async function HomePage() {
           <div className="gradient-line mt-2 w-20" />
         </div>
         <div className="space-y-3">
-          {libraryGames.map((g, i) => (
+          {rotatingLibraryGames.map((g, i) => (
             <Link key={g.title} href={g.href}
               className="flex items-center gap-4 p-4 rounded-srfv-sm bg-white/[0.03] border border-srfv-border hover:border-srfv-primary/30 hover:bg-white/[0.06] transition-all duration-300 group"
               style={{ animationDelay: `${i * 100}ms` }}>
@@ -160,7 +220,7 @@ export default async function HomePage() {
           </Link>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {movies.map((m) => (
+          {rotatingMovies.map((m) => (
             <Link key={m.title} href={m.href} className="card-srfv group overflow-hidden">
               <div className="relative overflow-hidden rounded-srfv-xs">
                 <Image src={m.img} alt={m.title} width={300} height={200} className="w-full h-40 xl:h-48 object-cover transition-transform duration-500 group-hover:scale-110" />
