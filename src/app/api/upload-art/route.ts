@@ -13,10 +13,6 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
 const SAFE_EXTENSIONS = new Set(['jpg', 'jpeg', 'png', 'gif', 'webp']);
 
 export async function POST(request: NextRequest) {
-  if (!supabaseUrl || !supabaseSecretKey) {
-    return NextResponse.json({ error: 'Server storage not configured' }, { status: 500 });
-  }
-
   // --- Auth check ---
   const authHeader = request.headers.get('authorization');
   if (!authHeader?.startsWith('Bearer ')) {
@@ -26,6 +22,10 @@ export async function POST(request: NextRequest) {
 
   if (accessToken.split('.').length !== 3) {
     return NextResponse.json({ error: 'Invalid token format' }, { status: 401 });
+  }
+
+  if (!supabaseUrl || !supabaseSecretKey) {
+    return NextResponse.json({ error: 'Server storage not configured' }, { status: 500 });
   }
 
   const supabaseAdmin = createClient(supabaseUrl, supabaseSecretKey);
