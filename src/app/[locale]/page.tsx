@@ -275,9 +275,6 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-        <div className="mt-10 text-center">
-          <Link href="/login" className="btn-primary-srfv">{t('loginCTA')}</Link>
-        </div>
       </section>
     </div>
   );

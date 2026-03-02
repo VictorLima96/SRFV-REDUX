@@ -1,6 +1,6 @@
 {
   "Header": {
-    "search": "Buscar...",
+    "search": "Buscar jogos, filmes, artes...",
     "home": "Home",
     "games": "Games",
     "movies": "Movies",
@@ -8,10 +8,12 @@
     "signup": "Cadastrar",
     "login": "Login",
     "logout": "Sair",
-    "language": "Idioma"
+    "language": "Idioma",
+    "noResults": "Nenhum resultado encontrado"
   },
   "Footer": {
-    "copyright": "Copyright © 2026 SRFV Games. Todos os direitos reservados."
+    "copyright": "Copyright © 2026 SRFV Games. Todos os direitos reservados.",
+    "uploadArt": "Enviar Arte"
   },
   "Home": {
     "welcomeTo": "Bem-Vindo ao",
@@ -62,11 +64,27 @@
   "Art": {
     "submitTitle": "Envie sua",
     "submitTitleHighlight": "Arte!",
-    "submitDesc": "Entre no nosso Discord, faça upload das suas artes e ganhe destaque na comunidade SRFV.",
+    "submitDesc": "Faça upload das suas artes e ganhe destaque na comunidade SRFV. Suas imagens passam por verificação automática.",
     "submitted": "Enviadas",
     "inReview": "Em análise",
     "available": "Disponíveis",
-    "joinDiscord": "Entrar no Discord",
+    "selectImage": "Selecione uma imagem",
+    "fileRequirements": "JPEG, PNG, GIF ou WebP — máx. 5 MB",
+    "checkingImage": "Verificando imagem...",
+    "nsfwBlocked": "Imagem bloqueada",
+    "nsfwBlockedDesc": "A imagem foi identificada como conteúdo potencialmente impróprio (+18) e não pode ser enviada.",
+    "artistNameLabel": "Seu nome (para crédito)",
+    "artistNamePlaceholder": "Como você quer ser creditado?",
+    "consentText": "Declaro que possuo os direitos desta imagem, que ela não contém conteúdo impróprio, e autorizo sua exibição na galeria SRFV Games.",
+    "submitArt": "Enviar Arte",
+    "uploading": "Enviando...",
+    "uploadSuccess": "Arte enviada com sucesso!",
+    "uploadSuccessDesc": "Sua arte será exibida após aprovação da equipe.",
+    "uploadFailed": "Falha ao enviar. Tente novamente.",
+    "loginToUpload": "Faça login para enviar sua arte.",
+    "notAuthenticated": "Sessão expirada. Faça login novamente.",
+    "invalidFileType": "Tipo de arquivo inválido. Use JPEG, PNG, GIF ou WebP.",
+    "fileTooLarge": "Arquivo muito grande. Máximo: 5 MB.",
     "popularArts": "Artes mais",
     "popularArtsHighlight": "Populares",
     "views": "visualizações",

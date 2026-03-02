@@ -27,3 +27,6 @@ yarn-error.log
 
 # Large media
 public/assets/som/*.mp3
+
+.vercel
+.env*.local

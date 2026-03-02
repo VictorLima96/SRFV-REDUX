@@ -1,16 +1,59 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 import { Link, useRouter, usePathname } from '@/i18n/navigation';
 import { useAuth } from '@/lib/AuthContext';
 import { useTranslations, useLocale } from 'next-intl';
+import { useInactivityLogout } from '@/hooks/useInactivityLogout';
 
 const localeOptions = [
   { code: 'pt-BR', flag: '🇧🇷', label: 'PT' },
   { code: 'en',    flag: '🇺🇸', label: 'EN' },
   { code: 'es',    flag: '🇪🇸', label: 'ES' },
   { code: 'zh',    flag: '🇨🇳', label: '中文' },
+];
+
+/* ── Searchable content across the whole site ── */
+const searchableItems = [
+  // Games
+  { title: 'Crash Team Racing', href: '/play/crash', category: '🎮' },
+  { title: 'Tekken 3', href: '/play/tekken', category: '🎮' },
+  { title: 'Metal Slug', href: '/play/metal', category: '🎮' },
+  { title: 'Resident Evil 3', href: '/play/resident', category: '🎮' },
+  { title: 'Bubsy 3D', href: '/play/bubsy', category: '🎮' },
+  { title: 'FIFA 2000', href: '/play/fifa', category: '🎮' },
+  { title: 'Tomb Raider II', href: '/play/tomb', category: '🎮' },
+  { title: 'Street Fighter Alpha 2', href: '/play/street', category: '🎮' },
+  { title: 'Crash Bandicoot: Warped', href: '/play/cb3', category: '🎮' },
+  { title: "Tony Hawk's Pro Skater 2", href: '/play/tn2', category: '🎮' },
+  { title: 'Gran Turismo', href: '/play/gt', category: '🎮' },
+  { title: 'Final Fantasy VII', href: '/play/ff7', category: '🎮' },
+  { title: 'Metal Gear Solid', href: '/play/mgs1', category: '🎮' },
+  { title: 'Medal of Honor: Underground', href: '/play/mohu', category: '🎮' },
+  { title: 'Legacy of Kain: Soul Reaver', href: '/play/soulreaver', category: '🎮' },
+  // Movies
+  { title: 'Donnie Darko', href: '/play/donnie', category: '🎬' },
+  { title: 'Crash: o Filme', href: '/play/crash-movie', category: '🎬' },
+  { title: 'Tekken (Movie)', href: '/play/tekken-movie', category: '🎬' },
+  { title: 'Homem Aranha: Lótus', href: '/play/spider', category: '🎬' },
+  { title: 'Jogador nº 1', href: '/play/jogador', category: '🎬' },
+  { title: 'Resident Evil (Movie)', href: '/play/resident-movie', category: '🎬' },
+  { title: 'Super Mario Bros', href: '/play/mario', category: '🎬' },
+  { title: 'Sonic 2: o Filme', href: '/play/sonic', category: '🎬' },
+  // Arts
+  { title: 'Bumblebee', href: '/art1', category: '🎨' },
+  { title: 'Bomberman', href: '/art1', category: '🎨' },
+  { title: 'Bob Esponja', href: '/art1', category: '🎨' },
+  { title: 'Polygoth', href: '/art1', category: '🎨' },
+  { title: 'Knuckles', href: '/art1', category: '🎨' },
+  { title: 'Luigi', href: '/art1', category: '🎨' },
+  { title: 'Pizza Tower', href: '/art1', category: '🎨' },
+  { title: 'Shadow', href: '/art1', category: '🎨' },
+  // Pages
+  { title: 'Games', href: '/games1', category: '📂' },
+  { title: 'Movies', href: '/movies1', category: '📂' },
+  { title: 'Art Gallery', href: '/art1', category: '📂' },
 ];
 
 export default function Header() {
@@ -22,10 +65,46 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [search, setSearch] = useState('');
   const [langOpen, setLangOpen] = useState(false);
+  const [showResults, setShowResults] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  // Inactivity auto-logout (15 min)
+  useInactivityLogout();
+
+  // Search results filtered by query
+  const searchResults = useMemo(() => {
+    if (!search.trim()) return [];
+    const q = search.toLowerCase();
+    return searchableItems
+      .filter((item) => item.title.toLowerCase().includes(q))
+      .slice(0, 8);
+  }, [search]);
+
+  // Close search dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        setShowResults(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (search.trim()) router.push(`/?q=${encodeURIComponent(search.trim())}`);
+    if (searchResults.length > 0) {
+      router.push(searchResults[0].href);
+      setSearch('');
+      setShowResults(false);
+    }
+  };
+
+  const handleResultClick = (href: string) => {
+    router.push(href);
+    setSearch('');
+    setShowResults(false);
+    setMenuOpen(false);
   };
 
   const handleLogout = async () => {
@@ -53,12 +132,36 @@ export default function Header() {
 
         {/* Search */}
         <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-md">
-          <div className="relative w-full">
+          <div className="relative w-full" ref={searchRef}>
             <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-srfv-text-dim" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
-            <input type="text" placeholder={t('search')} value={search} onChange={(e) => setSearch(e.target.value)}
+            <input type="text" placeholder={t('search')} value={search}
+              onChange={(e) => { setSearch(e.target.value); setShowResults(true); }}
+              onFocus={() => search.trim() && setShowResults(true)}
               className="w-full bg-white/[0.04] border border-srfv-border rounded-full pl-10 pr-4 py-2 text-sm text-white placeholder-srfv-text-dim focus:outline-none focus:border-srfv-primary/50 focus:bg-white/[0.07] focus:shadow-glow-sm transition-all duration-300" />
+
+            {/* Search Results Dropdown */}
+            {showResults && searchResults.length > 0 && (
+              <div className="absolute top-full left-0 right-0 mt-2 bg-srfv-bg-darker/95 backdrop-blur-xl border border-srfv-border rounded-srfv-xs shadow-2xl z-50 py-1.5 max-h-80 overflow-y-auto animate-fade-in">
+                {searchResults.map((item) => (
+                  <button
+                    key={item.title + item.href}
+                    type="button"
+                    onClick={() => handleResultClick(item.href)}
+                    className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-srfv-text-secondary hover:text-white hover:bg-white/5 transition-all duration-200 text-left"
+                  >
+                    <span className="text-base">{item.category}</span>
+                    <span className="truncate">{item.title}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+            {showResults && search.trim() && searchResults.length === 0 && (
+              <div className="absolute top-full left-0 right-0 mt-2 bg-srfv-bg-darker/95 backdrop-blur-xl border border-srfv-border rounded-srfv-xs shadow-2xl z-50 py-4 text-center animate-fade-in">
+                <p className="text-sm text-srfv-text-muted">{t('noResults')}</p>
+              </div>
+            )}
           </div>
         </form>
 
@@ -145,8 +248,27 @@ export default function Header() {
               <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-srfv-text-dim" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-              <input type="text" placeholder={t('search')} value={search} onChange={(e) => setSearch(e.target.value)}
+              <input type="text" placeholder={t('search')} value={search}
+                onChange={(e) => { setSearch(e.target.value); setShowResults(true); }}
+                onFocus={() => search.trim() && setShowResults(true)}
                 className="w-full bg-white/[0.04] border border-srfv-border rounded-full pl-10 pr-4 py-2.5 text-sm text-white placeholder-srfv-text-dim focus:outline-none focus:border-srfv-primary/50" />
+
+              {/* Mobile Search Results */}
+              {showResults && searchResults.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-srfv-bg-darker/95 backdrop-blur-xl border border-srfv-border rounded-srfv-xs shadow-2xl z-50 py-1.5 max-h-60 overflow-y-auto">
+                  {searchResults.map((item) => (
+                    <button
+                      key={item.title + item.href}
+                      type="button"
+                      onClick={() => handleResultClick(item.href)}
+                      className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-srfv-text-secondary hover:text-white hover:bg-white/5 transition-all duration-200 text-left"
+                    >
+                      <span className="text-base">{item.category}</span>
+                      <span className="truncate">{item.title}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </form>
           {[

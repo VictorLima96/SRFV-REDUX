@@ -1,6 +1,6 @@
 {
   "Header": {
-    "search": "Search...",
+    "search": "Search games, movies, arts...",
     "home": "Home",
     "games": "Games",
     "movies": "Movies",
@@ -8,10 +8,12 @@
     "signup": "Sign Up",
     "login": "Login",
     "logout": "Logout",
-    "language": "Language"
+    "language": "Language",
+    "noResults": "No results found"
   },
   "Footer": {
-    "copyright": "Copyright © 2026 SRFV Games. All rights reserved."
+    "copyright": "Copyright © 2026 SRFV Games. All rights reserved.",
+    "uploadArt": "Upload Art"
   },
   "Home": {
     "welcomeTo": "Welcome to",
@@ -62,11 +64,27 @@
   "Art": {
     "submitTitle": "Submit your",
     "submitTitleHighlight": "Art!",
-    "submitDesc": "Join our Discord, upload your arts and get featured in the SRFV community.",
+    "submitDesc": "Upload your arts and get featured in the SRFV community. All images go through automatic content verification.",
     "submitted": "Submitted",
     "inReview": "In Review",
     "available": "Available",
-    "joinDiscord": "Join Discord",
+    "selectImage": "Select an image",
+    "fileRequirements": "JPEG, PNG, GIF or WebP — max 5 MB",
+    "checkingImage": "Checking image...",
+    "nsfwBlocked": "Image blocked",
+    "nsfwBlockedDesc": "This image was detected as potentially inappropriate (+18) content and cannot be uploaded.",
+    "artistNameLabel": "Your name (for credit)",
+    "artistNamePlaceholder": "How do you want to be credited?",
+    "consentText": "I declare that I own the rights to this image, it does not contain inappropriate content, and I authorize its display in the SRFV Games gallery.",
+    "submitArt": "Submit Art",
+    "uploading": "Uploading...",
+    "uploadSuccess": "Art submitted successfully!",
+    "uploadSuccessDesc": "Your art will appear after team review.",
+    "uploadFailed": "Upload failed. Please try again.",
+    "loginToUpload": "Log in to submit your art.",
+    "notAuthenticated": "Session expired. Please log in again.",
+    "invalidFileType": "Invalid file type. Use JPEG, PNG, GIF or WebP.",
+    "fileTooLarge": "File too large. Maximum: 5 MB.",
     "popularArts": "Most Popular",
     "popularArtsHighlight": "Arts",
     "views": "views",

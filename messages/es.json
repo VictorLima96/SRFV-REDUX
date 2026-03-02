@@ -1,6 +1,6 @@
 {
   "Header": {
-    "search": "Buscar...",
+    "search": "Buscar juegos, películas, arte...",
     "home": "Inicio",
     "games": "Juegos",
     "movies": "Películas",
@@ -8,10 +8,12 @@
     "signup": "Registrarse",
     "login": "Iniciar Sesión",
     "logout": "Salir",
-    "language": "Idioma"
+    "language": "Idioma",
+    "noResults": "No se encontraron resultados"
   },
   "Footer": {
-    "copyright": "Copyright © 2026 SRFV Games. Todos los derechos reservados."
+    "copyright": "Copyright © 2026 SRFV Games. Todos los derechos reservados.",
+    "uploadArt": "Subir Arte"
   },
   "Home": {
     "welcomeTo": "Bienvenido a",
@@ -62,11 +64,27 @@
   "Art": {
     "submitTitle": "¡Envía tu",
     "submitTitleHighlight": "Arte!",
-    "submitDesc": "Únete a nuestro Discord, sube tus artes y gana destaque en la comunidad SRFV.",
+    "submitDesc": "Sube tus artes y gana destaque en la comunidad SRFV. Todas las imágenes pasan por verificación automática.",
     "submitted": "Enviadas",
     "inReview": "En revisión",
     "available": "Disponibles",
-    "joinDiscord": "Unirse al Discord",
+    "selectImage": "Selecciona una imagen",
+    "fileRequirements": "JPEG, PNG, GIF o WebP — máx. 5 MB",
+    "checkingImage": "Verificando imagen...",
+    "nsfwBlocked": "Imagen bloqueada",
+    "nsfwBlockedDesc": "La imagen fue identificada como contenido potencialmente inapropiado (+18) y no puede ser subida.",
+    "artistNameLabel": "Tu nombre (para crédito)",
+    "artistNamePlaceholder": "¿Cómo quieres ser acreditado?",
+    "consentText": "Declaro que poseo los derechos de esta imagen, que no contiene contenido inapropiado, y autorizo su exhibición en la galería SRFV Games.",
+    "submitArt": "Enviar Arte",
+    "uploading": "Subiendo...",
+    "uploadSuccess": "¡Arte enviado con éxito!",
+    "uploadSuccessDesc": "Tu arte aparecerá después de la revisión del equipo.",
+    "uploadFailed": "Error al subir. Inténtalo de nuevo.",
+    "loginToUpload": "Inicia sesión para enviar tu arte.",
+    "notAuthenticated": "Sesión expirada. Inicia sesión de nuevo.",
+    "invalidFileType": "Tipo de archivo inválido. Usa JPEG, PNG, GIF o WebP.",
+    "fileTooLarge": "Archivo demasiado grande. Máximo: 5 MB.",
     "popularArts": "Artes más",
     "popularArtsHighlight": "Populares",
     "views": "visualizaciones",

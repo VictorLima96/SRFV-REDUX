@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
+import ArtUploadForm from '@/components/ArtUploadForm';
 
 const popularArts = [
   { img: '/assets/arts/a.png',  title: 'Bumblebee',  views: '10,495' },
@@ -17,7 +18,7 @@ const allArts = [
   { img: '/assets/arts/s.webp',          title: 'Shadow',      author: 'FonSekito',   rating: 4.1, downloads: 329 },
   { img: '/assets/arts/k.webp',          title: 'Knuckles',    author: 'CrashGamis',  rating: 3.9, downloads: 2323 },
   { img: '/assets/arts/c.webp',          title: 'Polygoth',    author: 'Legendary',   rating: 4.9, downloads: 738 },
-  { img: '/assets/images/game-03.jpg',   title: 'Space Boy',   author: 'Cyborg',      rating: 3.4, downloads: 198 },
+  { img: '/assets/images/images.jpg',  title: 'Carlitos El Top Que Gira', author: 'ElTopoGira', rating: 4.7, downloads: 4200 },
   { img: '/assets/arts/to.webp',         title: 'TO MA TO',    author: 'Anjo_Aguiel', rating: 4.3, downloads: 3301 },
 ];
 
@@ -39,13 +40,13 @@ export default async function ArtPage() {
 
   return (
     <div className="space-y-14">
-      {/* ═══ DISCORD BANNER ═══ */}
+      {/* ═══ UPLOAD YOUR ART BANNER ═══ */}
       <section className="relative overflow-hidden rounded-srfv">
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/30 via-srfv-bg-darker to-srfv-bg-darkest" />
         <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-500/10 rounded-full blur-[100px]" />
         <div className="relative flex flex-col md:flex-row items-center gap-6 p-8 md:p-10">
           <div className="w-full md:w-1/2 relative overflow-hidden rounded-srfv-sm">
-            <Image src="/assets/arts/discord.jpg" alt="Discord SRFV" width={400} height={200} className="w-full rounded-srfv-sm object-cover" />
+            <Image src="/assets/images/upload-it-share-it.gif" alt={t('submitTitle')} width={400} height={200} className="w-full rounded-srfv-sm object-cover" unoptimized />
           </div>
           <div className="text-center md:text-left flex-1">
             <h1 className="text-2xl font-bold mb-2">{t('submitTitle')} <span className="heading-em">{t('submitTitleHighlight')}</span></h1>
@@ -64,9 +65,7 @@ export default async function ArtPage() {
                 <p className="text-xs text-srfv-text-muted">{t('available')}</p>
               </div>
             </div>
-            <a href="https://discord.gg/jqpxr8RM" target="_blank" rel="noopener noreferrer" className="btn-primary-srfv">
-              {t('joinDiscord')}
-            </a>
+            <ArtUploadForm />
           </div>
         </div>
       </section>

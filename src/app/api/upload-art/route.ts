@@ -8,11 +8,8 @@ const supabaseSecretKey = (
   ?? ''
 ).trim();
 
-// Security: allowed MIME types and max file size (5 MB)
 const ALLOWED_TYPES = new Set(['image/jpeg', 'image/png', 'image/gif', 'image/webp']);
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
-const ALLOWED_UPLOAD_TYPES = new Set(['avatar', 'banner']);
-// Allowed extensions (must match MIME)
 const SAFE_EXTENSIONS = new Set(['jpg', 'jpeg', 'png', 'gif', 'webp']);
 
 export async function POST(request: NextRequest) {
@@ -27,7 +24,6 @@ export async function POST(request: NextRequest) {
   }
   const accessToken = authHeader.slice(7);
 
-  // Reject obviously invalid tokens (must be a JWT with 3 parts)
   if (accessToken.split('.').length !== 3) {
     return NextResponse.json({ error: 'Invalid token format' }, { status: 401 });
   }
@@ -39,7 +35,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid session' }, { status: 401 });
   }
 
-  // --- Parse & validate form data ---
+  // --- Parse form data ---
   let formData: FormData;
   try {
     formData = await request.formData();
@@ -48,16 +44,18 @@ export async function POST(request: NextRequest) {
   }
 
   const file = formData.get('file') as File | null;
-  const type = (formData.get('type') as string) || 'avatar';
+  const artistName = ((formData.get('artistName') as string) || '').trim();
 
   if (!file) {
     return NextResponse.json({ error: 'No file provided' }, { status: 400 });
   }
 
-  // Validate upload type (prevent path traversal)
-  if (!ALLOWED_UPLOAD_TYPES.has(type)) {
-    return NextResponse.json({ error: 'Invalid upload type' }, { status: 400 });
+  if (!artistName || artistName.length > 50) {
+    return NextResponse.json({ error: 'Artist name is required (max 50 chars)' }, { status: 400 });
   }
+
+  // Sanitize artist name (remove special characters that could be used for injection)
+  const safeArtistName = artistName.replace(/[^\w\s\-\.áàãâéêíóôõúüçÁÀÃÂÉÊÍÓÔÕÚÜÇ]/gi, '').trim();
 
   // Validate MIME type
   if (!ALLOWED_TYPES.has(file.type)) {
@@ -73,13 +71,19 @@ export async function POST(request: NextRequest) {
   const rawExt = file.name.split('.').pop()?.toLowerCase() || '';
   const ext = SAFE_EXTENSIONS.has(rawExt) ? rawExt : 'jpg';
 
-  // Construct safe path (userId is a UUID from Supabase, type is validated above)
-  const path = `${user.id}/${type}.${ext}`;
+  // Generate a unique filename with timestamp
+  const timestamp = Date.now();
+  const safeUserId = user.id.replace(/[^a-zA-Z0-9\-]/g, '');
+  const path = `community-arts/${safeUserId}/${timestamp}.${ext}`;
 
-  // --- Upload with admin privileges ---
+  // --- Upload to Supabase Storage ---
   const { error: uploadError } = await supabaseAdmin.storage
     .from('avatars')
-    .upload(path, file, { upsert: true, contentType: file.type });
+    .upload(path, file, {
+      upsert: false,
+      contentType: file.type,
+      // Store artist name as custom metadata
+    });
 
   if (uploadError) {
     return NextResponse.json({ error: uploadError.message }, { status: 500 });
@@ -89,5 +93,9 @@ export async function POST(request: NextRequest) {
     .from('avatars')
     .getPublicUrl(path);
 
-  return NextResponse.json({ url: `${publicUrl}?t=${Date.now()}` });
+  return NextResponse.json({
+    url: publicUrl,
+    artistName: safeArtistName,
+    message: 'Art submitted successfully! It will appear after review.',
+  });
 }

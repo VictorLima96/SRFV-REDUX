@@ -1,6 +1,6 @@
 {
   "Header": {
-    "search": "搜索...",
+    "search": "搜索游戏、电影、艺术...",
     "home": "首页",
     "games": "游戏",
     "movies": "电影",
@@ -8,10 +8,12 @@
     "signup": "注册",
     "login": "登录",
     "logout": "退出",
-    "language": "语言"
+    "language": "语言",
+    "noResults": "未找到结果"
   },
   "Footer": {
-    "copyright": "版权所有 © 2026 SRFV Games。保留所有权利。"
+    "copyright": "版权所有 © 2026 SRFV Games。保留所有权利。",
+    "uploadArt": "上传艺术作品"
   },
   "Home": {
     "welcomeTo": "欢迎来到",
@@ -62,11 +64,27 @@
   "Art": {
     "submitTitle": "提交你的",
     "submitTitleHighlight": "艺术作品！",
-    "submitDesc": "加入我们的Discord，上传你的艺术作品，在SRFV社区中获得关注。",
+    "submitDesc": "上传你的艺术作品，在SRFV社区中获得关注。所有图片都会通过自动内容审核。",
     "submitted": "已提交",
     "inReview": "审核中",
     "available": "可用",
-    "joinDiscord": "加入Discord",
+    "selectImage": "选择图片",
+    "fileRequirements": "JPEG、PNG、GIF 或 WebP — 最大 5 MB",
+    "checkingImage": "正在检查图片...",
+    "nsfwBlocked": "图片已被拦截",
+    "nsfwBlockedDesc": "该图片被检测为可能包含不当内容（+18），无法上传。",
+    "artistNameLabel": "你的名字（用于署名）",
+    "artistNamePlaceholder": "你希望如何被署名？",
+    "consentText": "我声明拥有此图片的权利，该图片不包含不当内容，并授权在 SRFV Games 画廊中展示。",
+    "submitArt": "提交艺术作品",
+    "uploading": "上传中...",
+    "uploadSuccess": "艺术作品提交成功！",
+    "uploadSuccessDesc": "你的作品将在团队审核后展示。",
+    "uploadFailed": "上传失败，请重试。",
+    "loginToUpload": "请登录后提交艺术作品。",
+    "notAuthenticated": "会话已过期，请重新登录。",
+    "invalidFileType": "无效的文件类型。请使用 JPEG、PNG、GIF 或 WebP。",
+    "fileTooLarge": "文件太大。最大：5 MB。",
     "popularArts": "最受欢迎的",
     "popularArtsHighlight": "艺术",
     "views": "浏览",
