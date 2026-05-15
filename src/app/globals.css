@@ -3,15 +3,53 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
 
 /* ===== Base ===== */
 html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #0d0e12;
+  background-color: #0a0b0f;
   color: #fff;
   overflow-x: hidden;
+  position: relative;
+}
+
+h1, h2, .font-display {
+  font-family: 'Space Grotesk', 'Poppins', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* ===== Aurora gradient background (modern, animated) ===== */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 0%,  rgba(241, 36, 33, 0.18), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 90% 15%, rgba(168, 85, 247, 0.10), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 50% 110%, rgba(56, 189, 248, 0.08), transparent 60%),
+    linear-gradient(180deg, #0a0b0f 0%, #0d0e12 100%);
+  animation: aurora-shift 18s ease-in-out infinite alternate;
+}
+
+/* ===== Subtle grid overlay ===== */
+body > div::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 80%);
+  opacity: 0.6;
 }
 
 /* ===== Noise grain overlay ===== */
@@ -21,8 +59,15 @@ body::before {
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.03;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes aurora-shift {
+  0%   { filter: hue-rotate(0deg)   saturate(1.05); transform: translate3d(0,0,0) scale(1); }
+  50%  { filter: hue-rotate(-12deg) saturate(1.15); transform: translate3d(-1%, 0.5%, 0) scale(1.02); }
+  100% { filter: hue-rotate(8deg)   saturate(1.10); transform: translate3d(1%, -0.5%, 0) scale(1.01); }
 }
 
 /* ===== Scrollbar ===== */
@@ -38,24 +83,47 @@ body::before {
 @layer components {
   /* --- Glass Card --- */
   .card-srfv {
-    @apply relative bg-srfv-bg-card backdrop-blur-sm rounded-srfv-sm p-4 
+    @apply relative bg-srfv-bg-card backdrop-blur-md rounded-srfv-sm p-4
            border border-srfv-border transition-all duration-300 ease-out;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 4px 20px rgba(0,0,0,0.25);
+  }
+  .card-srfv::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02) 40%, rgba(241,36,33,0.0) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.8;
   }
   .card-srfv:hover {
     @apply -translate-y-1.5 border-srfv-border-light;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.05);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.06), 0 0 32px -8px rgba(241,36,33,0.25);
   }
 
   /* --- Buttons --- */
   .btn-primary-srfv {
-    @apply inline-flex items-center justify-center bg-gradient-to-r from-srfv-primary to-red-600 
+    @apply relative inline-flex items-center justify-center bg-gradient-to-r from-srfv-primary to-red-600
            text-white font-semibold rounded-full px-8 py-3 text-sm
-           transition-all duration-300 ease-out shadow-glow-sm;
+           transition-all duration-300 ease-out shadow-glow-sm overflow-hidden;
+  }
+  .btn-primary-srfv::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 0.6s ease;
   }
   .btn-primary-srfv:hover {
     @apply scale-[1.03] shadow-glow;
     filter: brightness(1.15);
   }
+  .btn-primary-srfv:hover::after { transform: translateX(120%); }
   .btn-primary-srfv:active {
     @apply scale-[0.98];
   }
@@ -71,18 +139,39 @@ body::before {
 
   /* --- Section Box (glass panel) --- */
   .section-box {
-    @apply bg-srfv-bg-card backdrop-blur-sm rounded-srfv p-6 md:p-8 
+    @apply relative bg-srfv-bg-card backdrop-blur-md rounded-srfv p-6 md:p-8
            border border-srfv-border shadow-glass;
+  }
+  .section-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.0) 40%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
   }
 
   /* --- Heading accent --- */
   .heading-em {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-srfv-primary to-red-400 not-italic;
+    @apply text-transparent bg-clip-text not-italic;
+    background-image: linear-gradient(90deg, #ff5a58 0%, #f12421 45%, #ff7e7c 100%);
+    background-size: 200% 100%;
+    animation: gradient-shift 8s ease infinite;
   }
 
   /* --- Tag / Badge --- */
   .tag-srfv {
     @apply text-xs px-3 py-1 rounded-full font-semibold backdrop-blur-sm;
+  }
+
+  /* --- Modern display heading (Space Grotesk) --- */
+  .font-display {
+    font-family: 'Space Grotesk', 'Poppins', sans-serif;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -115,5 +204,81 @@ main {
   border-radius: 50%;
   background: #f12421;
   box-shadow: 0 0 8px rgba(241, 36, 33, 0.6);
+}
+
+/* ===== Modern utilities ===== */
+.text-glow {
+  text-shadow: 0 0 24px rgba(241, 36, 33, 0.35);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Floating animation for hero accents */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+.animate-float { animation: float-y 6s ease-in-out infinite; }
+
+@keyframes float-y-slow {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50%      { transform: translateY(-8px) translateX(6px); }
+}
+.animate-float-slow { animation: float-y-slow 9s ease-in-out infinite; }
+
+/* Pulsing ring (for badges / live dots) */
+@keyframes ping-soft {
+  0%   { transform: scale(1);   opacity: 0.65; }
+  80%, 100% { transform: scale(2.2); opacity: 0; }
+}
+.animate-ping-soft::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: currentColor;
+  animation: ping-soft 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Marquee scroll */
+@keyframes marquee-x {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee-x 30s linear infinite; }
+
+/* Conic gradient border (premium feel) */
+.ring-conic {
+  position: relative;
+}
+.ring-conic::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from 180deg, rgba(241,36,33,0.6), rgba(168,85,247,0.4), rgba(56,189,248,0.4), rgba(241,36,33,0.6));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  body::after,
+  .heading-em,
+  .animate-float,
+  .animate-float-slow,
+  .animate-marquee,
+  .animate-ping-soft::after {
+    animation: none !important;
+  }
 }
 

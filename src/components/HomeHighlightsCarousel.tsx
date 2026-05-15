@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 
 type HighlightItem = {
@@ -30,6 +31,7 @@ export default function HomeHighlightsCarousel({
   maxItems = 4,
   intervalMs = 5000,
 }: HomeHighlightsCarouselProps) {
+  const t = useTranslations('Home');
   const limitedItems = useMemo(() => items.slice(0, maxItems), [items, maxItems]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -50,7 +52,7 @@ export default function HomeHighlightsCarousel({
   return (
     <section className="section-box">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold">Destaques <span className="heading-em">Rotativos</span></h2>
+        <h2 className="text-2xl font-bold">{t('highlights')} <span className="heading-em">{t('highlightsAccent')}</span></h2>
         <div className="gradient-line mt-2 w-20" />
       </div>
 

@@ -18,6 +18,8 @@
   "Home": {
     "welcomeTo": "Bem-Vindo ao",
     "description": "Jogue clássicos do PS1, assista filmes icônicos e baixe artes da comunidade — tudo grátis, direto no navegador.",
+    "highlights": "Destaques",
+    "highlightsAccent": "Rotativos",
     "playCTA": "Jogar Resident Evil 3",
     "popularArts": "Artes",
     "popularArtsHighlight": "Populares",

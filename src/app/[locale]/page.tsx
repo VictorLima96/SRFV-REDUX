@@ -122,28 +122,30 @@ export default function HomePage() {
   return (
     <div className="space-y-16">
       {/* ═══ HERO BANNER ═══ */}
-      <section className="relative overflow-hidden rounded-srfv">
+      <section className="relative overflow-hidden rounded-srfv ring-conic">
         {/* Gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-srfv-bg-darker via-srfv-bg-darkest to-srfv-bg-darker" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-srfv-primary/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-red-600/5 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4" />
-        
+        <div className="absolute inset-0 bg-grid opacity-40" />
+        <div className="absolute top-0 right-0 w-[28rem] h-[28rem] bg-srfv-primary/15 rounded-full blur-[140px] -translate-y-1/2 translate-x-1/4 animate-float-slow" />
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-purple-600/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4 animate-float" />
+        <div className="absolute top-1/3 left-1/2 w-64 h-64 bg-sky-500/5 rounded-full blur-[100px] animate-float" />
+
         <div className="relative flex flex-col md:flex-row items-center gap-8 p-8 md:p-12">
           <div className="flex-1 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 bg-srfv-primary/10 border border-srfv-primary/20 rounded-full px-4 py-1.5 mb-6">
-              <span className="w-2 h-2 rounded-full bg-srfv-primary animate-pulse" />
-              <span className="text-xs text-srfv-primary font-medium">SRFV Games — Free to Play</span>
+            <div className="inline-flex items-center gap-2 bg-srfv-primary/10 border border-srfv-primary/25 rounded-full px-4 py-1.5 mb-6 backdrop-blur-sm">
+              <span className="relative inline-flex w-2 h-2 rounded-full bg-srfv-primary text-srfv-primary animate-ping-soft" />
+              <span className="text-xs text-srfv-primary font-medium tracking-wide uppercase">SRFV Games — Free to Play</span>
             </div>
-            <h1 className="text-3xl lg:text-5xl font-extrabold mb-4 leading-tight">
+            <h1 className="font-display text-4xl lg:text-6xl font-extrabold mb-5 leading-[1.05] tracking-tight">
               {t('welcomeTo')}{' '}
-              <span className="heading-em">SRFV Games</span>
+              <span className="heading-em text-glow">SRFV Games</span>
             </h1>
             <p className="text-srfv-text-secondary mb-8 max-w-lg text-base leading-relaxed">
               {t('description')}
             </p>
             <div className="flex flex-wrap gap-3 justify-center md:justify-start">
               <Link href={featuredGame.href} className="btn-primary-srfv">
-                {featuredGame.title}
+                ▶ {featuredGame.title}
               </Link>
               <Link href="/games1" className="btn-outline-srfv">
                 {t('viewAllGames')}
@@ -151,14 +153,14 @@ export default function HomePage() {
             </div>
           </div>
           <div className="w-full md:w-1/2 max-w-md">
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-srfv-primary/30 to-red-600/30 rounded-srfv blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
+            <div className="relative group animate-float-slow">
+              <div className="absolute -inset-2 bg-gradient-to-br from-srfv-primary/40 via-purple-500/20 to-red-600/30 rounded-srfv blur-2xl opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
               <Image
                 src={featuredGame.img}
                 alt={featuredGame.title}
                 width={480}
                 height={320}
-                className="relative rounded-srfv w-full h-auto object-cover shadow-2xl"
+                className="relative rounded-srfv w-full h-auto object-cover shadow-2xl ring-1 ring-white/10"
                 priority
               />
             </div>

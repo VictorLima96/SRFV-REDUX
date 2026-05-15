@@ -18,6 +18,8 @@
   "Home": {
     "welcomeTo": "欢迎来到",
     "description": "畅玩PS1经典游戏，观看标志性电影，下载社区艺术作品——全部免费，直接在浏览器中体验。",
+    "highlights": "轮播",
+    "highlightsAccent": "精选",
     "playCTA": "玩生化危机3",
     "popularArts": "热门",
     "popularArtsHighlight": "艺术",
