@@ -117,7 +117,7 @@
     "email": "Email",
     "emailPlaceholder": "you@email.com",
     "password": "Password",
-    "passwordPlaceholder": "Minimum 6 characters",
+    "passwordPlaceholder": "Min 8 chars, letters and numbers",
     "agreeWith": "I agree to the",
     "termsOfService": "Terms of Service",
     "mustAgree": "You must agree to the Terms of Service.",
@@ -125,6 +125,20 @@
     "submit": "Sign Up",
     "hasAccount": "Already have an account?",
     "loginLink": "Login"
+  },
+  "auth": {
+    "notConfigured": "Authentication service is currently unavailable.",
+    "invalidEmail": "Please enter a valid email address.",
+    "invalidName": "Name must be 1–50 characters.",
+    "weakPassword": "Password must be at least 8 characters and include letters and numbers.",
+    "badCredentials": "Incorrect email or password.",
+    "mustAccept": "You must accept the Terms of Service.",
+    "rateLimited": "Too many attempts. Please wait a few minutes and try again.",
+    "emailTaken": "This email is already registered.",
+    "oauthFailed": "Could not complete Google sign-in.",
+    "notAuthenticated": "You must be signed in.",
+    "unknown": "An unexpected error occurred. Please try again.",
+    "checkEmail": "Account created! Check your email to confirm your registration."
   },
   "Terms": {
     "title": "Terms of Service",

@@ -30,3 +30,7 @@ public/assets/som/*.mp3
 
 .vercel
 .env*.local
+
+# TypeScript
+*.tsbuildinfo
+

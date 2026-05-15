@@ -117,7 +117,7 @@
     "email": "Correo",
     "emailPlaceholder": "tu@correo.com",
     "password": "Contraseña",
-    "passwordPlaceholder": "Mínimo 6 caracteres",
+    "passwordPlaceholder": "Mínimo 8 caracteres, letras y números",
     "agreeWith": "Acepto los",
     "termsOfService": "Términos de Servicio",
     "mustAgree": "Debes aceptar los Términos de Servicio.",
@@ -125,6 +125,20 @@
     "submit": "Registrarse",
     "hasAccount": "¿Ya tienes una cuenta?",
     "loginLink": "Iniciar Sesión"
+  },
+  "auth": {
+    "notConfigured": "El servicio de autenticación no está disponible.",
+    "invalidEmail": "Introduce un email válido.",
+    "invalidName": "El nombre debe tener entre 1 y 50 caracteres.",
+    "weakPassword": "La contraseña debe tener al menos 8 caracteres, con letras y números.",
+    "badCredentials": "Email o contraseña incorrectos.",
+    "mustAccept": "Debes aceptar los Términos del Servicio.",
+    "rateLimited": "Demasiados intentos. Espera unos minutos e inténtalo de nuevo.",
+    "emailTaken": "Este email ya está registrado.",
+    "oauthFailed": "No se pudo completar el inicio de sesión con Google.",
+    "notAuthenticated": "Debes iniciar sesión.",
+    "unknown": "Ocurrió un error inesperado. Inténtalo de nuevo.",
+    "checkEmail": "¡Cuenta creada! Revisa tu email para confirmar el registro."
   },
   "Terms": {
     "title": "Términos de Servicio",

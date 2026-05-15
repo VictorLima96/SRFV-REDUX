@@ -1,6 +1,7 @@
 import createMiddleware from 'next-intl/middleware';
 import { routing } from './i18n/routing';
 import { NextRequest, NextResponse } from 'next/server';
+import { refreshSupabaseSession } from './lib/supabase/middleware';
 
 /* Legacy backward-compat URLs from the old Laravel site */
 const legacyRedirects: Record<string, string> = {
@@ -28,7 +29,7 @@ const legacyRedirects: Record<string, string> = {
 
 const intlMiddleware = createMiddleware(routing);
 
-export default function middleware(request: NextRequest) {
+export default async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   // Handle legacy URLs → redirect to default locale
@@ -46,7 +47,10 @@ export default function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  return intlMiddleware(request);
+  // Run next-intl first so we have the localized response, then refresh the
+  // Supabase session cookie on it (rotates tokens, keeps server in sync).
+  const intlResponse = intlMiddleware(request);
+  return refreshSupabaseSession(request, intlResponse);
 }
 
 export const config = {

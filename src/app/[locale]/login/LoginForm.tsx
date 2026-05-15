@@ -3,7 +3,7 @@
 import { useFormState, useFormStatus } from 'react-dom';
 import { Link } from '@/i18n/navigation';
 import { useLocale, useTranslations } from 'next-intl';
-import { signUpAction, signInWithGoogleAction, type AuthState } from '@/app/_actions/auth';
+import { signInAction, signInWithGoogleAction, type AuthState } from '@/app/_actions/auth';
 
 function GoogleIcon() {
   return (
@@ -21,7 +21,11 @@ const initialState: AuthState = {};
 function SubmitButton({ label, loadingLabel }: { label: string; loadingLabel: string }) {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" disabled={pending} className="btn-primary-srfv w-full disabled:opacity-50 !py-3 text-base font-semibold">
+    <button
+      type="submit"
+      disabled={pending}
+      className="btn-primary-srfv w-full disabled:opacity-50 !py-3 text-base font-semibold"
+    >
       {pending ? (
         <span className="flex items-center justify-center gap-2">
           <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -37,7 +41,12 @@ function SubmitButton({ label, loadingLabel }: { label: string; loadingLabel: st
 function GoogleButton({ ariaLabel }: { ariaLabel: string }) {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" disabled={pending} aria-label={ariaLabel} className="w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/15 border border-white/20 backdrop-blur-sm transition-all duration-200 disabled:opacity-50">
+    <button
+      type="submit"
+      disabled={pending}
+      aria-label={ariaLabel}
+      className="w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/15 border border-white/20 backdrop-blur-sm transition-all duration-200 disabled:opacity-50"
+    >
       {pending ? (
         <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
       ) : (
@@ -47,22 +56,15 @@ function GoogleButton({ ariaLabel }: { ariaLabel: string }) {
   );
 }
 
-function safeTranslate(t: ReturnType<typeof useTranslations>, key: string): string {
-  try {
-    return t(key as never);
-  } catch {
-    return key;
-  }
-}
-
-export default function SignupPage() {
-  const t = useTranslations('Signup');
+export default function LoginForm({ initialError }: { initialError?: string }) {
+  const t = useTranslations('Login');
   const tRoot = useTranslations();
   const locale = useLocale();
-  const [state, formAction] = useFormState(signUpAction, initialState);
+  const [state, formAction] = useFormState(signInAction, initialState);
 
-  const errorMessage = state.error ? safeTranslate(tRoot, state.error) : null;
-  const successMessage = state.ok ? safeTranslate(tRoot, 'auth.checkEmail') : null;
+  // Show either the server-validated error or any error passed in the URL
+  const errorKey = state.error ?? initialError;
+  const errorMessage = errorKey ? safeTranslate(tRoot, errorKey) : null;
 
   return (
     <div className="flex items-center justify-center min-h-[60vh] relative">
@@ -74,7 +76,7 @@ export default function SignupPage() {
         <div className="flex justify-center mb-4 pt-2">
           <div className="w-14 h-14 rounded-full bg-gradient-to-br from-srfv-primary to-red-600 flex items-center justify-center shadow-glow-sm">
             <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0" />
             </svg>
           </div>
         </div>
@@ -88,55 +90,76 @@ export default function SignupPage() {
             {errorMessage}
           </div>
         )}
-        {successMessage && (
-          <div className="bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-sm rounded-srfv-xs px-4 py-3 mb-4 text-sm text-emerald-200 animate-fade-in" role="status">
-            {successMessage}
-          </div>
-        )}
 
         <form action={formAction} className="space-y-5" noValidate>
           <input type="hidden" name="locale" value={locale} />
-          <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] top-0 w-px h-px opacity-0" />
+          {/* Honeypot — must remain empty. Hidden from humans, visible to bots. */}
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="absolute -left-[9999px] top-0 w-px h-px opacity-0"
+          />
 
           <div>
-            <label htmlFor="signup-name" className="block text-sm text-srfv-text-secondary mb-1.5 font-medium">{t('name')}</label>
-            <input id="signup-name" name="name" type="text" required autoComplete="name" minLength={1} maxLength={50} className="form-input" placeholder={t('namePlaceholder')} />
+            <label htmlFor="login-email" className="block text-sm text-srfv-text-secondary mb-1.5 font-medium">{t('email')}</label>
+            <input
+              id="login-email"
+              name="email"
+              type="email"
+              required
+              autoComplete="email"
+              inputMode="email"
+              maxLength={254}
+              className="form-input"
+              placeholder={t('emailPlaceholder')}
+            />
           </div>
           <div>
-            <label htmlFor="signup-email" className="block text-sm text-srfv-text-secondary mb-1.5 font-medium">{t('email')}</label>
-            <input id="signup-email" name="email" type="email" required autoComplete="email" inputMode="email" maxLength={254} className="form-input" placeholder={t('emailPlaceholder')} />
+            <label htmlFor="login-password" className="block text-sm text-srfv-text-secondary mb-1.5 font-medium">{t('password')}</label>
+            <input
+              id="login-password"
+              name="password"
+              type="password"
+              required
+              autoComplete="current-password"
+              minLength={1}
+              maxLength={72}
+              className="form-input"
+              placeholder="••••••••"
+            />
           </div>
-          <div>
-            <label htmlFor="signup-password" className="block text-sm text-srfv-text-secondary mb-1.5 font-medium">{t('password')}</label>
-            <input id="signup-password" name="password" type="password" required autoComplete="new-password" minLength={8} maxLength={72} className="form-input" placeholder={t('passwordPlaceholder')} />
-          </div>
-
-          <label className="flex items-start gap-3 cursor-pointer group">
-            <input type="checkbox" name="terms" required className="mt-0.5 w-4 h-4 accent-srfv-primary rounded" />
-            <span className="text-xs text-srfv-text-muted group-hover:text-srfv-text-secondary transition-colors">
-              {t('agreeWith')}{' '}
-              <Link href="/terms" className="text-srfv-primary hover:underline">
-                {t('termsOfService')}
-              </Link>
-            </span>
-          </label>
 
           <SubmitButton label={t('submit')} loadingLabel={t('submitting')} />
         </form>
 
+        {/* Separate form for OAuth to keep its pending state isolated */}
         <form action={signInWithGoogleAction} className="flex justify-center pt-4">
           <input type="hidden" name="locale" value={locale} />
           <GoogleButton ariaLabel={t('continueWith', { provider: 'Google' })} />
         </form>
 
-        <div className="mt-8 text-center">
-          <div className="gradient-line w-full mb-3" />
+        <div className="mt-8 text-center space-y-3">
+          <div className="gradient-line w-full" />
+          <Link href="/update" className="text-sm text-srfv-text-muted hover:text-srfv-primary transition-colors">
+            {t('forgotPassword')}
+          </Link>
           <p className="text-sm text-srfv-text-muted">
-            {t('hasAccount')}{' '}
-            <Link href="/login" className="text-srfv-primary hover:underline font-medium">{t('loginLink')}</Link>
+            {t('noAccount')}{' '}
+            <Link href="/signup" className="text-srfv-primary hover:underline font-medium">{t('signupLink')}</Link>
           </p>
         </div>
       </div>
     </div>
   );
+}
+
+function safeTranslate(t: ReturnType<typeof useTranslations>, key: string): string {
+  try {
+    return t(key as never);
+  } catch {
+    return key;
+  }
 }

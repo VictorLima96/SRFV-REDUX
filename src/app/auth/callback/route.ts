@@ -1,52 +1,69 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getServerSupabase } from '@/lib/supabase/server';
+import { routing } from '@/i18n/routing';
 
 /**
- * OAuth callback relay.
- * Important: some OAuth responses use URL fragments (#access_token...) which
- * are NOT visible to the server. A server redirect would drop that fragment.
+ * OAuth callback (PKCE).
  *
- * This handler returns a tiny HTML page that runs in the browser and forwards
- * query + hash to the final localized route, preserving auth payloads.
+ * Exchanges the authorization `code` for a session server-side, then
+ * redirects to a safe same-origin `next` path. The session is persisted
+ * via HttpOnly cookies — the access token is never visible to JavaScript.
  */
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
-  const next = searchParams.get('next') ?? '/pt-BR';
-  const safeNext = next.startsWith('/') ? next : '/pt-BR';
+  const code = searchParams.get('code');
+  const errorParam = searchParams.get('error');
+  const errorDescription = searchParams.get('error_description');
 
-  const relayHtml = `<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Signing in…</title>
-  </head>
-  <body style="background:#0b0b0d;color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;">
-    <div>Signing in…</div>
-    <script>
-      (function () {
-        var origin = ${JSON.stringify(origin)};
-        var safeNext = ${JSON.stringify(safeNext)};
-        var current = new URL(window.location.href);
-        var target = new URL(safeNext, origin);
+  // Validate "next" — must be a same-origin path under a known locale.
+  const rawNext = searchParams.get('next') ?? `/${routing.defaultLocale}`;
+  const safeNext = sanitizeNext(rawNext);
 
-        var passthrough = ['code', 'error', 'error_description'];
-        passthrough.forEach(function (key) {
-          var value = current.searchParams.get(key);
-          if (value) target.searchParams.set(key, value);
-        });
+  if (errorParam) {
+    const url = new URL(`/${routing.defaultLocale}/login`, origin);
+    url.searchParams.set('error', mapOAuthError(errorParam, errorDescription));
+    return NextResponse.redirect(url);
+  }
 
-        var destination = target.toString() + (window.location.hash || '');
-        window.location.replace(destination);
-      })();
-    </script>
-  </body>
-</html>`;
+  if (!code) {
+    const url = new URL(`/${routing.defaultLocale}/login`, origin);
+    url.searchParams.set('error', 'oauth_no_code');
+    return NextResponse.redirect(url);
+  }
 
-  return new NextResponse(relayHtml, {
-    status: 200,
-    headers: {
-      'content-type': 'text/html; charset=utf-8',
-      'cache-control': 'no-store, no-cache, max-age=0, must-revalidate',
-    },
-  });
+  const supabase = getServerSupabase();
+  if (!supabase) {
+    const url = new URL(`/${routing.defaultLocale}/login`, origin);
+    url.searchParams.set('error', 'server_misconfigured');
+    return NextResponse.redirect(url);
+  }
+
+  const { error } = await supabase.auth.exchangeCodeForSession(code);
+  if (error) {
+    const url = new URL(`/${routing.defaultLocale}/login`, origin);
+    url.searchParams.set('error', 'oauth_exchange_failed');
+    return NextResponse.redirect(url);
+  }
+
+  return NextResponse.redirect(new URL(safeNext, origin));
+}
+
+function sanitizeNext(value: string): string {
+  // Reject anything that isn't a relative path or attempts a host change.
+  if (!value.startsWith('/') || value.startsWith('//')) {
+    return `/${routing.defaultLocale}`;
+  }
+  // Strip any embedded protocol/host.
+  try {
+    const dummy = new URL(value, 'http://localhost');
+    return dummy.pathname + dummy.search + dummy.hash;
+  } catch {
+    return `/${routing.defaultLocale}`;
+  }
+}
+
+function mapOAuthError(code: string, description: string | null): string {
+  if (code === 'access_denied') return 'oauth_access_denied';
+  if (description?.toLowerCase().includes('cancel')) return 'oauth_cancelled';
+  return 'oauth_failed';
 }

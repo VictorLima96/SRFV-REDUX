@@ -117,7 +117,7 @@
     "email": "Email",
     "emailPlaceholder": "seu@email.com",
     "password": "Senha",
-    "passwordPlaceholder": "Mínimo 6 caracteres",
+    "passwordPlaceholder": "Mínimo 8 caracteres, letras e números",
     "agreeWith": "Concordo com os",
     "termsOfService": "Termos de Serviço",
     "mustAgree": "Você deve concordar com os Termos de Serviço.",
@@ -125,6 +125,20 @@
     "submit": "Registrar",
     "hasAccount": "Já possui uma conta?",
     "loginLink": "Login"
+  },
+  "auth": {
+    "notConfigured": "Serviço de autenticação indisponível no momento.",
+    "invalidEmail": "Informe um email válido.",
+    "invalidName": "O nome deve ter de 1 a 50 caracteres válidos.",
+    "weakPassword": "A senha precisa ter no mínimo 8 caracteres, incluindo letras e números.",
+    "badCredentials": "Email ou senha incorretos.",
+    "mustAccept": "Você precisa aceitar os Termos de Serviço.",
+    "rateLimited": "Muitas tentativas. Aguarde alguns minutos e tente novamente.",
+    "emailTaken": "Este email já está cadastrado.",
+    "oauthFailed": "Não foi possível concluir o login com Google.",
+    "notAuthenticated": "Você precisa estar autenticado.",
+    "unknown": "Ocorreu um erro inesperado. Tente novamente.",
+    "checkEmail": "Conta criada! Confira seu email para confirmar o cadastro."
   },
   "Terms": {
     "title": "Termos de Serviço",

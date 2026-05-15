@@ -2,7 +2,6 @@
 
 import { useState, useRef } from 'react';
 import { useAuth } from '@/lib/AuthContext';
-import { supabase } from '@/lib/supabase';
 import { useTranslations } from 'next-intl';
 import { checkImageNSFW } from '@/lib/nsfwCheck';
 import Image from 'next/image';
@@ -74,30 +73,24 @@ export default function ArtUploadForm() {
   };
 
   const handleSubmit = async () => {
-    if (!file || !consent || !artistName.trim() || !user || !supabase) return;
+    if (!file || !consent || !artistName.trim() || !user) return;
 
     setStatus('uploading');
     setErrorMsg('');
 
     try {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session?.access_token) {
-        setErrorMsg(t('notAuthenticated'));
-        setStatus('error');
-        return;
-      }
-
       const formData = new FormData();
       formData.append('file', file);
       formData.append('artistName', artistName.trim());
 
+      // Cookie-based auth — no Bearer token required.
       const res = await fetch('/api/upload-art', {
         method: 'POST',
-        headers: { Authorization: `Bearer ${session.access_token}` },
         body: formData,
+        credentials: 'include',
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (!res.ok) {
         setErrorMsg(data.error || t('uploadFailed'));
         setStatus('error');
